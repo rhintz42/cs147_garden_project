@@ -4,12 +4,15 @@ gem "rails", "3.2.3"
 gem "haml"
 gem "rails3-generators"
 
+gem "debugger"
+
 gem 'jquery-rails'
 gem 'therubyracer'
 
 group :assets do
+  gem 'jquery-ui-rails'
   gem 'sass-rails', "~> 3.2.3"
-#  gem 'coffee-rails', "~> 3.2.3"
+  #gem 'coffee-rails', "~> 3.2.1"
   gem 'uglifier'
 end
 

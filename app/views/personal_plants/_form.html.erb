@@ -1,0 +1,52 @@
+<%= form_for(@personal_plant) do |f| %>
+  <% if @personal_plant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@personal_plant.errors.count, "error") %> prohibited this personal_plant from being saved:</h2>
+
+      <ul>
+      <% @personal_plant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <div id="page-wrap">
+        <div id="tabs">
+          <ul>
+            <li><a href="#fragment-1">Basic Information</a></li>
+          </ul>
+       
+          <div id="fragment-1" class="ui-tabs-panel">
+            <div class="field">
+              <%= f.label :name_personalized %><br />
+              <%= f.text_field :name_personalized %>
+            </div>
+            <div class="field">
+              <%= f.label "Watering days per week: " %><br />
+              <span>You've selected:</span> <span id="select-result"></span>
+              <div id="slider"></div>
+              <%= f.hidden_field :watering_frequency, :id => "water_frequency" %>
+            </div>
+            <div class="field">
+              <%= f.label :last_watering %><br />
+              <%= f.text_field :last_watering %>
+            </div>
+            <div class="field">
+              <%= f.label :next_watering %><br />
+              <%= f.text_field :next_watering %>
+            </div>
+            <div class="field">
+              <%= f.hidden_field :plant_id, { :value => @plant_id } %>
+              <%= f.hidden_field :user_id, { :value => session[:user][:id] } %>
+            </div>
+          </div>
+          <div>
+            <div class="actions">
+              <%= f.submit %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<% end %>

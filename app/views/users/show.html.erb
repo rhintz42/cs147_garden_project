@@ -1,0 +1,25 @@
+<%= render 'layouts/header' %>
+
+<div class=container-header-under>
+  <%= render 'layouts/left_nav' %>
+  <%= render 'layouts/right_nav' %>
+  <div class=container-body-center>
+    <p id="notice"><%= notice %></p>
+
+    <p>
+      <b>Name:</b>
+      <%= @user.name_first %> <%= @user.name_middle %> <%= @user.name_last %>
+    </p>
+    <p>
+      <b>Username:</b>
+      <%= @user.username %>
+    </p>
+    <p>
+      <b>Email:</b>
+      <%= @user.email %>
+    </p>
+    <p>
+      Add a new <%= link_to 'plant', options_personal_plants_path %> to your collection
+    </p>
+  </div>
+</div>

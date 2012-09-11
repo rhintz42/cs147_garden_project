@@ -1,7 +1,9 @@
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
- *
+ * asldkfjalsdjf= require_self
+ * alksdjflkasjdfl= require_tree .
+
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
  * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
  *
@@ -9,5 +11,12 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require ui-lightness/jquery-ui-1.8.23.custom.css
  *= require_tree .
 */
+
+.header-login-info {
+  float: right;
+  color: white;
+  font-size: 14px;
+}

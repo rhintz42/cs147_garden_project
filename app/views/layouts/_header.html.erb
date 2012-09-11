@@ -1,0 +1,13 @@
+<div class=container-header>
+  <div class=container-header-center>
+    <div class=header-login-info>
+      <% if session[:user] then %>
+        Welcome, <%= session[:user].username %>! <%= link_to 'logout', logout_users_path %>
+      <% else %>
+        <%= link_to 'Please login',  login_users_path %>
+      <% end %>
+      <br />
+      <%= link_to 'Home', home_index_path %>
+    </div>
+  </div>
+</div>
