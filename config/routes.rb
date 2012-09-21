@@ -1,5 +1,7 @@
 GardenCookbook::Application.routes.draw do
 
+  resources :personal_plant_waterings
+
   resources :personal_plants do
     collection do
       get 'options'
@@ -18,6 +20,8 @@ GardenCookbook::Application.routes.draw do
   resources :plants
   
   get "home/index"
+  get "calendar/index"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

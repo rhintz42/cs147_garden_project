@@ -5,7 +5,7 @@ body								{ font: 14px Helvetica, Sans-Serif; }
   width: 740px;
 }
 
-
+/*
 .ui-tabs 							{ zoom: 1; }
 .ui-tabs .ui-tabs-nav 				{ list-style: none; position: relative; padding: 2px 2px 0; overflow: hidden; 
 									  top: 1px; z-index: 1000; }
@@ -21,13 +21,14 @@ li.ui-tabs-selected a, .ui-tabs
 li.ui-state-processing a 			{ cursor: text; }
 .ui-tabs .ui-tabs-nav li a, 
 .ui-tabs.ui-tabs-collapsible 
-.ui-tabs-nav li.ui-tabs-selected a  { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.ui-tabs-nav li.ui-tabs-selected a  { cursor: pointer; } *//* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+/*
 .ui-tabs .ui-tabs-panel 			{ padding: 20px; display: block; border-width: 0; background: none; 
 									  border: 1px solid #ccc; position: relative; min-height: 200px; }
 .ui-tabs .ui-tabs-hide 				{ display: none !important; }
 
 .ui-datepicker { width: 17em; padding: .2em .2em 0; z-index: 9999 !important; }
-
+*/
 
 
 a.mover 							{ background: #900; padding: 6px 12px; position: absolute;
@@ -55,44 +56,11 @@ a.mover 							{ background: #900; padding: 6px 12px; position: absolute;
 #actual_sun_exposure_selectable { list-style-type: none; margin: 0; padding: 0; }
 #actual_sun_exposure_selectable li { margin: 3px; padding: 1px; float: left; width: 150px; height: 80px; text-align: center;}
 
-.clear_both {clear: both;}
-
 .toggler { width: 500px; height: 200px; }
 #button { padding: .5em 1em; text-decoration: none; }
 #effect { width: 240px; height: 135px; padding: 0.4em; position: relative; }
 #effect h3 { margin: 0; padding: 0.4em; text-align: center; }
 
-
-/*
-  Containers
-*/
-.container-header-center {
-  text-align: center;
-  font-size: 2em;
-  padding-top: 25px;
-  padding-bottom: auto;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1000px;
-  width: 100%;
-  height: 50px;
-  color: white;
-  background-color: blue;
-}
-.container-body-center{
-  width: 700px;
-  height: 400px;
-  float: left;
-}
-.container-header {
-  width: 100%;
-  background-color: blue;
-}
-.container-header-under {
-  width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 
 /*

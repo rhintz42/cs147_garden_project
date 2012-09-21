@@ -15,8 +15,6 @@
 <% @personal_plants.each do |personal_plant| %>
   <tr>
     <td><%= personal_plant.name_personalized %></td>
-    <td><%= personal_plant.last_watering %></td>
-    <td><%= personal_plant.next_watering %></td>
     <td><%= personal_plant.plant %></td>
     <td><%= personal_plant.user %></td>
     <td><%= link_to 'Show', personal_plant %></td>

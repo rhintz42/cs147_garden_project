@@ -1,61 +1,45 @@
-<%= render 'layouts/header' %>
-
 <%= @plant.name_common %>
 
-<div class=container-header-under>
-  <%= render 'layouts/left_nav' %>
-  <%= render 'layouts/right_nav' %>
-  <div class=container-body-center>
-    <p id="notice"><%= notice %></p>
-    
-    <div id=name>
-      <b>Plant Name:</b>
-      <%= @plant.name_common %>
-      
-      <br />
-      
-      <b>Botanical Name:</b>
-      <%= @plant.name_botanical %>
-      
-      <br />
+<p id="notice"><%= notice %></p>
 
-      <b>Description:</b>
-      <%= @plant.description %>
-    </div>
-    
-    <div id=plant-basic-info>
-      <b>Plant type:</b>
-      <%= @plant.plant_type %>
-      
-      <br />
-      
-      <b>Is houseplant:</b>
-      <%= @plant.is_houseplant %>
-    </div>
-    
-    <div id=plant-water-info>
-      <b>Water weekly:</b>
-      <%= @plant.water_weekly %>
-      
-      <br />
-      
-      <b>Water frequency:</b>
-      <%= @plant.water_frequency %>
-    </div>
-    
-    <div id=plant-sun-info>
-      <b>Recommended sun exposure:</b>
-      <%= @plant.recommended_sun_exposure %>
-      
-      <br />
-      
-      <b>Actual sun exposure:</b>
-      <%= @plant.actual_sun_exposure %>
-    </div>
-  </div>
+<div id='show-plants'>
+<div id='name'>
+  <b>Plant Name:</b>
+  <%= @plant.name_common %>
+  
+  <br />
+  
+  <b>Botanical Name:</b>
+  <%= @plant.name_botanical %>
+  
+  <br />
 
-  <div class=nav-show-back>
-    <%= link_to 'Edit', edit_plant_path(@plant) %> |
-    <%= link_to 'Back', plants_path %>
-  </div>
+  <b>Description:</b>
+  <%= @plant.description %>
+</div>
+
+<div id='plant-basic-info'>
+  <b>Plant type:</b>
+  <%= @plant.plant_type %>
+  
+  <br />
+  
+  <b>Is houseplant:</b>
+  <%= @plant.is_houseplant %>
+</div>
+
+<div id='plant-water-info'>
+  <b>Water weekly:</b>
+  <%= @plant.watering_weekly_amount %>
+  
+  <br />
+  
+  <b>Water frequency:</b>
+  <%= @plant.watering_frequency_old %>
+</div>
+
+<div id='plant-sun-info'>
+  <b>Sun exposure:</b>
+  <%= @plant.sun_exposure %> 
+</div>
 </div>

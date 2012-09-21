@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
+  
+  include MyModule
+  
   # GET /users
   # GET /users.json
   def index
+    if not check_logged_in then
+      return
+    end
     @users = User.all
     
     respond_to do |format|
@@ -13,6 +19,9 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    if not check_logged_in then
+      return
+    end
     @user = User.find_by_id(params[:id])
     
     if @user == nil then
@@ -32,7 +41,6 @@ class UsersController < ApplicationController
   # GET /users/login
   # GET /users/login.json
   def login
-    
     if session[:user] != nil then
       logged_in_home_page = users_path + '/' +  session[:user][:id].to_s
       respond_to do |format|
@@ -54,8 +62,7 @@ class UsersController < ApplicationController
   # POST /users/login/1.json
   def login_post
     @user = User.find_by_username(params[:user][:username])
-    session[:user] = @user
-
+    
     if @user == nil or not @user.password_valid?(params[:user][:password]) then
       respond_to do |format|
         format.html { redirect_to login_users_path, notice: "Either the username or password is invalid. Please try again."}
@@ -63,6 +70,18 @@ class UsersController < ApplicationController
       end
       return
     else
+      session[:user] = @user
+
+      if session[:previous_page] then
+        respond_to do |format| 
+          format.html { redirect_to session[:previous_page] }
+          format.json { head :no_content }
+        end
+
+        session[:previous_page] = nil
+        return
+      end
+      
       logged_in_home_page = users_path + '/' +  session[:user][:id].to_s
       respond_to do |format|
         format.html { redirect_to logged_in_home_page}
@@ -90,6 +109,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    if not check_logged_in then
+      return
+    end
     @user = User.find(params[:id])
   end
 
@@ -114,6 +136,9 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
+    if not check_logged_in then
+      return
+    end
     @user = User.find(params[:id])
 
     respond_to do |format|
@@ -130,6 +155,9 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    if not check_logged_in then
+      return
+    end
     @user = User.find(params[:id])
     @user.destroy
 

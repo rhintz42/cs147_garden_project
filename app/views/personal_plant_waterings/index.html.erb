@@ -1,0 +1,27 @@
+<h1>Listing personal_plant_waterings</h1>
+
+<table>
+  <tr>
+    <th>Watering time</th>
+    <th>Watering amount</th>
+    <th>Personal plant</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @personal_plant_waterings.each do |personal_plant_watering| %>
+  <tr>
+    <td><%= personal_plant_watering.watering_time %></td>
+    <td><%= personal_plant_watering.watering_amount %></td>
+    <td><%= personal_plant_watering.personal_plant %></td>
+    <td><%= link_to 'Show', personal_plant_watering %></td>
+    <td><%= link_to 'Edit', edit_personal_plant_watering_path(personal_plant_watering) %></td>
+    <td><%= link_to 'Destroy', personal_plant_watering, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Personal plant watering', new_personal_plant_watering_path %>

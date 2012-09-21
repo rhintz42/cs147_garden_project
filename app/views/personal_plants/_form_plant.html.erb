@@ -1,172 +1,166 @@
-<div class=container-header-under>
-  <%= render 'layouts/left_nav' %>
-  <%= render 'layouts/right_nav' %>
-  <div class=container-body-center>
-    <%= form_for(@plant) do |f| %>
-      <% if @plant.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@plant.errors.count, "error") %> prohibited this plant from being saved:</h2>
+<%= form_for(@plant) do |f| %>
+  <% if @plant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@plant.errors.count, "error") %> prohibited this plant from being saved:</h2>
 
-          <ul>
-          <% @plant.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
+      <ul>
+      <% @plant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-      <div id="page-wrap">
-        <div id="tabs">
-          <ul>
-            <li><a href="#fragment-1">Basic Information</a></li>
-            <li><a href="#fragment-2">Local Information</a></li>
-            <li><a href="#fragment-3">Watering</a></li>
-          </ul>
-       
-          <div id="fragment-1" class="ui-tabs-panel">
-            <div class="field">
-              <%= f.label :name_common %><br />
-              <%= f.text_field :name_common %>
-            </div>
-            <div class="field">
-              <%= f.label :name_botanical %><br />
-              <%= f.text_field :name_botanical %>
-            </div>
-            <div class="field">
-              <%= f.label :plant_type %><br />
-              <%= f.text_field :plant_type %>
-            </div>
-          </div>
-       
-          <div id="fragment-2" class="ui-tabs-panel ui-tabs-hide">
-
-            <div class="field">
-              <%= f.label "Is this a Houseplant or a Yard Plant?" %><br />
-              <ol id="is_houseplant_selectable">
-                <li class="ui-state-default" id="is_houseplant_true">House Plant</li>
-                <li class="ui-state-default" id="is_houseplant_false">Outdoor Plant</li>
-              </ol>
-              <%= f.hidden_field :is_houseplant, :id => 'is_houseplant' %>
-            </div>
-            <div class="field">
-              <%= f.label "What is it's recommended sun exposure?" %><br />
-              <ol id="recommended_sun_exposure_selectable">
-                <li class="ui-state-default" id="recommended_sun_exposure_0">Shade</li>
-                <li class="ui-state-default" id="recommended_sun_exposure_1">Part Sun</li>
-                <li class="ui-state-default" id="recommended_sun_exposure_2">Full Sun</li>
-              </ol>
-              <%= f.hidden_field :recommended_sun_exposure, :id => 'recommended_sun_exposure' %>
-            </div>
-            <div class="field">
-              <%= f.label "What is the actual sun exposure the plant will get?" %><br />
-              <ol id="actual_sun_exposure_selectable">
-                <li class="ui-state-default" id="actual_sun_exposure_0">Shade</li>
-                <li class="ui-state-default" id="actual_sun_exposure_1">Part Sun</li>
-                <li class="ui-state-default" id="actual_sun_exposure_2">Full Sun</li>
-              </ol>
-              <%= f.hidden_field :actual_sun_exposure, :id => 'actual_sun_exposure' %>
-              <div class="clear_both"></div>
-            </div>
-          </div>
-       
-          <div id="fragment-3" class="ui-tabs-panel ui-tabs-hide">
-            <div class="field">
-              <%= f.label "Watering days per week: " %><br />
-              <span>You've selected:</span> <span id="select-result"></span>
-              <div id="slider"></div>
-              <%= f.hidden_field :water_frequency, :id => "water_frequency" %>
-            </div>
-            <div class="field">
-              <%= f.label :description %><br />
-              <%= f.text_area :description %>
-            </div>
-            <div class="actions">
-              <%= f.submit %>
-            </div>
-          </div>
+  <div id="page-wrap">
+    <div id="tabs">
+      <ul>
+        <li><a href="#fragment-1">Basic Information</a></li>
+        <li><a href="#fragment-2">Local Information</a></li>
+        <li><a href="#fragment-3">Watering</a></li>
+      </ul>
+   
+      <div id="fragment-1" class="ui-tabs-panel">
+        <div class="field">
+          <%= f.label :name_common %><br />
+          <%= f.text_field :name_common %>
+        </div>
+        <div class="field">
+          <%= f.label :name_botanical %><br />
+          <%= f.text_field :name_botanical %>
+        </div>
+        <div class="field">
+          <%= f.label :plant_type %><br />
+          <%= f.text_field :plant_type %>
         </div>
       </div>
-    <!--
-      <div class="demo">
+   
+      <div id="fragment-2" class="ui-tabs-panel ui-tabs-hide">
 
-        <div class="toggler">
-          <div id="effect" class="ui-widget-content ui-corner-all">
-            <h3 class="ui-widget-header ui-corner-all">Show</h3>
-            <p>
-              Etiam libero neque, luctus a, eleifend nec, semper at, lorem. Sed pede. Nulla lorem metus, adipiscing ut, luctus sed, hendrerit vitae, mi.
-            </p>
-          </div>
+        <div class="field">
+          <%= f.label "Is this a Houseplant or a Yard Plant?" %><br />
+          <ol id="is_houseplant_selectable">
+            <li class="ui-state-default" id="is_houseplant_true">House Plant</li>
+            <li class="ui-state-default" id="is_houseplant_false">Outdoor Plant</li>
+          </ol>
+          <%= f.hidden_field :is_houseplant, :id => 'is_houseplant' %>
         </div>
-
-        <select name="effects" id="effectTypes">
-          <option value="blind">Blind</option>
-          <option value="bounce">Bounce</option>
-          <option value="clip">Clip</option>
-          <option value="drop">Drop</option>
-          <option value="explode">Explode</option>
-          <option value="fold">Fold</option>
-          <option value="highlight">Highlight</option>
-          <option value="puff">Puff</option>
-          <option value="pulsate">Pulsate</option>
-          <option value="scale">Scale</option>
-          <option value="shake">Shake</option>
-          <option value="size">Size</option>
-          <option value="slide">Slide</option>
-        </select>
-
-        <a href="#" id="button" class="ui-state-default ui-corner-all">Run Effect</a>
-
-      </div>
-
-      <div id="notaccordion">
-        <h3><a href="#">Section 1</a></h3>
-        <div>
-          <p>
-          Mauris mauris  ante, blandit et, ultrices a, suscipit eget, quam. Integer
-          ut neque. Vivamus  nisi metus, molestie vel, gravida in, condimentum sit
-          amet, nunc. Nam a  nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-          odio. Curabitur  malesuada. Vestibulum a velit eu ante scelerisque vulputate.
-          </p>
+        <div class="field">
+          <%= f.label "What is it's recommended sun exposure?" %><br />
+          <ol id="recommended_sun_exposure_selectable">
+            <li class="ui-state-default" id="recommended_sun_exposure_0">Shade</li>
+            <li class="ui-state-default" id="recommended_sun_exposure_1">Part Sun</li>
+            <li class="ui-state-default" id="recommended_sun_exposure_2">Full Sun</li>
+          </ol>
+          <%= f.hidden_field :recommended_sun_exposure, :id => 'recommended_sun_exposure' %>
         </div>
-        <h3><a href="#">Section 2</a></h3>
-        <div>
-          <p>
-          Sed non urna. Donec et ante. Phasellus eu ligula.  Vestibulum sit amet
-          purus. Vivamus hendrerit, dolor at aliquet laoreet,  mauris turpis porttitor
-          velit, faucibus interdum tellus libero ac justo.  Vivamus non quam. In
-          suscipit faucibus urna.
-          </p>
-        </div>
-        <h3><a href="#">Section 3</a></h3>
-        <div>
-          <p>
-          Nam enim risus, molestie et, porta ac, aliquam ac,  risus. Quisque lobortis.
-          Phasellus pellentesque purus in massa. Aenean in pede.  Phasellus ac libero
-          ac tellus pellentesque semper. Sed ac felis. Sed  commodo, magna quis
-          lacinia ornare, quam ante aliquam nisi, eu iaculis leo  purus venenatis dui.
-          </p>
-          <ul>
-            <li>List item one</li>
-            <li>List item two</li>
-            <li>List item  three</li>
-          </ul>
-        </div>
-        <h3><a href="#">Section 4</a></h3>
-        <div>
-          <p>
-          Cras dictum. Pellentesque habitant morbi tristique  senectus et netus
-          et malesuada fames ac turpis egestas. Vestibulum ante  ipsum primis in
-          faucibus orci luctus et ultrices posuere cubilia Curae;  Aenean lacinia
-          mauris vel est.
-          </p>
-          <p>
-          Suspendisse eu nisl. Nullam ut libero. Integer  dignissim consequat lectus.
-          Class aptent taciti sociosqu ad litora torquent per  conubia nostra, per
-          inceptos himenaeos.
-           </p>
+        <div class="field">
+          <%= f.label "What is the actual sun exposure the plant will get?" %><br />
+          <ol id="actual_sun_exposure_selectable">
+            <li class="ui-state-default" id="actual_sun_exposure_0">Shade</li>
+            <li class="ui-state-default" id="actual_sun_exposure_1">Part Sun</li>
+            <li class="ui-state-default" id="actual_sun_exposure_2">Full Sun</li>
+          </ol>
+          <%= f.hidden_field :actual_sun_exposure, :id => 'actual_sun_exposure' %>
+          <div class="clear_both"></div>
         </div>
       </div>
-    -->
-    <% end %>
+   
+      <div id="fragment-3" class="ui-tabs-panel ui-tabs-hide">
+        <div class="field">
+          <%= f.label "Watering days per week: " %><br />
+          <span>You've selected:</span> <span id="select-result"></span>
+          <div id="slider"></div>
+          <%= f.hidden_field :water_frequency, :id => "water_frequency" %>
+        </div>
+        <div class="field">
+          <%= f.label :description %><br />
+          <%= f.text_area :description %>
+        </div>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+<!--
+  <div class="demo">
+
+    <div class="toggler">
+      <div id="effect" class="ui-widget-content ui-corner-all">
+        <h3 class="ui-widget-header ui-corner-all">Show</h3>
+        <p>
+          Etiam libero neque, luctus a, eleifend nec, semper at, lorem. Sed pede. Nulla lorem metus, adipiscing ut, luctus sed, hendrerit vitae, mi.
+        </p>
+      </div>
+    </div>
+
+    <select name="effects" id="effectTypes">
+      <option value="blind">Blind</option>
+      <option value="bounce">Bounce</option>
+      <option value="clip">Clip</option>
+      <option value="drop">Drop</option>
+      <option value="explode">Explode</option>
+      <option value="fold">Fold</option>
+      <option value="highlight">Highlight</option>
+      <option value="puff">Puff</option>
+      <option value="pulsate">Pulsate</option>
+      <option value="scale">Scale</option>
+      <option value="shake">Shake</option>
+      <option value="size">Size</option>
+      <option value="slide">Slide</option>
+    </select>
+
+    <a href="#" id="button" class="ui-state-default ui-corner-all">Run Effect</a>
+
+  </div>
+
+  <div id="notaccordion">
+    <h3><a href="#">Section 1</a></h3>
+    <div>
+      <p>
+      Mauris mauris  ante, blandit et, ultrices a, suscipit eget, quam. Integer
+      ut neque. Vivamus  nisi metus, molestie vel, gravida in, condimentum sit
+      amet, nunc. Nam a  nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+      odio. Curabitur  malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+      </p>
+    </div>
+    <h3><a href="#">Section 2</a></h3>
+    <div>
+      <p>
+      Sed non urna. Donec et ante. Phasellus eu ligula.  Vestibulum sit amet
+      purus. Vivamus hendrerit, dolor at aliquet laoreet,  mauris turpis porttitor
+      velit, faucibus interdum tellus libero ac justo.  Vivamus non quam. In
+      suscipit faucibus urna.
+      </p>
+    </div>
+    <h3><a href="#">Section 3</a></h3>
+    <div>
+      <p>
+      Nam enim risus, molestie et, porta ac, aliquam ac,  risus. Quisque lobortis.
+      Phasellus pellentesque purus in massa. Aenean in pede.  Phasellus ac libero
+      ac tellus pellentesque semper. Sed ac felis. Sed  commodo, magna quis
+      lacinia ornare, quam ante aliquam nisi, eu iaculis leo  purus venenatis dui.
+      </p>
+      <ul>
+        <li>List item one</li>
+        <li>List item two</li>
+        <li>List item  three</li>
+      </ul>
+    </div>
+    <h3><a href="#">Section 4</a></h3>
+    <div>
+      <p>
+      Cras dictum. Pellentesque habitant morbi tristique  senectus et netus
+      et malesuada fames ac turpis egestas. Vestibulum ante  ipsum primis in
+      faucibus orci luctus et ultrices posuere cubilia Curae;  Aenean lacinia
+      mauris vel est.
+      </p>
+      <p>
+      Suspendisse eu nisl. Nullam ut libero. Integer  dignissim consequat lectus.
+      Class aptent taciti sociosqu ad litora torquent per  conubia nostra, per
+      inceptos himenaeos.
+       </p>
+    </div>
+  </div>
+-->
+<% end %>

@@ -1,25 +1,28 @@
 class Plant < ActiveRecord::Base
-  has_many :personal_plants
-
-  attr_accessible :actual_sun_exposure,
-                  :description,
+ 
+  attr_accessible :description,
+                  :hardiness_zone,
                   :is_houseplant,
-                  :last_watering, 
+                  :leeway_sun_exposure,
+                  :leeway_watering_weekly_amount,
                   :name_botanical,
                   :name_common,
-                  :name_personalized,
-                  :next_watering,
                   :plant_type,
-                  :recommended_sun_exposure,
-                  :water_frequency,
-                  :water_weekly,
-                  :created_from_user
-  
-  def validate_last_watering
-    watering = self
-    return true
-  end
+                  :rating_ease_care,
+                  :rating_ease_pruning,
+                  :rating_ease_watering,
+                  :rating_num,
+                  :sun_exposure,
+                  :user_created_by,
+                  :watering_frequency_old,
+                  :watering_frequency_new,
+                  :watering_weekly_amount,
+                  :personal_plants_attributes
+                  
 
-  validate :validate_last_watering
+
+  has_many :personal_plants, :dependent => :destroy
+  has_many :plant_comments, :dependent => :destroy
+  accepts_nested_attributes_for :personal_plants, :plant_comments
 
 end

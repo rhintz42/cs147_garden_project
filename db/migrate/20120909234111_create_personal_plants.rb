@@ -1,11 +1,16 @@
 class CreatePersonalPlants < ActiveRecord::Migration
   def change
     create_table :personal_plants do |t|
-      t.string :name_personalized
-      t.integer :actual_sun_exposure
-      t.float :watering_frequency
-      t.timestamp :last_watering
-      t.timestamp :next_watering
+      t.float   :birthday
+      t.integer :hardiness_zone
+      t.string  :name_personalized
+      t.float   :rating_ease_care
+      t.float   :rating_ease_pruning
+      t.float   :rating_ease_watering
+      t.integer :rating_num
+      t.integer :sun_exposure
+      t.float   :watering_frequency
+
       t.references :user
       t.references :plant
 

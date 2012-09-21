@@ -8,26 +8,17 @@ jQuery(document).ready(function(){
       var b = $( "#is_houseplant_false").addClass("ui-selected");
     }
   }
-  if (typeof $( "#recommended_sun_exposure" )[0].attributes.value != 'undefined') {
-    var value = $( "#recommended_sun_exposure" )[0].attributes.value.value;
+  if (typeof $( "#sun_exposure" )[0].attributes.value != 'undefined') {
+    var value = $( "#sun_exposure" )[0].attributes.value.value;
     if (value == "0") {
-      var b = $( "#recommended_sun_exposure_0").addClass("ui-selected");
+      var b = $( "#sun_exposure_0").addClass("ui-selected");
     } else if (value == "1") {
-      var b = $( "#recommended_sun_exposure_1").addClass("ui-selected");
+      var b = $( "#sun_exposure_1").addClass("ui-selected");
     } else if (value == "2") {
-      var b = $( "#recommended_sun_exposure_2").addClass("ui-selected");
+      var b = $( "#sun_exposure_2").addClass("ui-selected");
     }
   }
-  if ( typeof $( "#actual_sun_exposure" )[0].attributes.value != 'undefined') {
-    var value = $( "#actual_sun_exposure" )[0].attributes.value.value;
-    if (value == "0") {
-      var b = $( "#actual_sun_exposure_0").addClass("ui-selected");
-    } else if (value == "1") {
-      var b = $( "#actual_sun_exposure_1").addClass("ui-selected");
-    } else if (value == "2") {
-      var b = $( "#actual_sun_exposure_2").addClass("ui-selected");
-    }
-  }
+  
 
   //*************************************************
   //Setting a form value from jQuery
@@ -46,25 +37,15 @@ jQuery(document).ready(function(){
     }
   });
 
-  $( "#recommended_sun_exposure_selectable" ).selectable({
+  $( "#sun_exposure_selectable" ).selectable({
     stop: function() {
       $( ".ui-selected", this ).each(function() {
-        var index = $( "#recommended_sun_exposure_selectable li" ).index( this );
-        $('input[id=recommended_sun_exposure]').val(index);
+        var index = $( "#sun_exposure_selectable li" ).index( this );
+        $('input[id=sun_exposure]').val(index);
       });
     }
   });
   
-
-  $( "#actual_sun_exposure_selectable" ).selectable({
-    stop: function() {
-      $( ".ui-selected", this ).each(function() {
-        var index = $( "#actual_sun_exposure_selectable li" ).index( this );
-        $('input[id=actual_sun_exposure]').val(index);
-      });
-    }
-  });
-
   $( "#effectTypes" ).change(function() {
      runEffect();
      return false;

@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
   def index
+    #debugger
+    #t = Time.now
+    
     if session[:user] then
       logged_in_user_home_page = users_path + '/' + session[:user][:id].to_s
       respond_to do |format|

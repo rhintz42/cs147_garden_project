@@ -81,9 +81,10 @@ jQuery(document).ready(function(){
   result.append($("#slider").slider("value"));
   $("#water_frequency").val($("#slider").slider("value"));
 
-   $("#personal_plant_last_watering").datepicker({dateFormat: 'yy-mm-dd'});
-   $("#personal_plant_next_watering").datepicker({dateFormat: 'yy-mm-dd'});
-
+  $("#watering_last").datepicker({dateFormat: 'yy-mm-dd'});
+  /* 
+  $("#watering_next").datepicker({dateFormat: 'yy-mm-dd'});
+  */
   /*
   $.fn.togglepanels = function(){
     return this.each(function(){

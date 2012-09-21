@@ -7,12 +7,12 @@
 
 <p>
   <b>Last watering:</b>
-  <%= @personal_plant.last_watering %>
+  <%= @personal_plant.watering_last %>
 </p>
 
 <p>
   <b>Next watering:</b>
-  <%= @personal_plant.next_watering %>
+  <%= @personal_plant.watering_next %>
 </p>
 
 <p>
@@ -24,7 +24,3 @@
   <%= @personal_plant.user %>
 </p>
 
-
-
-<%= link_to 'Edit', edit_personal_plant_path(@personal_plant) %> |
-<%= link_to 'Back', personal_plants_path %>

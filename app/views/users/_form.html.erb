@@ -1,56 +1,49 @@
-<div class=container-header-under>
-  <%= render 'layouts/left_nav' %>
-  <%= render 'layouts/right_nav' %>
-  <div class=container-body-center>
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-    <%= form_for(@user) do |f| %>
-      <% if @user.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-          <ul>
-          <% @user.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-      <div class="field">
-        <%= f.label :name_first %><br />
-        <%= f.text_field :name_first %>
-      </div>
-      <div class="field">
-        <%= f.label :name_middle %><br />
-        <%= f.text_field :name_middle %>
-      </div>
-      <div class="field">
-        <%= f.label :name_last %><br />
-        <%= f.text_field :name_last %>
-      </div>
-      <div class="field">
-        <%= f.label :username %><br />
-        <%= f.text_field :username %>
-      </div>
-      <div class="field">
-        <%= f.label :password %><br />
-        <%= f.text_field :password %>
-      </div>
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.text_field :password_confirmation %>
-      </div>
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.text_field :email %>
-      </div>
-      <div class="field">
-        <%= f.label :email_confirmation %><br />
-        <%= f.text_field :email_confirmation %>
-      </div>
-      <div class="actions">
-        <%= f.submit 'Register' %>
-      </div>
-    <% end %>
+  <div class="field">
+    <%= f.label :name_first %><br />
+    <%= f.text_field :name_first %>
   </div>
-</div>
+  <div class="field">
+    <%= f.label :name_middle %><br />
+    <%= f.text_field :name_middle %>
+  </div>
+  <div class="field">
+    <%= f.label :name_last %><br />
+    <%= f.text_field :name_last %>
+  </div>
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.text_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.text_field :password_confirmation %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :email_confirmation %><br />
+    <%= f.text_field :email_confirmation %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Register' %>
+  </div>
+<% end %>

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Watering time:</b>
+  <%= @personal_plant_watering.watering_time %>
+</p>
+
+<p>
+  <b>Watering amount:</b>
+  <%= @personal_plant_watering.watering_amount %>
+</p>
+
+<p>
+  <b>Personal plant:</b>
+  <%= @personal_plant_watering.personal_plant %>
+</p>
+
+
+<%= link_to 'Edit', edit_personal_plant_watering_path(@personal_plant_watering) %> |
+<%= link_to 'Back', personal_plant_waterings_path %>

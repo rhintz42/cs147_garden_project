@@ -3,11 +3,13 @@ gem "pg"
 gem "rails", "3.2.3"
 gem "haml"
 gem "rails3-generators"
+gem 'thin'
 
 gem "debugger"
 
 gem 'jquery-rails'
 gem 'therubyracer'
+gem 'rspec'
 
 group :assets do
   gem 'jquery-ui-rails'

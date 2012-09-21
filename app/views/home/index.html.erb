@@ -1,10 +1,27 @@
-<%= render 'layouts/header' %>
-
-<div class=container-header-under>
-  <%= render 'layouts/left_nav' %>
-  <%= render 'layouts/right_nav' %>
-  <div class=container-body-center>
-    <p>Welcome to Gardener's Cookbook.com, where all of nature's beauty is just a cookbook away!</p>
-    <p><%= link_to "View and add plants here", personal_plants_path %></p>
-  </div>
+<div class="home-page-main">
+	<div class="home-page-main-overview">
+		<div class="home-page-main-overview-right">
+			<p>This is Awesome!</p>
+		</div>
+		<p>Welcome to Gardener's Cookbook.com, where all of nature's beauty is just a cookbook away!</p>
+	</div>
+	<table class="home-page-main-table">
+		<tr>
+			<td>
+				<div class="home-page-main-tab">
+					<p><%= link_to "View and add personal plants here", personal_plants_path %></p>
+				</div>
+			</td>
+			<td>
+				<div class="home-page-main-tab">
+					<p><%= link_to "View and add regular plants here", plants_path %></p>
+				</div>
+			</td>
+			<td>
+				<div class="home-page-main-tab">
+					<p><%= link_to "Go to your user homepage", login_users_path %></p>
+				</div>
+			</td>
+		</tr>
+	</table>
 </div>

@@ -1,17 +1,29 @@
-<%= form_for(@personal_plant) do |f| %>
-  <% if @personal_plant.errors.any? %>
+<%= form_for(@plant) do |f| %>
+  <% if @plant.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@personal_plant.errors.count, "error") %> prohibited this personal_plant from being saved:</h2>
+      <h2><%= pluralize(@plant.errors.count, "error") %> prohibited this plant from being saved:</h2>
 
       <ul>
-      <% @personal_plant.errors.full_messages.each do |msg| %>
+      <% @plant.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
-
-   <div id="page-wrap">
+    <div class="field">
+      <%= f.label :name_common %><br />
+      <%= f.text_field :name_common %>
+    </div>
+    <div class="field">
+      <%= f.label :name_botanical %><br />
+      <%= f.text_field :name_botanical %>
+    </div>
+    <div class="field">
+      <%= f.label :plant_type %><br />
+      <%= f.text_field :plant_type %>
+    </div>
+    <%= f.fields_for :personal_plants do |p| %>
+    <div id="page-wrap">
         <div id="tabs">
           <ul>
             <li><a href="#fragment-1">Basic Information</a></li>
@@ -19,29 +31,36 @@
        
           <div id="fragment-1" class="ui-tabs-panel">
             <div class="field">
-              <%= f.label :name_personalized %><br />
-              <%= f.text_field :name_personalized %>
+              <%= p.label :name_personalized %><br />
+              <%= p.text_field :name_personalized %>
             </div>
             <div class="field">
-              <%= f.label "Watering days per week: " %><br />
+              <%= p.label "Watering days per week: " %><br />
               <span>You've selected:</span> <span id="select-result"></span>
               <div id="slider"></div>
-              <%= f.hidden_field :watering_frequency, :id => "water_frequency" %>
+              <%= p.hidden_field :watering_frequency, :id => "water_frequency" %>
+            </div>
+          
+          <%= p.fields_for :personal_plant_waterings do |w| %>
+            
+            <div class="field">
+              <%= w.label :watering_time %><br />
+              <%= w.text_field :watering_time, :id => "watering_last" %>
             </div>
             <div class="field">
-              <%= f.label :last_watering %><br />
-              <%= f.text_field :last_watering %>
+              <%= w.label :watering_amount %><br />
+              <%= w.text_field :watering_amount, :id => "watering_next"  %>
             </div>
+
+          <% end %>
+            
             <div class="field">
-              <%= f.label :next_watering %><br />
-              <%= f.text_field :next_watering %>
-            </div>
-            <div class="field">
-              <%= f.hidden_field :plant_id, { :value => @plant_id } %>
-              <%= f.hidden_field :user_id, { :value => session[:user][:id] } %>
+              <%= p.hidden_field :plant_id, { :value => @plant_id } %>
+              <%= p.hidden_field :user_id, { :value => session[:user][:id] } %>
             </div>
           </div>
           <div>
+            <% end %>
             <div class="actions">
               <%= f.submit %>
             </div>

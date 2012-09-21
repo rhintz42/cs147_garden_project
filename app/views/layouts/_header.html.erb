@@ -1,13 +1,55 @@
 <div class=container-header>
   <div class=container-header-center>
     <div class=header-login-info>
-      <% if session[:user] then %>
-        Welcome, <%= session[:user].username %>! <%= link_to 'logout', logout_users_path %>
-      <% else %>
-        <%= link_to 'Please login',  login_users_path %>
-      <% end %>
-      <br />
-      <%= link_to 'Home', home_index_path %>
+      <table>
+          <tr>
+            <% if session[:user] then %>
+              <td><div class="login-tab"><%= link_to session[:user].username, home_index_path %></div></td>
+              <td><div class="login-tab"><%= link_to 'Sign Out', logout_users_path %></div></td>
+            <% else %>
+              <td><div class="login-tab"><%= link_to 'Sign In',  login_users_path %></div></td>
+            <% end %>
+            
+            <td><div class="login-tab"><%= link_to 'Help',  login_users_path %></div></td>
+          
+          </tr>
+        </table>
+    </div>
+    <div>
+      <table class="clear_both">
+        <tr>
+          <td class="header-tab tab-current">
+            <%= link_to 'Home', home_index_path %>
+          </td>
+          <% if session[:user] then %>
+            <td class="header-tab">
+              Plants
+            </td>
+            <td class="header-tab">
+              Gardening
+            </td>
+            <td class="header-tab">
+              <%= link_to 'Watering', personal_plant_waterings_path %>
+            </td>
+            <td class="header-tab">
+              <%= link_to 'Calendar', calendar_index_path %>
+            </td>
+          <% else %>
+            <td class="header-tab">
+              Features
+            </td>
+            <td class="header-tab">
+              Examples
+            </td>
+            <td class="header-tab">
+              Membership
+            </td>
+            <td class="header-tab">
+              About
+            </td>
+          <% end %>
+        </tr>
+      </table>
     </div>
   </div>
 </div>

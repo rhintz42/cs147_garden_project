@@ -1,22 +1,102 @@
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
- * asldkfjalsdjf= require_self
- * alksdjflkasjdfl= require_tree .
-
+ *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
  * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
  *
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require_tree .
  *= require_self
  *= require ui-lightness/jquery-ui-1.8.23.custom.css
- *= require_tree .
 */
+
+
+.container-header-center {
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+  color: white;
+  background-color: blue;
+}
+
+.container-header-center a {
+  text-decoration: none;
+}
+
+.container-body-center{
+  height: 400px;
+  float: left;
+}
+.container-header {
+  width: 100%;
+  background-color: blue;
+}
+.container-header-under {
+  max-width: 1000px;
+  min-width: 800px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .header-login-info {
   float: right;
   color: white;
-  font-size: 14px;
+  font-size: .8em;
 }
+.header-login-info a {
+  color:white;
+  text-decoration:none;
+}
+
+.login-tab {
+  background-color:gray;
+  margin-left:3px;
+  padding:4px 10px 4px 10px;
+}
+
+.header-tab {
+  font-size:1.5em;
+  vertical-align: bottom;
+  font-weight: bold;
+  padding-right: 25px;
+  padding-bottom: 10px;
+  color: gray;
+  clear: both;
+}
+
+.header-tab a {
+  color: gray;
+}
+ 
+.tab-current a {
+  color: green;
+  text-decoration: none;
+}
+
+.clear_both {clear: both;}
+
+/*
+  Navs
+*/
+.nav-left {
+  width: 130px;
+  height: 400px;
+  background-color: gray;
+  float: left;
+} 
+.nav-right {
+  width: 130px;
+  height: 400px;
+  background-color: green;
+  float: right;
+}
+.nav-show-back {
+  clear: both;
+} 

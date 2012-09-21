@@ -1,0 +1,28 @@
+<%= form_for(@personal_plant_watering) do |f| %>
+  <% if @personal_plant_watering.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@personal_plant_watering.errors.count, "error") %> prohibited this personal_plant_watering from being saved:</h2>
+
+      <ul>
+      <% @personal_plant_watering.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :watering_time %><br />
+    <%= f.text_field :watering_time %>
+  </div>
+  <div class="field">
+    <%= f.label :watering_amount %><br />
+    <%= f.text_field :watering_amount %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :personal_plant_id, { :value => @personal_plant[:id] } %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

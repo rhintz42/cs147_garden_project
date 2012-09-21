@@ -1,5 +1,3 @@
-<%= render 'layouts/header' %>
-
 <h1>Listing plants</h1>
 
 <table>
@@ -15,7 +13,7 @@
 <% @plants.each do |plant| %>
   <tr>
     <td><%= plant.name_common %></td>
-    <td><%= plant.water_frequency %></td>
+    <td><%= plant.watering_frequency_old %></td>
     <td><%= link_to 'Show', plant %></td>
     <td><%= link_to 'Edit', edit_plant_path(plant) %></td>
     <td><%= link_to 'Destroy', plant, confirm: 'Are you sure?', method: :delete %></td>
@@ -25,4 +23,4 @@
 
 <br />
 
-<%= link_to 'New Plant', new_plant_path %>
+<div class="linker"><%= link_to 'New Plant', new_plant_path %></div>

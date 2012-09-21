@@ -1,7 +1,10 @@
 class PlantsController < ApplicationController
+  include MyModule
+  
   # GET /plants
   # GET /plants.json
   def index
+    
     @plants = Plant.all
 
     respond_to do |format|
@@ -24,6 +27,10 @@ class PlantsController < ApplicationController
   # GET /plants/new
   # GET /plants/new.json
   def new
+    if not check_logged_in then
+      return
+    end
+
     @plant = Plant.new
     
     @created_from_user = false
@@ -39,16 +46,23 @@ class PlantsController < ApplicationController
 
   # GET /plants/1/edit
   def edit
+    if not check_logged_in then
+      return
+    end
     @plant = Plant.find(params[:id])
   end
 
   # POST /plants
   # POST /plants.json
   def create
+    if not check_logged_in then
+      return
+    end
     @plant = Plant.new(params[:plant])
         
     respond_to do |format|
       if @plant.save
+        #I BELIEVE THIS GO_TO IS NOT RELEVENT ANYMORE, BUT NOT SURE
         @go_to = @plant
 
         if @plant[:created_from_user] then
@@ -67,6 +81,9 @@ class PlantsController < ApplicationController
   # PUT /plants/1
   # PUT /plants/1.json
   def update
+    if not check_logged_in then
+      return
+    end
     @plant = Plant.find(params[:id])
 
     respond_to do |format|
@@ -83,6 +100,9 @@ class PlantsController < ApplicationController
   # DELETE /plants/1
   # DELETE /plants/1.json
   def destroy
+    if not check_logged_in then
+      return
+    end
     @plant = Plant.find(params[:id])
     @plant.destroy
 

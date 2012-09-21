@@ -1,7 +1,19 @@
 class User < ActiveRecord::Base
   has_many :personal_plants
-  
-  attr_accessible :email, :email_confirmation, :name_first, :name_last, :name_middle, :password, :password_confirmation, :password_digest, :username
+  has_many :user_comments, :dependent => :destroy
+  has_many :user_messages, :dependent => :destroy
+  accepts_nested_attributes_for :user_comments, :user_messages
+
+  attr_accessible :email,
+                  :email_confirmation,
+                  :name_first,
+                  :name_last,
+                  :name_middle,
+                  :password,
+                  :password_confirmation,
+                  :password_digest,
+                  :points,
+                  :username,
 
   def full_name
     return self[:name_first] + " " + self[:name_last]

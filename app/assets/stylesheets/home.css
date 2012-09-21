@@ -1,0 +1,46 @@
+.home-page-main {
+	width:1000px;
+	min-height:100px;
+	background-color: green;
+}
+
+.home-page-main-overview {
+	height:300px;
+	background-color: gray;
+	color:white;
+}
+
+.home-page-main-overview-right {
+	float: right;
+	width: 200px;
+	height:200px;
+	margin-right: 10px;
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding-top:10px;
+}
+
+.home-page-main-table a {
+	color: white;
+}
+
+.home-page-main-tab {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	font-size: 1.2em;
+}
+
+/*
+a {
+  background-color: blue;
+}
+
+a {font-family:Georgia,serif; font-size:large}
+a:link {color:white;}
+a:visited {color:white;}
+a:hover {text-decoration:none;color:white;font-weight:bold;}
+a:active {color:white;text-decoration: none}
+*/
