@@ -1,6 +1,6 @@
 class PlantsController < ApplicationController
   include MyModule
-  
+    
   # GET /plants
   # GET /plants.json
   def index
