@@ -39,8 +39,16 @@ jQuery(document).ready(function(){
 			}
 		});
 
-  $("#calendar_view_by_plant ol").append('<li class="ui-widget-content">Item 7</li>');
-  $("#calendar_view_by_plant ol").append('<li class="ui-widget-content">Item 7</li>');
+  for (pos in personal_plants) {
+  	var personal_plant = personal_plants[pos];
+  	var plants_2 = plants;
+  	var plant_id = personal_plant["plant_id"];
+  	var b = plants[personal_plant['plant_id']];
+  	var c = b['name_botanical'];
+  	$("#calendar_view_by_plant ol").append('<li class="ui-widget-content">' + personal_plant['name_personalized'] + ' - ' + plants[personal_plant['plant_id']]['name_common'] + '</li>');
+  }
+  //$("#calendar_view_by_plant ol").append('<li class="ui-widget-content">' + personal_plants[1]['id'] + '</li>');
+  //$("#calendar_view_by_plant ol").append('<li class="ui-widget-content">Item 7</li>');
   
 
 

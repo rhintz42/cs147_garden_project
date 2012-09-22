@@ -13,10 +13,13 @@
 	//var b = 10;
 	//var d = '<%=raw @personal_plants.to_json %>'
 	var personal_plants = JSON.parse('<%=raw @personal_plants.to_json %>');
+	var plants = JSON.parse('<%=raw @plants_hash.to_json %>');
+	var a = plants["1"];
+	var b = plants["2"];
 	//var e = a[0];
 	//var f = a[1];
 	//var q = f['watering_frequency'];
-	//var c = 20;
+	var c = 20;
 </script>
 
 <div class="clear_both"></div>
@@ -34,12 +37,14 @@
 	</p>
 
 	<ol id="plant_selectable">
+		<!--
 		<li class="ui-widget-content">Item 1</li>
 		<li class="ui-widget-content">Item 2</li>
 		<li class="ui-widget-content">Item 3</li>
 		<li class="ui-widget-content">Item 4</li>
 		<li class="ui-widget-content">Item 5</li>
 		<li class="ui-widget-content">Item 6</li>
+		-->
 	</ol>
 </div>
 
