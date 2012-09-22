@@ -69,8 +69,9 @@ a.mover 							{ background: #900; padding: 6px 12px; position: absolute;
 .nav-left {
   width: 130px;
   height: 400px;
-  background-color: grey;
+  background-color: gray;
   float: left;
+  text-align: center;
 }
 .nav-right {
   width: 130px;
@@ -80,6 +81,29 @@ a.mover 							{ background: #900; padding: 6px 12px; position: absolute;
 }
 .nav-show-back {
   clear: both;
+}
+
+.child-plants-table a {
+  color: white;
+  font-style: bold;
+}
+
+.child-plants-table th {
+  padding: 10px 10px 10px 10px;
+  background-color: gray;
+  color: white;
+}
+.child-plants-table tr:nth-child(odd) {
+  background-color: blue;
+}
+.child-plants-table tr:nth-child(even) {
+  background-color: green;
+}
+
+.child-plants-table td {
+  padding: 10px 10px 10px 10px;
+  color: white;
+  text-align: center;
 }
 
 

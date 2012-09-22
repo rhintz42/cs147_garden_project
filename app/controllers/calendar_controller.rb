@@ -1,15 +1,23 @@
 class CalendarController < ApplicationController
+  
+  include MyModule
+  
   def index
-  	@personal_plants = PersonalPlant.all
+    if not check_logged_in then
+      return
+    end
+
+  	@personal_plants = PersonalPlant.where(:user_id => session[:user][:id]).order("id ASC")
   	#debugger
   	#@personal_plants_by_date = @personal_plants.group_by(&:watering_next)
+    
+    @personal_plants_json = @personal_plants.to_json
 
   	@personal_plants_by_date = {}
 
   	@personal_plants.each do |personal_plant|
   		#debugger
-  		waterings_for_date = PersonalPlantWatering.where("personal_plant_id = '" \
-  								+ personal_plant[:id].to_s + "'")
+  		waterings_for_date = PersonalPlantWatering.where(:personal_plant_id => personal_plant[:id])
   		
   		waterings_for_date.each do |watering|
   			date = Time.at(watering[:watering_time]).to_date

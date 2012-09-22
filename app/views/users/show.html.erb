@@ -1,20 +1,53 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @user.name_first %> <%= @user.name_middle %> <%= @user.name_last %>
-</p>
-<p>
-  <b>Username:</b>
-  <%= @user.username %>
-</p>
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-<p>
-  View your <%= link_to 'plants', plants_path %> to our database
-</p>
-<p>
-  View your <%= link_to 'personal plants', personal_plants_path %> to your collection
-</p>
+<div class="user-home-name">
+	<p>
+  	<b>Welcome Back, <%= @user.name_first.capitalize %>!</b>
+	</p>
+</div>
+
+<div class="user-home-widgets waterings-widget">
+	<div class="user-home-widgets-header">
+		<p>
+			Waterings
+		</p>
+	</div>
+	<p>
+  	View your <%= link_to 'waterings', personal_plant_waterings_path %>
+	</p>
+	<br />
+	<p>
+  	Water one of your <%= link_to 'plants', new_personal_plant_watering_path %>
+	</p>
+</div>
+
+<div class="user-home-widgets personal-plants-widget">
+	<div class="user-home-widgets-header">
+		<p>
+			Child Plants
+		</p>
+	</div>
+	<p>
+		View your <%= link_to 'child plants', personal_plants_path %>
+	</p>
+	<br />
+	<p>
+		Add a new <%= link_to 'child plant', new_personal_plant_path %> to your family
+	</p>
+</div>
+
+<div class="user-home-widgets plants-widget">
+	<div class="user-home-widgets-header">
+		<p>
+			Plants
+		</p>
+	</div>
+	<p>
+  	View <%= link_to 'plants', plants_path %> in your collection
+	</p>
+	<br />
+	<p>
+  	Add <%= link_to 'plants', new_plant_path %> to your collection
+	</p>
+</div>
+

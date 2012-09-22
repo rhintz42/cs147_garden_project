@@ -4,23 +4,16 @@
   <b>Name personalized:</b>
   <%= @personal_plant.name_personalized %>
 </p>
-
 <p>
-  <b>Last watering:</b>
-  <%= @personal_plant.watering_last %>
+  <b>Common Name:</b>
+  <%= @personal_plant.plant.name_common %>
 </p>
-
 <p>
-  <b>Next watering:</b>
-  <%= @personal_plant.watering_next %>
-</p>
-
-<p>
-  <b>Plant:</b>
-  <%= @personal_plant.plant %>
+  <b>Botanical Name:</b>
+  <%= @personal_plant.plant.name_common %>
 </p>
 <p>
   <b>User:</b>
-  <%= @personal_plant.user %>
+  <%= @personal_plant.user.username %>
 </p>
 

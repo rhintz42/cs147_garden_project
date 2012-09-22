@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email,
                   :email_confirmation,
+                  :gender,
                   :name_first,
                   :name_last,
                   :name_middle,

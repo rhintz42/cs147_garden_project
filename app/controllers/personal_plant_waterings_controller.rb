@@ -1,7 +1,12 @@
 class PersonalPlantWateringsController < ApplicationController
+  include MyModule
   # GET /personal_plant_waterings
   # GET /personal_plant_waterings.json
   def index
+    if not check_logged_in then
+      return
+    end
+
     @personal_plant_waterings = PersonalPlantWatering.all
 
     respond_to do |format|

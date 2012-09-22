@@ -1,12 +1,57 @@
+<p>
+	How would you like to view your plants by?
+</p>
+<div class="field">
+  <ol id="calendar_view_selectable">
+    <li class="ui-state-default" id="view_all_plants">View All Plants</li>
+    <li class="ui-state-default" id="view_by_group">View By Group</li>
+    <li class="ui-state-default" id="view_by_plant">View By Plant</li>
+  </ol>
+</div>
+
+<script>
+	//var b = 10;
+	//var d = '<%=raw @personal_plants.to_json %>'
+	var personal_plants = JSON.parse('<%=raw @personal_plants.to_json %>');
+	//var e = a[0];
+	//var f = a[1];
+	//var q = f['watering_frequency'];
+	//var c = 20;
+</script>
+
+<div class="clear_both"></div>
+
+<div id="calendar_view_by_group">
+
+</div>
+
+<div id="calendar_view_by_plant">
+	<p>
+		Group Name:
+	</p>
+	<p id="feedback">
+		<span>You've selected:</span> <span id="select-result">none</span>.
+	</p>
+
+	<ol id="plant_selectable">
+		<li class="ui-widget-content">Item 1</li>
+		<li class="ui-widget-content">Item 2</li>
+		<li class="ui-widget-content">Item 3</li>
+		<li class="ui-widget-content">Item 4</li>
+		<li class="ui-widget-content">Item 5</li>
+		<li class="ui-widget-content">Item 6</li>
+	</ol>
+</div>
+
 <h1>Plant Calendar</h1>
 
 <div id="plant_watering">
 	<%= calendar do |date| %>
 		<%= date.day %>
 		<% if @personal_plants_by_date[date] %>
-			<% @personal_plants_by_date[date].each do |water| %>
+			<% @personal_plants_by_date[date].each do |personal_plant| %>
 				<ul>
-					<li><%= water[:id] %></li>
+					<li><%= personal_plant[:name_personalized] %></li>
 				</ul>
 			<% end %>
 		<% end %>

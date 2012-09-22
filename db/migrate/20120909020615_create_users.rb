@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :address_zipcode
       t.integer :authorization
       t.string  :email
+      t.boolean :gender
       t.float   :last_login
       t.string  :name_first
       t.string  :name_last
@@ -18,7 +19,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :salt
       t.string  :time_zone
       t.string  :username
-      
+
       t.timestamps
     end
   end

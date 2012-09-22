@@ -23,8 +23,8 @@ class PersonalPlantsController < ApplicationController
     if not check_logged_in then
       return
     end
-    @personal_plants = PersonalPlant.all
-    
+    @personal_plants = PersonalPlant.where(:user_id => session[:user][:id])
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @personal_plants }

@@ -1,5 +1,7 @@
 GardenCookbook::Application.routes.draw do
 
+  get "designer/index"
+
   resources :personal_plant_waterings
 
   resources :personal_plants do

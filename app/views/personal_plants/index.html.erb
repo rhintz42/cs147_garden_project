@@ -1,22 +1,27 @@
-<h1>Listing personal_plants</h1>
+<h1>Listing Child Plants</h1>
 
-<table>
+<table class="child-plants-table">
   <tr>
     <th>Name personalized</th>
-    <th>Last watering</th>
-    <th>Next watering</th>
-    <th>Plant</th>
-    <th>User</th>
+    <th>Name Common</th>
+    <th>Name Botanical</th>
+    <th>Group Name</th>
+    <th>Last Watered</th>
+    <th>Watering Amount</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @personal_plants.each do |personal_plant| %>
+  <% @waterings = PersonalPlantWatering.where(:personal_plant_id => personal_plant[:id]) %>
   <tr>
     <td><%= personal_plant.name_personalized %></td>
-    <td><%= personal_plant.plant %></td>
-    <td><%= personal_plant.user %></td>
+    <td><%= personal_plant.plant.name_common %></td>
+    <td><%= personal_plant.plant.name_botanical %></td>
+    <td>none</td>
+    <td><%= @waterings[0].watering_time %></td>
+    <td><%= @waterings[0].watering_amount %></td>
     <td><%= link_to 'Show', personal_plant %></td>
     <td><%= link_to 'Edit', edit_personal_plant_path(personal_plant) %></td>
     <td><%= link_to 'Destroy', personal_plant, confirm: 'Are you sure?', method: :delete %></td>
