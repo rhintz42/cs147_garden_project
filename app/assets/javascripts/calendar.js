@@ -76,9 +76,10 @@ jQuery(document).ready(function(){
 					var d = $(this).children('input').attr("value");
 					result2.push(parseInt(d));
 					//$('#result').load('/calendar/index.html  #plant_watering', '{ cool: "hello" }', function() {
-					b = JSON.stringify(result2);
-					c = "plants=" + b;
+					
 				});
+				b = JSON.stringify(result2);
+				c = "plants=" + b;
 				$('#plant_watering').load('/calendar/index.html  #plant_watering', c);
 			}
 

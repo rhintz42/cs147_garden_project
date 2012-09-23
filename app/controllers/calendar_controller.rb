@@ -26,8 +26,8 @@ class CalendarController < ApplicationController
   		@plants_hash[plant[:id]] = plant
   	end
 
-
   	@personal_plants_by_date = {}
+    #@personal_plants_by_date[Time.now().to_date - 2] = [PersonalPlant.new] 
   	@personal_plants.each do |personal_plant|
   		#debugger
   		waterings_for_date = PersonalPlantWatering.where(:personal_plant_id => personal_plant[:id])
