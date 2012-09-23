@@ -6,8 +6,13 @@ class CalendarController < ApplicationController
     if not check_logged_in then
       return
     end
+    
+    if params[:plants] then
+      @personal_plants = PersonalPlant.where(:user_id => session[:user][:id], :id => JSON.parse(params[:plants])).order("id ASC")
+    else
+      @personal_plants = PersonalPlant.where(:user_id => session[:user][:id]).order("id ASC")
+    end
 
-  	@personal_plants = PersonalPlant.where(:user_id => session[:user][:id]).order("id ASC")
   	@plants = Plant.all
     #debugger
   	#@personal_plants_by_date = @personal_plants.group_by(&:watering_next)

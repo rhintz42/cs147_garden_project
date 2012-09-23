@@ -46,6 +46,14 @@
   }
 }
 
+#result {
+  float: left;
+  clear: both;
+  width: 800px;
+  height: 400px;
+  background-color: gray;
+}
+
 #plant_watering ul {
   font-size: 11px;
   padding-left: 20px;
