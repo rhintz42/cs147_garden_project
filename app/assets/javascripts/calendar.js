@@ -3,6 +3,10 @@
 jQuery(document).ready(function(){
 
   $( "#calendar_view_selectable" ).selectable({
+
+    create: function(event, ui) {
+    	populatePlants();
+    },
     stop: function() {
       $( ".ui-selected", this ).each(function() {
         var houseplantOptions = new Array();
@@ -19,7 +23,6 @@ jQuery(document).ready(function(){
 					$('#calendar_view_by_group').css("display","block");
         	//$('#calendar_view_by_group').show();
         } else if (index == 2) {
-        	populatePlants();
 					$('#calendar_view_by_plant').css("display","block");
 					$('#calendar_view_by_group').css("display","none");
         	//$('#calendar_view_by_group').show();
