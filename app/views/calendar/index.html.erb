@@ -15,8 +15,8 @@
 	//var d = '<%=raw @personal_plants.to_json %>'
 	var personal_plants = JSON.parse('<%=raw @personal_plants.to_json %>');
 	var plants = JSON.parse('<%=raw @plants_hash.to_json %>');
-	var a = plants["1"];
-	var b = plants["2"];
+	//var a = plants["1"];
+	//var b = plants["2"];
 	//var e = a[0];
 	//var f = a[1];
 	//var q = f['watering_frequency'];
@@ -32,9 +32,6 @@
 <div id="calendar_view_by_plant">
 	<p>
 		Group Name:
-	</p>
-	<p id="feedback">
-		<span>You've selected:</span> <span id="select-result">none</span>.
 	</p>
 
 	<ol id="plant_selectable">

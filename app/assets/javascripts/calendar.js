@@ -34,17 +34,6 @@ jQuery(document).ready(function(){
 
 
   $( "#plant_selectable" ).selectable({
-  		//autoRefresh: false,
-  		/*
-  		selecting: function(event, ui) {
-  			var a = 10;
-  			var b = 20;
-  		},*/
-
-  		/*unselecting: function(event, ui) {
-  			var c = 20;
-  			var d = 30;
-  		},*/
   		selecting: function(e, ui) {
         if($(ui.selecting).hasClass('ui-selected')) {
         	$(ui.selecting).removeClass('ui-selected');
@@ -58,32 +47,15 @@ jQuery(document).ready(function(){
       },
 
 			stop: function() {
-				var result = $( "#select-result" ).empty();
-				var result2 = [];
+				var result = [];
 				$( ".ui-selected", this ).each(function() {
 					var index = $( "#plant_selectable li" ).index( this );
-					result.append( index + 1 );
-					
-					/*
-					$.ajax({
-					  url: "index.html",
-					  context: document.body,
-					  success: function(s,x){
-					    $(this).html(s);
-					  }
-					});
-					*/
-					//var a = new Object();
-					//a = [1, 2, 5, 4];
 					
 					var d = $(this).children('input').attr("value");
-					result2.push(parseInt(d));
-					//$('#result').load('/calendar/index.html  #plant_watering', '{ cool: "hello" }', function() {
-					
+					result.push(parseInt(d));
 				});
-				b = JSON.stringify(result2);
-				c = "plants=" + b;
-				$('#plant_watering').load('/calendar/index.html  #plant_watering', c);
+				params = "plants=" + JSON.stringify(result);
+				$('#plant_watering').load('/calendar/index.html  #plant_watering', params);
 			}
 
 		});
@@ -103,9 +75,19 @@ jQuery(document).ready(function(){
   //$("#calendar_view_by_plant ol").append('<li class="ui-widget-content">Item 7</li>');
   
 
+//$('#result').load('/calendar/index.html  #plant_watering', '{ cool: "hello" }', function() {
 
-
-
+/*
+	$.ajax({
+	  url: "index.html",
+	  context: document.body,
+	  success: function(s,x){
+	    $(this).html(s);
+	  }
+	});
+*/
+//var a = new Object();
+//a = [1, 2, 5, 4];
 
 
 
