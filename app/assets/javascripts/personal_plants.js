@@ -1,5 +1,119 @@
 jQuery(document).ready(function(){
 
+  var $tabs = $('#tabs').tabs();
+    
+  $(".ui-tabs-panel").each(function(i){
+ 
+    var totalSize = $(".ui-tabs-panel").size() - 1;
+ 
+    if (i != totalSize) {
+      next = i + 2;
+      $(this).append("<a href='#' class='next-tab mover' rel='" + next + "'>Next Page &#187;</a>");
+    }
+ 
+    if (i != 0) {
+      prev = i;
+      $(this).append("<a href='#' class='prev-tab mover' rel='" + prev + "'>&#171; Prev Page</a>");
+    }
+ 
+  });
+
+  //
+  var v = $("#water_frequency").val();
+  if ($("#water_frequency").val()) {
+    v = $("#water_frequency").val();
+  } else {
+    v = 2.5;
+  }
+   $( "#slider" ).slider({
+     value:v,
+     min: 0,
+     max: 7,
+     step: .5,
+     slide: function( event, ui ) {
+       $( "#water_frequency" ).val( ui.value );
+       var result = $( "#select-result" ).empty();
+       result.append(ui.value);
+     }
+   });
+  var result = $( "#select-result" ).empty();
+  result.append($("#slider").slider("value"));
+
+
+  $("#water_frequency").val($("#slider").slider("value"));
+
+  $("#watering_last").datepicker({dateFormat: 'yy-mm-dd'});
+
+
+  $( "#plant_selectables" ).selectable({
+
+      create: function(event, ui) {
+        doCreateStuff();
+        //$('#new-plant-fields').css("display","none");
+        //$('#old-plant-fields').css("display","none");
+      },
+      
+      stop: function() {
+        var result = [];
+        $( ".ui-selected", this ).each(function() {
+          $('#old-plant-fields').css("display","block");
+          var index = $( "#plant_selectable li" ).index( this );
+          
+          var d = $(this).children('input').attr("value");
+          result.push(parseInt(d));
+        });
+        params = "plants=" + JSON.stringify(result);
+        $('#old-plant-fields').load('/personal_plants/new  #old-plant-fields', params);
+      }
+
+    });
+
+
+  $( "#calendar_view_selectables" ).selectable({
+
+    create: function(event, ui) {
+      populatePlant();
+    },
+    stop: function() {
+      $( ".ui-selected", this ).each(function() {
+
+        var index = $( "#calendar_view_selectables li" ).index( this );
+
+        if (index == 0) {
+          $('#calendar_view_by_plants').css("display","none");
+          $('#calendar_view_by_groups').css("display","block");
+        } else if (index == 1) {
+          $('#calendar_view_by_plants').css("display","block");
+          $('#calendar_view_by_groups').css("display","none");
+        }
+      });
+    }
+  });
+  
+  function doCreateStuff() {
+    $('#new-plant-fields').css("display","none");
+    $('#old-plant-fields').css("display","none");
+  }
+
+  function populatePlant() {
+    for (pos in plants) {
+      var plant = plants[pos];
+      var plant_id = plant["id"];
+      var d = '<li class="ui-widget-content"><div></div><label>'+ plant['name_common'] + ' - ' + plant['name_botanical'] + '</label><input type="hidden" value="' + plant_id + '" name="bookmark[]" /></li>';
+      $("#calendar_view_by_plants ol").append(d);
+    }
+  }
+
+
+ 
+  // $('.next-tab, .prev-tab').click(function() { 
+  //   $tabs.tabs('select', $(this).attr("rel"));
+  //   return false;
+  // });
+
+  // $("#tabs").tabs('select',0);
+  // //$("#tabs").tabs({disabled: [2]});
+  
   // if ( typeof $( "#actual_sun_exposure" )[0].attributes.value != 'undefined') {
   //   var value = $( "#actual_sun_exposure" )[0].attributes.value.value;
   //   if (value == "0") {
@@ -32,56 +146,7 @@ jQuery(document).ready(function(){
   //   runEffect(); 
   //   return false; 
   // });
-  
 
-  var $tabs = $('#tabs').tabs();
-    
-  $(".ui-tabs-panel").each(function(i){
- 
-    var totalSize = $(".ui-tabs-panel").size() - 1;
- 
-    if (i != totalSize) {
-      next = i + 2;
-      $(this).append("<a href='#' class='next-tab mover' rel='" + next + "'>Next Page &#187;</a>");
-    }
- 
-    if (i != 0) {
-      prev = i;
-      $(this).append("<a href='#' class='prev-tab mover' rel='" + prev + "'>&#171; Prev Page</a>");
-    }
- 
-  });
- 
-  // $('.next-tab, .prev-tab').click(function() { 
-  //   $tabs.tabs('select', $(this).attr("rel"));
-  //   return false;
-  // });
-
-  // $("#tabs").tabs('select',0);
-  // //$("#tabs").tabs({disabled: [2]});
-
-  var v = $("#water_frequency").val();
-  if ($("#water_frequency").val()) {
-    v = $("#water_frequency").val();
-  } else {
-    v = 2.5;
-  }
-   $( "#slider" ).slider({
-     value:v,
-     min: 0,
-     max: 7,
-     step: .5,
-     slide: function( event, ui ) {
-       $( "#water_frequency" ).val( ui.value );
-       var result = $( "#select-result" ).empty();
-       result.append(ui.value);
-     }
-   });
-  var result = $( "#select-result" ).empty();
-  result.append($("#slider").slider("value"));
-  $("#water_frequency").val($("#slider").slider("value"));
-
-  $("#watering_last").datepicker({dateFormat: 'yy-mm-dd'});
   /* 
   $("#watering_next").datepicker({dateFormat: 'yy-mm-dd'});
   */

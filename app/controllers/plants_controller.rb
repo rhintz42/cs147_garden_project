@@ -58,22 +58,42 @@ class PlantsController < ApplicationController
     if not check_logged_in then
       return
     end
-    @plant = Plant.new(params[:plant])
-        
-    respond_to do |format|
-      if @plant.save
-        #I BELIEVE THIS GO_TO IS NOT RELEVENT ANYMORE, BUT NOT SURE
-        @go_to = @plant
-
-        if @plant[:created_from_user] then
-          @go_to = new_personal_plant_path + '?plant_id=' + @plant[:id].to_s
+    
+    #debugger
+    
+    if params[:plant][:id] then
+      @personal_plant = PersonalPlant.new(params[:plant][:personal_plants_attributes]["0"])
+      #params[:plant][:personal_plants_attributes]["0"]
+      @personal_plant[:plant_id] = params[:plant][:id]
+      respond_to do |format|
+        if @personal_plant.save
+          format.html { redirect_to @personal_plant, notice: 'Personal plant was successfully created.' }
+          format.json { render json: @personal_plant, status: :created, location: @personal_plant }
+        else
+          format.html { render controller: "personal_plant", action: "new" }
+          format.json { render json: @personal_plant.errors, status: :unprocessable_entity }
         end
+      end
+    else
+      @plant = Plant.new(params[:plant])
+    
+      #debugger
+      #@plant.personal_plants[0].save
+      respond_to do |format|
+        if @plant.save
+          #I BELIEVE THIS GO_TO IS NOT RELEVENT ANYMORE, BUT NOT SURE
+          @go_to = @plant
 
-        format.html { redirect_to @go_to, notice: 'Plant was successfully created.' }
-        format.json { render json: @plant, status: :created, location: @plant }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @plant.errors, status: :unprocessable_entity }
+          if @plant[:created_from_user] then
+            @go_to = new_personal_plant_path + '?plant_id=' + @plant[:id].to_s
+          end
+
+          format.html { redirect_to @go_to, notice: 'Plant was successfully created.' }
+          format.json { render json: @plant, status: :created, location: @plant }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @plant.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -84,6 +104,7 @@ class PlantsController < ApplicationController
     if not check_logged_in then
       return
     end
+
     @plant = Plant.find(params[:id])
 
     respond_to do |format|

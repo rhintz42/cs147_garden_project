@@ -1,8 +1,10 @@
 class CreatePlants < ActiveRecord::Migration
   def up
     create_table :plants do |t|
+      t.boolean :authorized
       t.text    :description
-      t.integer :hardiness_zone
+      t.integer :hardiness_zone_max
+      t.integer :hardiness_zone_min
       t.boolean :is_houseplant
       t.float   :leeway_sun_exposure
       t.float   :leeway_watering_weekly_amount

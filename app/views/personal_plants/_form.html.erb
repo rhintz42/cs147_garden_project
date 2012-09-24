@@ -10,6 +10,36 @@
       </ul>
     </div>
   <% end %>
+
+  <script>
+    var plants = JSON.parse('<%=raw @plants.to_json %>');
+
+  </script>
+
+  <div class="field">
+    <ol id="calendar_view_selectables">
+      <li class="ui-state-default" id="select_existing_plant">
+        Select Existing Plant
+      </li>
+      <li class="ui-state-default" id="create_new_plant">
+        Create New Plant
+      </li>
+    </ol>
+  </div>
+  <div class="field">
+    <div id="calendar_view_by_plants">
+      <p>
+        Group Name:
+      </p>
+
+      <ol id="plant_selectables">
+        <!--
+        Contains all the listings for plants
+        -->
+      </ol>
+    </div>
+  </div>
+  <div id="new-plant-fields">
     <div class="field">
       <%= f.label :name_common %><br />
       <%= f.text_field :name_common %>
@@ -22,50 +52,68 @@
       <%= f.label :plant_type %><br />
       <%= f.text_field :plant_type %>
     </div>
-    <%= f.fields_for :personal_plants do |p| %>
-    <div id="page-wrap">
-        <div id="tabs">
-          <ul>
-            <li><a href="#fragment-1">Basic Information</a></li>
-          </ul>
-       
-          <div id="fragment-1" class="ui-tabs-panel">
-            <div class="field">
-              <%= p.label :name_personalized %><br />
-              <%= p.text_field :name_personalized %>
-            </div>
-            <div class="field">
-              <%= p.label "Watering days per week: " %><br />
-              <span>You've selected:</span> <span id="select-result"></span>
-              <div id="slider"></div>
-              <%= p.hidden_field :watering_frequency, :id => "water_frequency" %>
-            </div>
-          
-          <%= p.fields_for :personal_plant_waterings do |w| %>
-            
-            <div class="field">
-              <%= w.label :watering_time %><br />
-              <%= w.text_field :watering_time, :id => "watering_last" %>
-            </div>
-            <div class="field">
-              <%= w.label :watering_amount %><br />
-              <%= w.text_field :watering_amount, :id => "watering_next"  %>
-            </div>
+  </div>
+  <div id="old-plant-fields">
+    <div class="field">
+      <%= f.hidden_field :id %>
+    </div>
+    <div class="field">
+      <%= f.label :name_common %><br />
+      <%= f.text_field :name_common %>
+    </div>
+    <div class="field">
+      <%= f.label :name_botanical %><br />
+      <%= f.text_field :name_botanical %>
+    </div>
+    <div class="field">
+      <%= f.label :plant_type %><br />
+      <%= f.text_field :plant_type %>
+    </div>
+  </div>
+<%= f.fields_for :personal_plants do |p| %>
+  <div id="page-wrap">
+    <div id="tabs">
+      <ul>
+        <li><a href="#fragment-1">Basic Information</a></li>
+      </ul>
+   
+      <div id="fragment-1" class="ui-tabs-panel">
+        <div class="field">
+          <%= p.label :name_personalized %><br />
+          <%= p.text_field :name_personalized %>
+        </div>
+        <div class="field">
+          <%= p.label "Watering days per week: " %><br />
+          <span>You've selected:</span> <span id="select-result"></span>
+          <div id="slider"></div>
+          <%= p.hidden_field :watering_frequency, :id => "water_frequency" %>
+        </div>
+      
+      <%= p.fields_for :personal_plant_waterings do |w| %>
+        
+        <div class="field">
+          <%= w.label :watering_time %><br />
+          <%= w.text_field :watering_time, :id => "watering_last" %>
+        </div>
+        <div class="field">
+          <%= w.label :watering_amount %><br />
+          <%= w.text_field :watering_amount, :id => "watering_next"  %>
+        </div>
 
-          <% end %>
-            
-            <div class="field">
-              <%= p.hidden_field :plant_id, { :value => @plant_id } %>
-              <%= p.hidden_field :user_id, { :value => session[:user][:id] } %>
-            </div>
-          </div>
-          <div>
-            <% end %>
-            <div class="actions">
-              <%= f.submit %>
-            </div>
-          </div>
+      <% end %>
+        
+        <div class="field">
+          <%= p.hidden_field :plant_id, { :value => @plant_id } %>
+          <%= p.hidden_field :user_id, { :value => session[:user][:id] } %>
         </div>
       </div>
+      <div>
+        <% end %>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <% end %>

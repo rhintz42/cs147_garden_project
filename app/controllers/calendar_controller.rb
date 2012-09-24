@@ -8,14 +8,14 @@ class CalendarController < ApplicationController
     end
     
     if params[:plants] then
-      @personal_plants = PersonalPlant.where(:user_id => session[:user][:id], :id => JSON.parse(params[:plants])).order("id ASC")
+      @personal_plants = PersonalPlant.where(:user_id => session[:user][:id], :plant_id => JSON.parse(params[:plants])).order("id ASC")
     else
       @personal_plants = PersonalPlant.where(:user_id => session[:user][:id]).order("id ASC")
     end
-
+    
   	@plants = Plant.all
-    #debugger
-  	#@personal_plants_by_date = @personal_plants.group_by(&:watering_next)
+  	#debugger
+    #@personal_plants_by_date = @personal_plants.group_by(&:watering_next)
     
     @personal_plants_json = @personal_plants.to_json
 

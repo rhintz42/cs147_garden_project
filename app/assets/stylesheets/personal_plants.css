@@ -61,7 +61,45 @@ a.mover 							{ background: #900; padding: 6px 12px; position: absolute;
 #effect { width: 240px; height: 135px; padding: 0.4em; position: relative; }
 #effect h3 { margin: 0; padding: 0.4em; text-align: center; }
 
+#feedback { font-size: 1.4em; }
+#calendar_view_selectables { cursor: hand; cursor: pointer; }
+#calendar_view_selectables .ui-selecting { background: #FECA40; }
+#calendar_view_selectables .ui-selected { background: #F39814; color: white; }
+#calendar_view_selectables { list-style-type: none; margin: 0; padding: 0; }
+#calendar_view_selectables li { margin: 3px; padding: 1px; float: left; width: 150px; height: 80px; text-align: center;}
 
+
+
+#plant_selectables .ui-selecting { background: #FECA40; }
+#plant_selectables .ui-selected { background: #F39814; color: white; }
+#plant_selectables { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+#plant_selectables li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+
+.field { clear: both;}
+
+#calendar_view_by_plants {
+  display:none;
+  width: 600px;
+  background-color: #efefef;
+}
+
+#old-plant-fields {
+  /*
+  display:none;
+  Can't have display:none; here because ajax will reload this
+  */
+  width: 600px;
+  background-color: #ccc;
+}
+
+
+#new-plant-fields {
+  /*
+  display:none;
+  */
+  width: 600px;
+  background-color: #888;
+}
 
 /*
   Navs

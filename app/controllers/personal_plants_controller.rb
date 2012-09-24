@@ -61,12 +61,18 @@ class PersonalPlantsController < ApplicationController
       return
     end
 
+    if params[:plants] then
+      @plant = Plant.find(JSON.parse(params[:plants])[0])
+    else
+      @plant = Plant.new
+    end
+
     @plant_id = params[:plant_id]
     
-    @plant = Plant.new
     @plant.personal_plants.build
-    #debugger
     @plant.personal_plants[0].personal_plant_waterings.build
+    
+    @plants = Plant.all
     
     #@a = render_to_string action: "options"
 
@@ -92,7 +98,7 @@ class PersonalPlantsController < ApplicationController
       return
     end
     @plant = Plant.new(params[:plant])
-    #debugger
+    
     respond_to do |format|
       if @plant.save
         format.html { redirect_to @plant.personal_plant, notice: 'Personal plant was successfully created.' }
@@ -123,7 +129,7 @@ class PersonalPlantsController < ApplicationController
       return
     end
     @personal_plant = PersonalPlant.find(params[:id])
-
+    
     respond_to do |format|
       if @personal_plant.update_attributes(params[:personal_plant])
         format.html { redirect_to @personal_plant, notice: 'Personal plant was successfully updated.' }
