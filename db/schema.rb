@@ -76,8 +76,10 @@ ActiveRecord::Schema.define(:version => 20120918014252) do
   add_index "plant_comments", ["user_id"], :name => "index_plant_comments_on_user_id"
 
   create_table "plants", :force => true do |t|
+    t.boolean  "authorized"
     t.text     "description"
-    t.integer  "hardiness_zone"
+    t.integer  "hardiness_zone_max"
+    t.integer  "hardiness_zone_min"
     t.boolean  "is_houseplant"
     t.float    "leeway_sun_exposure"
     t.float    "leeway_watering_weekly_amount"
@@ -131,6 +133,7 @@ ActiveRecord::Schema.define(:version => 20120918014252) do
     t.integer  "address_zipcode"
     t.integer  "authorization"
     t.string   "email"
+    t.boolean  "gender"
     t.float    "last_login"
     t.string   "name_first"
     t.string   "name_last"

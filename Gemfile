@@ -1,5 +1,6 @@
 source "http://rubygems.org"
-gem "pg"
+#gem "pg"
+gem 'sqlite3'
 gem "rails", "3.2.3"
 gem "haml"
 gem "rails3-generators"
