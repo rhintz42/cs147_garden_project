@@ -1,3 +1,7 @@
+<div data-role="header">
+		<h1>Guardener</h1>
+</div>
+
 <p id="notice"><%= notice %></p>
 
 <div class="user-home-name">
@@ -6,48 +10,16 @@
 	</p>
 </div>
 
-<div class="user-home-widgets waterings-widget">
-	<div class="user-home-widgets-header">
-		<p>
-			Waterings
-		</p>
-	</div>
-	<p>
-  	View your <%= link_to 'waterings', personal_plant_waterings_path %>
-	</p>
-	<br />
-	<p>
-  	Water one of your <%= link_to 'plants', new_personal_plant_watering_path %>
-	</p>
-</div>
 
-<div class="user-home-widgets personal-plants-widget">
-	<div class="user-home-widgets-header">
-		<p>
-			Child Plants
-		</p>
-	</div>
-	<p>
-		View your <%= link_to 'child plants', personal_plants_path %>
-	</p>
-	<br />
-	<p>
-		Add a new <%= link_to 'child plant', new_personal_plant_path %> to your family
-	</p>
-</div>
 
-<div class="user-home-widgets plants-widget">
-	<div class="user-home-widgets-header">
-		<p>
-			Plants
-		</p>
+<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
+	<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
+		<ul>
+			<li><a href="/home/index" id="home" data-icon="custom" class="ui-btn-active">Home</a></li>
+			<li><a href="#" id="garden" data-icon="custom">Garden</a></li>
+			<li><a href="/plants" id="plants" data-icon="custom">Plants</a></li>
+			<li><a href="#" id="community" data-icon="custom">Community</a></li>
+		</ul>
 	</div>
-	<p>
-  	View <%= link_to 'plants', plants_path %> in your collection
-	</p>
-	<br />
-	<p>
-  	Add <%= link_to 'plants', new_plant_path %> to your collection
-	</p>
 </div>
 

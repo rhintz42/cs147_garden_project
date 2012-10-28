@@ -1,31 +1,53 @@
-<p id="notice"><%= notice %></p>
+<div data-role="page" id="one">
 
-<%= form_for @user, :url => {:action => "login"} do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  <div data-role="header">
+    <h1>Guardener</h1>
+  </div>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+  <div id="login_info">
+    <p id="notice"><%= notice %></p>
+
+    <%= form_for @user, :url => {:action => "login"} do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+          <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
+      <div class="field">
+        <%= f.label :username %><br />
+        <%= f.text_field :username %>
+      </div>
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.text_field :password %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Login" %>
+      </div>
+    <% end %>
+
+    <div>
+      <p>
+        Don't have an account? <%= link_to 'Register Here', new_user_path %>
+      </p>
+    </div>
+  </div>
+
+  <div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
+    <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
+      <ul>
+        <li><a href="/home/index" id="home" data-icon="custom" class="ui-btn-active">Home</a></li>
+        <li><a href="#" id="garden" data-icon="custom">Garden</a></li>
+        <li><a href="/plants" id="plants" data-icon="custom">Plants</a></li>
+        <li><a href="#" id="community" data-icon="custom">Community</a></li>
       </ul>
     </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
   </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Login" %>
-  </div>
-<% end %>
-<div>
-  <p>
-    Don't have an account? <%= link_to 'Register Here', new_user_path %>
-  </p>
+
 </div>
