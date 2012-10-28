@@ -24,6 +24,8 @@ class UsersController < ApplicationController
     end
     @user = User.find_by_id(params[:id])
     
+    #debugger
+
     if @user == nil then
       session[:user] = nil
       respond_to do |format|

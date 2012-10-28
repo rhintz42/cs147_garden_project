@@ -41,10 +41,29 @@
       <div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
         <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
           <ul>
-            <li><a href="/home/index" id="home" data-icon="custom" class="ui-btn-active">Home</a></li>
-            <li><a href="/gardens" id="garden" data-icon="custom">Garden</a></li>
-            <li><a href="/plants" id="plants" data-icon="custom">Plants</a></li>
-            <li><a href="/community" id="community" data-icon="custom">Community</a></li>
+            <% if params[:controller] == 'users' then %>
+              <li><a href="/home/index" id="home" data-icon="custom" class="ui-btn-active">Home</a></li>
+            <% else %>
+              <li><a href="/home/index" id="home" data-icon="custom">Home</a></li>
+            <% end %>
+
+            <% if params[:controller] == 'gardens' then %>
+              <li><a href="/gardens" id="garden" data-icon="custom" class="ui-btn-active">Garden</a></li>
+            <% else %>
+              <li><a href="/gardens" id="garden" data-icon="custom">Garden</a></li>
+            <% end %>
+
+            <% if params[:controller] == 'plants' then %>
+              <li><a href="/plants" id="plants" data-icon="custom" class="ui-btn-active">Plants</a></li>
+            <% else %>
+              <li><a href="/plants" id="plants" data-icon="custom">Plants</a></li>
+            <% end %>
+
+            <% if params[:controller] == 'community' then %>
+              <li><a href="/community" id="community" data-icon="custom" class="ui-btn-active">Community</a></li>
+            <% else %>
+              <li><a href="/community" id="community" data-icon="custom">Community</a></li>
+            <% end %>
           </ul>
         </div>
       </div>

@@ -1,38 +1,34 @@
-<div data-role="page" id="one">
+<div id="login_info">
+  <p id="notice"><%= notice %></p>
 
-  <div id="login_info">
-    <p id="notice"><%= notice %></p>
+  <%= form_for @user, :url => {:action => "login"} do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-    <%= form_for @user, :url => {:action => "login"} do |f| %>
-      <% if @user.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-          <ul>
-          <% @user.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
-      <div class="field">
-        <%= f.label :username %><br />
-        <%= f.text_field :username %>
-      </div>
-      <div class="field">
-        <%= f.label :password %><br />
-        <%= f.text_field :password %>
-      </div>
-      <div class="actions">
-        <%= f.submit "Login" %>
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
       </div>
     <% end %>
-
-    <div>
-      <p>
-        Don't have an account? <%= link_to 'Register Here', new_user_path %>
-      </p>
+    <div class="field">
+      <%= f.label :username %><br />
+      <%= f.text_field :username %>
     </div>
-  </div>
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.text_field :password %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Login" %>
+    </div>
+  <% end %>
 
+  <div>
+    <p>
+      Don't have an account? <%= link_to 'Register Here', new_user_path %>
+    </p>
+  </div>
 </div>
