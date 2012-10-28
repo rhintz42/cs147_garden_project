@@ -1,44 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>GardenCookbook</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <head>
+    <title>GardenCookbook</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
 
 
 
 
-  <title>Guardener</title> 
-  <meta charset="utf-8">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>Guardener</title> 
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
 
-  
-  <link rel="/public/images/apple-touch-icon" href="/images/greentreesmall.jpg" />
-  <link rel="/public/images/apple-touch-startup-image" href="/images/greentree.jpg">
-  
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-  <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-  
-</head>
-<body>
-  <%= render 'layouts/header' %>
-  <!--
-  <div class=container-header-under>
-    <div class=container-body-center>
-  -->
-      <%= yield %>
-  <!--  
+    
+    <link rel="/public/images/apple-touch-icon" href="/images/greentreesmall.jpg" />
+    <link rel="/public/images/apple-touch-startup-image" href="/images/greentree.jpg">
+    
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+    
+  </head>
+  <body>
+    <div data-role="header">
+      <h1>Guardener</h1>
     </div>
-  </div>
-  -->
-</body>
+    <!--
+    <div class=container-header-under>
+      <div class=container-body-center>
+    -->
+        <%= yield %>
+    <!--  
+      </div>
+    </div>
+    -->
+    <% if session[:user] then %>
+      <div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
+        <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
+          <ul>
+            <li><a href="/home/index" id="home" data-icon="custom" class="ui-btn-active">Home</a></li>
+            <li><a href="/gardens" id="garden" data-icon="custom">Garden</a></li>
+            <li><a href="/plants" id="plants" data-icon="custom">Plants</a></li>
+            <li><a href="/community" id="community" data-icon="custom">Community</a></li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </body>
 </html>
-
-<% if false then %>
-  <%= render 'layouts/left_nav' %>
-  <%= render 'layouts/right_nav' %>
-<% end %>

@@ -1,6 +1,6 @@
 GardenCookbook::Application.routes.draw do
 
-  get "designer/index"
+  resources :gardens
 
   resources :personal_plant_waterings
 
@@ -17,14 +17,18 @@ GardenCookbook::Application.routes.draw do
     end
   end
   
-  match 'users/login', :controller => 'users', :action => 'login_post', :via => "post"
 
   resources :plants
   
-  get "home/index"
-  get "calendar/index"
-
-
+  get "designer/index"
+  get "/home/index"
+  get "/calendar/index"
+  get "/community/index"
+  
+  match "home" => "home#index"
+  match "/community" => "community#index"
+  match 'users/login', :controller => 'users', :action => 'login_post', :via => "post"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
