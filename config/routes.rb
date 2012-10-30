@@ -24,9 +24,13 @@ GardenCookbook::Application.routes.draw do
   get "/home/index"
   get "/calendar/index"
   get "/community/index"
+  get "/weather/index"
   
-  match "home" => "home#index"
+  match "/home" => "home#index"
+  match "/plants" => "plants#index"
+  match "/gardens" => "gardens#index"
   match "/community" => "community#index"
+  match "/weather" => "weather#index"
   match 'users/login', :controller => 'users', :action => 'login_post', :via => "post"
   
   # The priority is based upon order of creation:

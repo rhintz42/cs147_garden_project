@@ -39,6 +39,66 @@
     -->
     <% if session[:user] then %>
       <div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
+       <div data-role="navbar" data-iconpos="top">
+                     <ul>
+                         <li>
+                            <% if params[:controller] == 'users' then %>
+                              <a href="/home/index" id="home" data-icon="custom" class="ui-btn-active">
+                                 Home
+                              </a>
+                            <% else %>
+                              <a href="/home/index" id="home" data-icon="custom">
+                                 Home
+                              </a>
+                            <% end %>
+                         </li>
+                         <li>
+                            <% if params[:controller] == 'gardens' then %>
+                              <a href="/gardens" id="garden" data-icon="custom" class="ui-btn-active">
+                                 Gardens
+                              </a>
+                            <% else %>
+                              <a href="/gardens" id="garden" data-icon="custom">
+                                 Gardens
+                              </a>
+                            <% end %>
+                         </li>
+                         <li>
+                            <% if params[:controller] == 'plants' then %>
+                              <a href="/plants" id="plants" data-icon="custom" class="ui-btn-active">
+                                 Plants
+                              </a>
+                            <% else %>
+                              <a href="/plants" id="plants" data-icon="custom">
+                                 Plants
+                              </a>
+                            <% end %>
+                         </li>
+                         <li>
+                            <% if params[:controller] == 'weather' then %>
+                              <a href="/weather" id="weather" data-icon="custom" class="ui-btn-active">
+                                 Weather
+                              </a>
+                            <% else %>
+                              <a href="/weather" id="weather" data-icon="custom">
+                                 Weather
+                              </a>
+                            <% end %>
+                         </li>
+                         <li>
+                            <% if params[:controller] == 'community' then %>
+                              <a href="/community" id="community" data-icon="custom" class="ui-btn-active">
+                                 Community
+                              </a>
+                            <% else %>
+                              <a href="/community" id="community" data-icon="custom">
+                                 Community
+                              </a>
+                            <% end %>
+                         </li>
+                     </ul>
+                 </div>
+        <% if false then %>
         <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
           <ul>
             <% if params[:controller] == 'users' then %>
@@ -58,7 +118,13 @@
             <% else %>
               <li><a href="/plants" id="plants" data-icon="custom">Plants</a></li>
             <% end %>
-
+            
+            <% if params[:controller] == 'weather' then %>
+              <li><a href="/plants" id="weather" data-icon="custom" class="ui-btn-active">Weather</a></li>
+            <% else %>
+              <li><a href="/plants" id="weather" data-icon="custom">Weather</a></li>
+            <% end %>
+            
             <% if params[:controller] == 'community' then %>
               <li><a href="/community" id="community" data-icon="custom" class="ui-btn-active">Community</a></li>
             <% else %>
@@ -66,6 +132,7 @@
             <% end %>
           </ul>
         </div>
+        <% end %>
       </div>
     <% end %>
   </body>
