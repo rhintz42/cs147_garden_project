@@ -13,12 +13,12 @@ class CreatePersonalPlants < ActiveRecord::Migration
 
       t.references :user
       t.references :plant
-      t.references :garden
+      #t.references :garden
 
       t.timestamps
     end
     add_index :personal_plants, :user_id
     add_index :personal_plants, :plant_id
-    add_index :personal_plants, :garden_id
+    #add_index :personal_plants, :garden_id
   end
 end

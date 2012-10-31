@@ -9,10 +9,10 @@ class CreateGardens < ActiveRecord::Migration
       t.string :picture_path
       t.string :theme
       
-      t.references :user
+      #t.references :user
 
       t.timestamps
     end
-    add_index :gardens, :user_id
+    #add_index :gardens, :user_id
   end
 end
