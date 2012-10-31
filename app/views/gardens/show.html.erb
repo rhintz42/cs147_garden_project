@@ -5,6 +5,28 @@
   <%= @garden.name %>
 </p>
 
+<div data-role="content">
+  <div id="iphone_container">
+  <ul data-role="listview" data-divider-theme="b" data-inset="true">
+    <li data-role="list-divider" role="heading">
+      Divider
+    </li>
+    <li data-theme="c">
+      <a href="/personal_plants/1" data-transition="slide">
+        Plant 1
+      </a>
+    </li>
+    <li data-theme="c">
+      <a href="/personal_plants/2" data-transition="slide">
+        Plant 2
+      </a>
+    </li>
+  </ul>
 
+  <a data-role="button" data-theme="e" href="/personal_plants/new">
+    Add a New Plant!
+  </a>
+</div>
+</div>
 <%= link_to 'Edit', edit_garden_path(@garden) %> |
 <%= link_to 'Back', gardens_path %>

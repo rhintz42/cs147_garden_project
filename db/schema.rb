@@ -15,9 +15,18 @@ ActiveRecord::Schema.define(:version => 20121028050701) do
 
   create_table "gardens", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "city"
+    t.string   "state"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "picture_path"
+    t.string   "theme"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
+
+  add_index "gardens", ["user_id"], :name => "index_gardens_on_user_id"
 
   create_table "personal_plant_comments", :force => true do |t|
     t.text     "body"
@@ -59,10 +68,12 @@ ActiveRecord::Schema.define(:version => 20121028050701) do
     t.float    "watering_frequency"
     t.integer  "user_id"
     t.integer  "plant_id"
+    t.integer  "garden_id"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
   end
 
+  add_index "personal_plants", ["garden_id"], :name => "index_personal_plants_on_garden_id"
   add_index "personal_plants", ["plant_id"], :name => "index_personal_plants_on_plant_id"
   add_index "personal_plants", ["user_id"], :name => "index_personal_plants_on_user_id"
 

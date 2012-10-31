@@ -1,5 +1,46 @@
 <h1>Listing gardens</h1>
 
+
+<div data-role="content">
+  <div id="iphone_container">
+  <ul data-role="listview" data-divider-theme="b" data-inset="true">
+    <li data-role="list-divider" role="heading">
+      Divider
+    </li>
+    <li data-theme="c">
+      <a href="/gardens/1" data-transition="slide">
+        Front Yard
+      </a>
+    </li>
+    <li data-theme="c">
+      <a href="/gardens/2" data-transition="slide">
+        Back Yard
+      </a>
+    </li>
+  </ul>
+
+<a data-role="button" data-theme="e" href="/gardens/new">
+  Create New Garden
+</a>
+</div>
+</div>
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if false then %>
 <table>
   <tr>
     <th>Name</th>
@@ -21,3 +62,4 @@
 <br />
 
 <%= link_to 'New Garden', new_garden_path %>
+<% end %>

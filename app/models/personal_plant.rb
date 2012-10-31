@@ -1,6 +1,7 @@
 class PersonalPlant < ActiveRecord::Base
   belongs_to :user
   belongs_to :plant
+  belongs_to :garden
   has_many :personal_plant_comments
   has_many :persaonl_plant_waterings
 
