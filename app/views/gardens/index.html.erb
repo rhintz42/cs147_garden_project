@@ -1,3 +1,4 @@
+<%= render "/layouts/header" %>
 <h1>Listing gardens</h1>
 
 
@@ -22,11 +23,13 @@
       You don't have any Gardens Yet
     <% end %>
 
-<a data-role="button" data-theme="e" href="/gardens/new">
-  Create New Garden
-</a>
+  <a data-role="button" data-theme="e" href="/gardens/new">
+    Create New Garden
+  </a>
+  </div>
 </div>
-</div>
+
+<%= render "/layouts/footer" %>
             
 
 
