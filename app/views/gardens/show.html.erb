@@ -7,30 +7,23 @@
 
 <div data-role="content">
   <div id="iphone_container">
-  <ul data-role="listview" data-divider-theme="b" data-inset="true">
-    <li data-role="list-divider" role="heading">
-      Divider
-    </li>
-    <% for plant in @plants_in_garden do %>
-      <li data-theme="c">
-        <a href="/personal_plants/<%= plant[:id] %>" data-transition="slide">
-          <%= plant[:name_personalized] %>
-        </a>
+  <% if @plants_in_garden then %>
+    <ul data-role="listview" data-divider-theme="b" data-inset="true">
+      <li data-role="list-divider" role="heading">
+        Divider
       </li>
-    <% end %>
-    <!--
-    <li data-theme="c">
-      <a href="/personal_plants/1" data-transition="slide">
-        Plant 1
-      </a>
-    </li>
-    <li data-theme="c">
-      <a href="/personal_plants/2" data-transition="slide">
-        Plant 2
-      </a>
-    </li>
-  -->
-  </ul>
+      <% for plant in @plants_in_garden do %>
+        <li data-theme="c">
+          <a href="/personal_plants/<%= plant[:id] %>" data-transition="slide">
+            <%= plant[:name_personalized] %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    You don't have any Plants in this Garden
+  <% end %>
+
 
   <a data-role="button" data-theme="e" href="/personal_plants/new?garden_id=<%=@garden[:id] %>">
     Add a New Plant!
