@@ -1,6 +1,7 @@
 jQuery(document).ready(function(){
 
   var $tabs = $('#tabs').tabs();
+
     
   $(".ui-tabs-panel").each(function(i){
  
@@ -69,6 +70,7 @@ jQuery(document).ready(function(){
     });
 
 
+
   $( "#calendar_view_selectables" ).selectable({
 
     create: function(event, ui) {
@@ -103,6 +105,7 @@ jQuery(document).ready(function(){
       $("#calendar_view_by_plants ol").append(d);
     }
   }
+
 
 
  

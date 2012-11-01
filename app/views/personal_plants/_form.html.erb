@@ -16,29 +16,206 @@
 
   </script>
 
-  <div class="field">
-    <ol id="calendar_view_selectables">
-      <li class="ui-state-default" id="select_existing_plant">
-        Select Existing Plant
-      </li>
-      <li class="ui-state-default" id="create_new_plant">
-        Create New Plant
-      </li>
-    </ol>
+<div data-role="page" id="one">
+
+  <div data-role="header">
+    <h1>Multi-Page</h1>
+  </div><!-- /header -->
+
+  <div data-role="content">
+    <h2>Welcome <span id="username"></span></h2>
+
+    <p>The neat thing about this example is that you can swipe right and left to navigate between pag
+ 
+  </div><!-- /content -->
+  <div class="ui-block-c">
+    <p><a href="#two" data-role="button">Rofls</a></p> 
   </div>
   <div class="field">
-    <div id="calendar_view_by_plants">
-      <p>
-        Group Name:
-      </p>
-
-      <ol id="plant_selectables">
-        <!--
-        Contains all the listings for plants
-        -->
-      </ol>
+    <ul data-role="listview" data-filter="true" data-filter-placeholder="Search for a plant" data-inset="true">
+        <li data-filtertext="NASDAQ:ADBE Adobe Systems Incorporated"><a href="#">Adobe</a></li>
+        <li data-filtertext="NASDAQ:AMZNL Amazon.com, Inc."><a href="#">Amazon</a></li>
+        <li data-filtertext="NASDAQ:AAPL Apple Inc."><a href="#">Apple</a></li>
+        <li data-filtertext="NASDAQ:GOOG Google Inc."><a href="#">Google</a></li>
+        <li data-filtertext="NYSE:IBM Intl. International Business Machines Corp."><a href="index.html">IBM</a></li>
+        <li data-filtertext="NASDAQ:MSFT Microsoft Corporation"><a href="#">Microsoft</a></li>
+        <li data-filtertext="NASDAQ:YHOO Yahoo! Inc."><a href="#">Yahoo</a></li>
+        <li data-filtertext="USA U.S.A. United States of America"><a href="#">United States</a></li>
+    </ul>
+  </div>
+  <div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
+    <div data-role="navbar" data-iconpos="top">
+       <ul>
+           <li>
+              <% if params[:controller] == 'users' then %>
+                <a href="/home/index" id="home" data-icon="custom" class="ui-btn-active">
+                   Home
+                </a>
+              <% else %>
+                <a href="/home/index" id="home" data-icon="custom">
+                   Home
+                </a>
+              <% end %>
+           </li>
+           <li>
+              <% if params[:controller] == 'gardens' then %>
+                <a href="/gardens" id="garden" data-icon="custom" class="ui-btn-active">
+                   Gardens
+                </a>
+              <% else %>
+                <a href="/gardens" id="garden" data-icon="custom">
+                   Gardens
+                </a>
+              <% end %>
+           </li>
+           <li>
+              <% if params[:controller] == 'plants' then %>
+                <a href="/plants" id="plants" data-icon="custom" class="ui-btn-active">
+                   Plants
+                </a>
+              <% else %>
+                <a href="/plants" id="plants" data-icon="custom">
+                   Plants
+                </a>
+              <% end %>
+           </li>
+           <li>
+              <% if params[:controller] == 'weather' then %>
+                <a href="/weather" id="weather" data-icon="custom" class="ui-btn-active">
+                   Weather
+                </a>
+              <% else %>
+                <a href="/weather" id="weather" data-icon="custom">
+                   Weather
+                </a>
+              <% end %>
+           </li>
+           <li>
+              <% if params[:controller] == 'community' then %>
+                <a href="/community" id="community" data-icon="custom" class="ui-btn-active">
+                   Community
+                </a>
+              <% else %>
+                <a href="/community" id="community" data-icon="custom">
+                   Community
+                </a>
+              <% end %>
+        </li>
+      </ul>
     </div>
   </div>
+</div>
+
+
+
+<div data-role="page" id="two">
+
+  <div data-role="header">
+    <h1>Multi-Page</h1>
+  </div><!-- /header -->
+
+  <div data-role="content">
+    <h2>Welcome <span id="username"></span></h2>
+
+    <p>meow</p>
+    <h3>Show internal pages:</h3>
+    <p><a href="#two" data-role="button">Show page "two"</a></p>
+    <p><a href="#popup" data-role="button" data-rel="dialog" data-transition="pop">Show page "popup"</a></p>
+  </div><!-- /content -->
+  <div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
+    <div data-role="navbar" data-iconpos="top">
+       <ul>
+           <li>
+              <% if params[:controller] == 'users' then %>
+                <a href="/home/index" id="home" data-icon="custom" class="ui-btn-active">
+                   Home
+                </a>
+              <% else %>
+                <a href="/home/index" id="home" data-icon="custom">
+                   Home
+                </a>
+              <% end %>
+           </li>
+           <li>
+              <% if params[:controller] == 'gardens' then %>
+                <a href="/gardens" id="garden" data-icon="custom" class="ui-btn-active">
+                   Gardens
+                </a>
+              <% else %>
+                <a href="/gardens" id="garden" data-icon="custom">
+                   Gardens
+                </a>
+              <% end %>
+           </li>
+           <li>
+              <% if params[:controller] == 'plants' then %>
+                <a href="/plants" id="plants" data-icon="custom" class="ui-btn-active">
+                   Plants
+                </a>
+              <% else %>
+                <a href="/plants" id="plants" data-icon="custom">
+                   Plants
+                </a>
+              <% end %>
+           </li>
+           <li>
+              <% if params[:controller] == 'weather' then %>
+                <a href="/weather" id="weather" data-icon="custom" class="ui-btn-active">
+                   Weather
+                </a>
+              <% else %>
+                <a href="/weather" id="weather" data-icon="custom">
+                   Weather
+                </a>
+              <% end %>
+           </li>
+           <li>
+              <% if params[:controller] == 'community' then %>
+                <a href="/community" id="community" data-icon="custom" class="ui-btn-active">
+                   Community
+                </a>
+              <% else %>
+                <a href="/community" id="community" data-icon="custom">
+                   Community
+                </a>
+              <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <% if false then %>
   <div id="new-plant-fields">
     <div class="field">
       <%= f.label :name_common %><br />
@@ -115,5 +292,8 @@
       </div>
     </div>
   </div>
+
+<% end %>
+
 
 <% end %>

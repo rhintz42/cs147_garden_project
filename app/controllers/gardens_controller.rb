@@ -2,8 +2,10 @@ class GardensController < ApplicationController
   # GET /gardens
   # GET /gardens.json
   def index
-    @gardens = Garden.all
-
+    #@gardens = Garden.all
+    @gardens = Garden.where(:user_id => session[:user][:id])
+    #debugger
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @gardens }
@@ -14,7 +16,6 @@ class GardensController < ApplicationController
   # GET /gardens/1.json
   def show
     @garden = Garden.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @garden }
@@ -41,6 +42,7 @@ class GardensController < ApplicationController
   # POST /gardens.json
   def create
     @garden = Garden.new(params[:garden])
+    @garden[:user_id] = session[:user][:id]
 
     respond_to do |format|
       if @garden.save

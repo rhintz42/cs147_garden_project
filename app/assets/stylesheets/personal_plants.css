@@ -29,7 +29,9 @@ li.ui-state-processing a 			{ cursor: text; }
 
 .ui-datepicker { width: 17em; padding: .2em .2em 0; z-index: 9999 !important; }
 */
-
+/*.ui-block-a {
+  height: 300px;
+*/}
 
 a.mover 							{ background: #900; padding: 6px 12px; position: absolute;
 								      color: white; font-weight: bold; text-decoration: none; }
