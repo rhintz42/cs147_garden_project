@@ -16,6 +16,8 @@ class GardensController < ApplicationController
   # GET /gardens/1.json
   def show
     @garden = Garden.find(params[:id])
+    @plants_in_garden = PersonalPlant.where(:garden_id => @garden[:id] )
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @garden }

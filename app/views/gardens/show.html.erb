@@ -11,6 +11,14 @@
     <li data-role="list-divider" role="heading">
       Divider
     </li>
+    <% for plant in @plants_in_garden do %>
+      <li data-theme="c">
+        <a href="/personal_plants/<%= plant[:id] %>" data-transition="slide">
+          <%= plant[:name_personalized] %>
+        </a>
+      </li>
+    <% end %>
+    <!--
     <li data-theme="c">
       <a href="/personal_plants/1" data-transition="slide">
         Plant 1
@@ -21,9 +29,10 @@
         Plant 2
       </a>
     </li>
+  -->
   </ul>
 
-  <a data-role="button" data-theme="e" href="/personal_plants/new">
+  <a data-role="button" data-theme="e" href="/personal_plants/new?garden_id=<%=@garden[:id] %>">
     Add a New Plant!
   </a>
 </div>

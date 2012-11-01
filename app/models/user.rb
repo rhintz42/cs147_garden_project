@@ -4,9 +4,17 @@ class User < ActiveRecord::Base
   has_many :user_messages, :dependent => :destroy
   accepts_nested_attributes_for :user_comments, :user_messages
 
-  attr_accessible :email,
+  attr_accessible :address_latitude,
+                  :address_longitude,
+                  :address_street,
+                  :address_city,
+                  :address_state,
+                  :address_zipcode,
+                  :authorization,
+                  :email,
                   :email_confirmation,
                   :gender,
+                  :last_login,
                   :name_first,
                   :name_last,
                   :name_middle,
@@ -14,6 +22,8 @@ class User < ActiveRecord::Base
                   :password_confirmation,
                   :password_digest,
                   :points,
+                  :salt,
+                  :time_zone,
                   :username,
 
   def full_name

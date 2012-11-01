@@ -1,7 +1,9 @@
 class Plant < ActiveRecord::Base
  
-  attr_accessible :description,
-                  :hardiness_zone,
+  attr_accessible :authorized,
+                  :description,
+                  :hardiness_zone_min,
+                  :hardiness_zone_max,
                   :is_houseplant,
                   :leeway_sun_exposure,
                   :leeway_watering_weekly_amount,

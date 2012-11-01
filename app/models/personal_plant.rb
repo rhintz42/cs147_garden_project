@@ -8,6 +8,7 @@ class PersonalPlant < ActiveRecord::Base
   attr_accessible :hardiness_zone,
                   :name_personalized,
                   :plant_id,
+                  :garden_id,
                   :rating_ease_care,
                   :rating_ease_pruning,
                   :rating_ease_watering,

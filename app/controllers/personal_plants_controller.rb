@@ -67,14 +67,17 @@ class PersonalPlantsController < ApplicationController
     else
       @plant = Plant.new
     end
-
+    
+    @garden_id = params[:garden_id]
     @plant_id = params[:plant_id]
     
-    @plant.personal_plants.build
-    @plant.personal_plants[0].personal_plant_waterings.build
+    #@plant.personal_plants.build
+    #@plant.personal_plants[0].personal_plant_waterings.build
     
     @plants = Plant.all
-    
+    @personal_plant = PersonalPlant.new
+    @personal_plant[:garden_id] = @garden_id
+    @personal_plant[:plant_id] = @plant_id
     #@a = render_to_string action: "options"
 
     respond_to do |format|
@@ -98,15 +101,17 @@ class PersonalPlantsController < ApplicationController
     if not check_logged_in then
       return
     end
-    @plant = Plant.new(params[:plant])
+    #@plant = Plant.new(params[:plant])
+    #debugger
+    @personal_plant = PersonalPlant.new(params[:personal_plant])
     
     respond_to do |format|
-      if @plant.save
-        format.html { redirect_to @plant.personal_plant, notice: 'Personal plant was successfully created.' }
-        format.json { render json: @plant.personal_plant, status: :created, location: @personal_plant }
+      if @personal_plant.save
+        format.html { redirect_to @personal_plant, notice: 'Personal plant was successfully created.' }
+        format.json { render json: @personal_plant, status: :created, location: @personal_plant }
       else
         format.html { render action: "new" }
-        format.json { render json: @plant.errors, status: :unprocessable_entity }
+        format.json { render json: @personal_plant.errors, status: :unprocessable_entity }
       end
     end
     
