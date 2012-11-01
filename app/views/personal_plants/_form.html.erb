@@ -28,22 +28,27 @@
     <p>The neat thing about this example is that you can swipe right and left to navigate between pag
  
   </div><!-- /content -->
-  
+
   <div class="field">
+    <div data-role="fieldcontain">
+      <fieldset data-role="controlgroup" data-type="vertical">
     <ul data-role="listview" data-filter="true" data-filter-placeholder="Search for a plant" data-inset="true">
-        <li data-filtertext="NASDAQ:ADBE Adobe Systems Incorporated"><a href="#">Adobe</a></li>
+      
+        <li data-filtertext="NASDAQ:ADBE Adobe Systems Incorporated"><a href="?plant_id=1">Adobe</a></li>
         <li data-filtertext="NASDAQ:AMZNL Amazon.com, Inc."><a href="#">Amazon</a></li>
         <li data-filtertext="NASDAQ:AAPL Apple Inc."><a href="#">Apple</a></li>
-        <li data-filtertext="NASDAQ:GOOG Google Inc."><a href="#">Google</a></li>
+        <li data-filtertext="NASDAQ:GOOG Google Inc."><a href="#new_personal_plant_two">Google</a></li>
         <li data-filtertext="NYSE:IBM Intl. International Business Machines Corp."><a href="index.html">IBM</a></li>
         <li data-filtertext="NASDAQ:MSFT Microsoft Corporation"><a href="#">Microsoft</a></li>
         <li data-filtertext="NASDAQ:YHOO Yahoo! Inc."><a href="#">Yahoo</a></li>
         <li data-filtertext="USA U.S.A. United States of America"><a href="#">United States</a></li>
     </ul>
+  </fieldset>
+</div>
   </div>
 
   <div class="ui-block-a">
-    <p><a href="#two" data-role="button">Next</a></p> 
+    <p><a href="#new_personal_plant_two" data-role="button">Next</a></p> 
   </div>
 
   <div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
@@ -109,9 +114,9 @@
   </div>
 </div>
 
+</div>
 
-
-<div data-role="page" id="two">
+<div data-role="page" id="new_personal_plant_two">
 
   <div data-role="header">
     <h1>Multi-Page</h1>

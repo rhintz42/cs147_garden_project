@@ -60,7 +60,8 @@ class PersonalPlantsController < ApplicationController
     if not check_logged_in then
       return
     end
-
+    
+    ###NEED TO SEE WHAT THIS IS FOR
     if params[:plants] then
       @plant = Plant.find(JSON.parse(params[:plants])[0])
     else
