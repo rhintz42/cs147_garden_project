@@ -1,45 +1,95 @@
-<%= @plant.name_common %>
+<div data-role="page" id="plant_info_one">
+  <% if false then %>
+  <%= render '/layouts/header' %>
+<% end %>
+  <div class="plant_title">
+    <h1><%= @plant.name_common %></h1>
+  </div>
+  <div data-role="navbar" data-iconpos="top">
+    <ul>
+      <li>
+        <a href="#plant_info_one" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
+          Name Info
+        </a>
+      </li>
+      <li>
+        <a href="#plant_info_two_man" data-theme="" data-icon="">
+          Caring Info
+        </a>
+      </li>
+    </ul>
+  </div>
 
-<p id="notice"><%= notice %></p>
-
-<div id='show-plants'>
-<div id='name'>
-  <b>Plant Name:</b>
-  <%= @plant.name_common %>
-  
-  <br />
-  
-  <b>Botanical Name:</b>
-  <%= @plant.name_botanical %>
-  
-  <br />
-
-  <b>Description:</b>
-  <%= @plant.description %>
+  <div id="names">
+    <div class="plant_name">
+      <b>Plant Name:</b>
+      <%= @plant.name_common %>
+    </div>
+    <div class="plant_name">
+      <b>Botanical Name:</b>
+      <%= @plant.name_botanical %>
+    </div>
+    <div class="plant_name">
+      <b>Description:</b>
+      <%= @plant.description %>
+    </div>
+  </div>
+  <% if false then %>
+  <%= render '/layouts/footer' %>
+<% end %>
 </div>
 
-<div id='plant-basic-info'>
-  <b>Plant type:</b>
-  <%= @plant.plant_type %>
-  
-  <br />
-  
-  <b>Is houseplant:</b>
-  <%= @plant.is_houseplant %>
+<!--</div>-->
+
+<div data-role="page" id="plant_info_two_man">
+  <% if false then %>
+  <%= render '/layouts/header' %>
+<% end %>
+  <div class="plant_title">
+    <h1><%= @plant.name_common %></h1>
+  </div>
+  <div data-role="navbar" data-iconpos="top">
+    <ul>
+      <li>
+        <a href="#plant_info_one" data-theme="" data-icon="">
+          Basic Info
+        </a>
+      </li>
+      <li>
+        <a href="#plant_info_two_man" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
+          Caring Info
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div id="plant-caring-info-wrapper">
+    <div id="plant-basic-info">
+      <b>Plant type:</b>
+      <%= @plant.plant_type %>
+      
+      <br />
+      
+      <b>Is houseplant:</b>
+      <%= @plant.is_houseplant %>
+    </div>
+
+    <div id="plant-water-info">
+      <b>Water weekly:</b>
+      <%= @plant.watering_weekly_amount %>
+      
+      <br />
+      
+      <b>Water frequency:</b>
+      <%= @plant.watering_frequency_old %>
+    </div>
+
+    <div id="plant-sun-info">
+      <b>Sun exposure:</b>
+      <%= @plant.sun_exposure %> 
+    </div>
+  </div>
+<% if false then %>
+  <%= render '/layouts/footer' %>
+<% end %>
 </div>
 
-<div id='plant-water-info'>
-  <b>Water weekly:</b>
-  <%= @plant.watering_weekly_amount %>
-  
-  <br />
-  
-  <b>Water frequency:</b>
-  <%= @plant.watering_frequency_old %>
-</div>
-
-<div id='plant-sun-info'>
-  <b>Sun exposure:</b>
-  <%= @plant.sun_exposure %> 
-</div>
-</div>

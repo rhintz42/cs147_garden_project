@@ -42,7 +42,23 @@ a.mover               { background: #900; padding: 6px 12px; position: absolute;
 #is_houseplant_selectable .ui-selected { background: #F39814; color: white; }
 #is_houseplant_selectable { list-style-type: none; margin: 0; padding: 0; }
 #is_houseplant_selectable li { margin: 3px; padding: 1px; float: left; width: 150px; height: 80px; text-align: center;}
-.field { clear: both;}
+.field { clear: both;
+        padding: 4px;}
+#asdf {
+  clear: both;
+  margin-top: 9px;
+  margin-left: 10px;
+  margin-right: 10px;
+  /*
+  padding-bottom: 5px;
+  */
+}
+
+.plants_selector {
+  /*
+  color: green;
+  */
+}
 
 #sun_exposure_selectable { cursor: hand; cursor: pointer; }
 #sun_exposure_selectable .ui-selecting { background: #FECA40; }
@@ -72,30 +88,46 @@ a.mover               { background: #900; padding: 6px 12px; position: absolute;
   margin-left: auto;
   margin-right: auto;
 }
-#name {
-  float: left;
-  width: 100px;
+.plant_title {
+  width: 300px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+#names {
+  width: 300px;
   height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+.plant_name {
+  padding: 5px;
+}
+#plant-caring-info-wrapper {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 #plant-basic-info {
   float: left;
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  padding: 5px;
 }
 #plant-water-info {
   float: left;
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  padding: 5px;
 }
 #plant-sun-info {
   float: left;
   width: 500px;
-  height: 100px;
+  padding: 5px;
 }
 #plant-specific-info {
   float: left;
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  padding: 5px;
 }
 
 .clear_both {

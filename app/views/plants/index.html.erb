@@ -1,26 +1,88 @@
-<h1>Listing plants</h1>
+<div data-role="page" id="plants_choice_one">
+  
+  
+  <%= render '/layouts/header' %>
+  
+  <h1>Listing plants</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Water frequency</th>
-    <th>Next watering</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <div data-role="navbar" data-iconpos="top">
+    <ul>
+      <li>
+        <a href="#plants_choice_one" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
+          Universal Plants
+        </a>
+      </li>
+      <li>
+        <a href="#plants_choice_two" data-theme="" data-icon="">
+          Your Plants
+        </a>
+      </li>
+    </ul>
+  </div>
 
-<% @plants.each do |plant| %>
-  <tr>
-    <td><%= plant.name_common %></td>
-    <td><%= plant.watering_frequency_old %></td>
-    <td><%= link_to 'Show', plant %></td>
-    <td><%= link_to 'Edit', edit_plant_path(plant) %></td>
-    <td><%= link_to 'Destroy', plant, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+  <div data-role="content">
+    <div class="field">
+      <fieldset data-role="controlgroup" data-type="vertical">
+        <ul data-role="listview" data-filter="true" data-filter-placeholder="Search for a plant" data-inset="true">
+          <% for plant in @plants do %>
+            <li data-filtertext="<%= plant[:name_common] %> <%= plant[:name_botanical] %> <%= plant[:plant_type] %>">
+              <a href="/plants/<%= plant[:id] %>" data-ajax="false" >
+                <%= plant[:name_common] %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </fieldset>
+    </div>
+  </div>
 
-<br />
+  
+  <%= render '/layouts/footer' %>
+  
+</div>
 
-<div class="linker"><%= link_to 'New Plant', new_plant_path %></div>
+<!--</div>-->
+
+<div data-role="page" id="plants_choice_two">
+  
+  <%= render '/layouts/header' %>
+  
+  <h1>Listing plants</h1>
+
+  <div data-role="navbar" data-iconpos="top">
+    <ul>
+      <li>
+        <a href="#plants_choice_one" data-theme="" data-icon="">
+          Universal Plants
+        </a>
+      </li>
+      <li>
+        <a href="#plants_choice_two" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
+          Your Plants
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div data-role="content">
+    <div class="field">
+      <fieldset data-role="controlgroup" data-type="vertical">
+        <!-- used to have id="asdf" -->
+        <ul data-role="listview" data-filter="true" data-filter-placeholder="Search for a plant you own" data-inset="true">
+          <% for plant in @personal_plants do %>
+            <li data-filtertext="<%= plant[:name_personalized] %> <%= plant[:name_botanical] %> <%= plant[:plant_type] %>">
+              <a href="/personal_plants/<%= plant[:id] %>" data-ajax="false" >
+                <div class="plants_selector">
+                  <%= plant[:name_personalized] %>    -    <%= plant.plant.name_common %>
+                </div>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </fieldset>
+    </div>
+  </div>
+
+  <%= render '/layouts/footer' %>
+  
+</div>

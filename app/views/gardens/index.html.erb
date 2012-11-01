@@ -3,34 +3,24 @@
 
 <div data-role="content">
   <div id="iphone_container">
-  <ul data-role="listview" data-divider-theme="b" data-inset="true">
-    <li data-role="list-divider" role="heading">
-      Divider
-    </li>
-    <% for garden in @gardens do %>
-      
-      <li data-theme="c">
-        <a href="/gardens/<%= garden[:id] %>" data-transition="slide">
-          <%= garden[:name] %>
-        </a>
-      </li> 
+    <% if @gardens.size > 0 then %>
+      <ul data-role="listview" data-divider-theme="b" data-inset="true">
+        <li data-role="list-divider" role="heading">
+          Your Gardens
+        </li>
+        <% for garden in @gardens do %>
+          
+          <li data-theme="c">
+            <a href="/gardens/<%= garden[:id] %>" data-transition="slide">
+              <%= garden[:name] %>
+            </a>
+          </li> 
 
+        <% end %>
+      </ul>
+    <% else %>
+      You don't have any Gardens Yet
     <% end %>
-    
-    <!--
-    <li data-theme="c">
-      <a href="/gardens/1" data-transition="slide">
-        Front Yard
-      </a>
-    </li>
-    <li data-theme="c">
-      <a href="/gardens/2" data-transition="slide">
-        Back Yard
-      </a>
-    </li>
-    -->
-
-  </ul>
 
 <a data-role="button" data-theme="e" href="/gardens/new">
   Create New Garden

@@ -1,4 +1,148 @@
-<p id="notice"><%= notice %></p>
+<div data-role="page" id="plant_info_one">
+  <%= render '/layouts/header' %>
+
+  <div class="plant_title">
+    <h1><%= @personal_plant.plant.name_common %></h1>
+  </div>
+
+  <p id="notice"><%= notice %></p>
+
+  <div data-role="navbar" data-iconpos="top">
+    <ul>
+    	<li>
+        <a href="#plant_info_one" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
+          Plant's Info
+        </a>
+      </li>
+      <li>
+        <a href="#plant_info_two" data-theme="" data-icon="">
+          Name Info
+        </a>
+      </li>
+      <li>
+        <a href="#plant_info_three" data-theme="" data-icon="">
+          Caring Info
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="names">
+    <div class="plant_name">
+      <b>Personalized Name:</b>
+      <%= @personal_plant[:name_personalized] %>
+    </div>
+    <div class="plant_name">
+      <b>Botanical Name:</b>
+      <%= @personal_plant.plant.name_botanical %>
+    </div>
+    <div class="plant_name">
+      <b>Description:</b>
+      <%= @personal_plant.plant.description %>
+    </div>
+  </div>
+  <%= render '/layouts/footer' %>
+</div>
+
+<div data-role="page" id="plant_info_two">
+  <%= render '/layouts/header' %>
+
+  <div class="plant_title">
+    <h1><%= @personal_plant.plant.name_common %></h1>
+  </div>
+
+  <p id="notice"><%= notice %></p>
+
+  <div data-role="navbar" data-iconpos="top">
+    <ul>
+    	<li>
+        <a href="#plant_info_one" data-theme="" data-icon="">
+          Plant's Info
+        </a>
+      </li>
+      <li>
+        <a href="#plant_info_two" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
+          Name Info
+        </a>
+      </li>
+      <li>
+        <a href="#plant_info_three" data-theme="" data-icon="">
+          Caring Info
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="names">
+    <div class="plant_name">
+      <b>Plant Name:</b>
+      <%= @personal_plant.plant.name_common %>
+    </div>
+    <div class="plant_name">
+      <b>Botanical Name:</b>
+      <%= @personal_plant.plant.name_botanical %>
+    </div>
+    <div class="plant_name">
+      <b>Description:</b>
+      <%= @personal_plant.plant.description %>
+    </div>
+  </div>
+  <%= render '/layouts/footer' %>
+</div>
+
+<div data-role="page" id="plant_info_three">
+  <%= render '/layouts/header' %>
+  <div class="plant_title">
+    <h1><%= @personal_plant.plant.name_common %></h1>
+  </div>
+  <div data-role="navbar" data-iconpos="top">
+    <ul>
+    	<li>
+        <a href="#plant_info_one" data-theme="" data-icon="">
+          Plant's Info
+        </a>
+      </li>
+      <li>
+        <a href="#plant_info_two" data-theme="" data-icon="">
+          Name Info
+        </a>
+      </li>
+      <li>
+        <a href="#plant_info_three" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
+          Caring Info
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div id="plant-caring-info-wrapper">
+    <div id="plant-basic-info">
+      <b>Plant type:</b>
+      <%= @personal_plant.plant.plant_type %>
+      
+      <br />
+      
+      <b>Is houseplant:</b>
+      <%= @personal_plant.plant.is_houseplant %>
+    </div>
+
+    <div id="plant-water-info">
+      <b>Water weekly:</b>
+      <%= @personal_plant.plant.watering_weekly_amount %>
+      
+      <br />
+      
+      <b>Water frequency:</b>
+      <%= @personal_plant.plant.watering_frequency_old %>
+    </div>
+
+    <div id="plant-sun-info">
+      <b>Sun exposure:</b>
+      <%= @personal_plant.plant.sun_exposure %> 
+    </div>
+  </div>
+  <%= render '/layouts/footer' %>
+</div>
+
 
 <p>
   <b>Name personalized:</b>

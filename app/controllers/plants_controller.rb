@@ -6,6 +6,7 @@ class PlantsController < ApplicationController
   def index
     
     @plants = Plant.all
+    @personal_plants = PersonalPlant.where(:user_id => session[:user][:id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,6 +17,7 @@ class PlantsController < ApplicationController
   # GET /plants/1
   # GET /plants/1.json
   def show
+    
     @plant = Plant.find(params[:id])
 
     respond_to do |format|

@@ -7,10 +7,10 @@
 
 <div data-role="content">
   <div id="iphone_container">
-  <% if @plants_in_garden then %>
+  <% if @plants_in_garden.size > 0 then %>
     <ul data-role="listview" data-divider-theme="b" data-inset="true">
       <li data-role="list-divider" role="heading">
-        Divider
+        Your Plants
       </li>
       <% for plant in @plants_in_garden do %>
         <li data-theme="c">
