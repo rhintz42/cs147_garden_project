@@ -16,7 +16,7 @@
       </li>
       <% for plant in @plants_in_garden do %>
         <li data-theme="c">
-          <a href="/personal_plants/<%= plant[:id] %>" data-transition="slide">
+          <a href="/personal_plants/<%= plant[:id] %>" data-ajax="false" data-transition="slide">
             <%= plant[:name_personalized] %>
           </a>
         </li>
@@ -27,7 +27,7 @@
   <% end %>
 
 
-  <a data-role="button" data-theme="e" href="/personal_plants/new?garden_id=<%=@garden[:id] %>">
+  <a data-role="button" data-theme="e" href="/personal_plants/new?garden_id=<%=@garden[:id] %>" data-ajax="false">
     Add a New Plant!
   </a>
 </div>
