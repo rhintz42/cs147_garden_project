@@ -25,6 +25,7 @@ GardenCookbook::Application.routes.draw do
   get "/calendar/index"
   get "/community/index"
   get "/weather/index"
+  get "/weather/other_page"
   
   match "/home" => "home#index"
   match "/plants" => "plants#index"
