@@ -48,7 +48,13 @@ class PersonalPlantWateringsController < ApplicationController
   # POST /personal_plant_waterings
   # POST /personal_plant_waterings.json
   def create
+    debugger
     @personal_plant_watering = PersonalPlantWatering.new(params[:personal_plant_watering])
+    @personal_plant_watering[:watering_time] = params[:watering_time]
+    a = Time.strptime("2012-09-14", "%Y-%m-%d").to_f
+    b = Time.strptime("09/14/2012", "%m/%d/%Y").to_f
+    
+    c = Time.strptime("09/14/2012", "%m/%d/%Y").to_f
 
     respond_to do |format|
       if @personal_plant_watering.save

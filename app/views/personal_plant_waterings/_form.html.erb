@@ -11,10 +11,19 @@
     </div>
   <% end %>
 
+  <div data-role="fieldcontain">
+    <label for="mode1">CalBox</label>
+    <input name="watering_time" id="watering_time" type="text" data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' />
+  </div>
+
+  <% if false then %>
   <div class="field">
     <%= f.label :watering_time %><br />
     <%= f.text_field :watering_time, :id => "watering_time" %>
   </div>
+  <% end %>
+
+
   <div class="field">
     <%= f.label :watering_amount %><br />
     <%= f.text_field :watering_amount%>

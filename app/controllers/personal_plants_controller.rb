@@ -6,20 +6,6 @@ class PersonalPlantsController < ApplicationController
   # GET /personal_plants
   # GET /personal_plants.json
   def index
-    #This shows how to create new things of these correctly
-    #@user = User.new
-    #@user.user_comments.build
-
-    #@plant = Plant.new
-    #@plant.plant_comments.build
-    
-    #@personal_plants = PersonalPlant.new
-    #@personal_plants.personal_plant_comments.build
-    
-    #debugger
-    #@user = User.new
-    #@user.user_messages.build
-
     if not check_logged_in then
       return
     end
@@ -38,6 +24,8 @@ class PersonalPlantsController < ApplicationController
       return
     end
     @personal_plant = PersonalPlant.find(params[:id])
+    @personal_plant_waterings = PersonalPlantWatering.where(:personal_plant_id => @personal_plant[:id])
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @personal_plant }

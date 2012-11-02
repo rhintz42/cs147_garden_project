@@ -24,7 +24,9 @@
             <% end %>
          </li>
          <li>
-            <% if params[:controller] == 'plants' then %>
+            <% if params[:controller] == 'plants' or 
+                  params[:controller] == 'personal_plants' or 
+                  params[:controller] == 'personal_plants_waterings' then %>
               <a href="/plants" id="plants" data-icon="custom" data-ajax="false" class="ui-btn-active">
                  Plants
               </a>
