@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
                   :salt,
                   :time_zone,
                   :username,
+									:defaultGardenId
 
   def full_name
     return self[:name_first] + " " + self[:name_last]

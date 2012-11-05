@@ -7,4 +7,8 @@ class Garden < ActiveRecord::Base
                   :state,
                   :theme
 
+	def location
+		return self[:city] + ", " + self[:state]
+	end
+
 end

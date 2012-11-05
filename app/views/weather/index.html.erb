@@ -6,7 +6,11 @@ This is the weather
 	<img id="weather-image">
 	<div id="weather-temp"></div>
 </div>
-
-<script src="http://free.worldweatheronline.com/feed/weather.ashx?q=Palo+Alto&format=json&num_of_days=2&key=9ae687bfc7235922120311&callback=renderWeather"></script>
+<%
+#<script src="http://free.worldweatheronline.com/feed/weather.ashx?q=Palo+Alto&format=json&num_of_days=2&key=9ae687bfc7235922120311&callback=renderWeather"></script>
+%>
+<%puts "QUERY: "
+puts @queryURL%>
+<script src=<%=@queryURL%>></script>
 
 <%= render "/layouts/footer" %>
