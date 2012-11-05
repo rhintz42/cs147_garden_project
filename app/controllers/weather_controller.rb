@@ -1,15 +1,6 @@
 class WeatherController < ApplicationController
 
 	def index
-<<<<<<< HEAD
-
-	end
-
-	def other_page
-
-	end
-
-=======
 		
  		@gardens = Garden.where(:user_id => session[:user][:id])
 		@garden = @gardens[0]
@@ -26,5 +17,4 @@ class WeatherController < ApplicationController
 	def show
 
 	end
->>>>>>> 3df9e9ab02d8db65da0e4f94b2f3bf3ae7ca42d5
 end
