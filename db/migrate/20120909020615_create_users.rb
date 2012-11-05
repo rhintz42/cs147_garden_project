@@ -19,6 +19,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :salt
       t.string  :time_zone
       t.string  :username
+			t.integer :defaultGardenId
 
       t.timestamps
     end
