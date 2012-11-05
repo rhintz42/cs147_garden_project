@@ -1,13 +1,14 @@
-<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
+<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+  <div id="nav-bot">
   <div data-role="navbar" data-iconpos="top">
      <ul>
          <li>
             <% if params[:controller] == 'gardens' then %>
-              <a href="/gardens?def=1" id="garden" data-icon="custom" data-ajax="false" class="ui-btn-active">
+              <a href="/gardens?def=1" id="garden" data-ajax="false" class="ui-btn-active">
                  Gardens
               </a>
             <% else %>
-              <a href="/gardens?def=true" id="garden" data-icon="custom" data-ajax="false" >
+              <a href="/gardens?def=true" id="garden" data-ajax="false" >
                  Gardens
               </a>
             <% end %>
@@ -16,16 +17,17 @@
             <% if params[:controller] == 'plants' or 
                   params[:controller] == 'personal_plants' or 
                   params[:controller] == 'personal_plants_waterings' then %>
-              <a href="/plants" id="plants" data-icon="custom" data-ajax="false" class="ui-btn-active">
+              <a href="/plants" id="plants" data-ajax="false" class="ui-btn-active">
                  Plants
               </a>
             <% else %>
-              <a href="/plants" id="plants" data-icon="custom" data-ajax="false" >
+              <a href="/plants" id="plants" data-ajax="false" >
                  Plants
               </a>
             <% end %>
          </li>
     </ul>
+  </div>
   </div>
 </div>
 

@@ -7,7 +7,9 @@ class PersonalPlantWateringsController < ApplicationController
       return
     end
     
-    @personal_plant_waterings = PersonalPlantWatering.all
+    @personal_plant_waterings = PersonalPlantWatering.where(:personal_plant_id => params[:pp])
+
+    #@personal_plant_waterings = PersonalPlantWatering.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -65,7 +67,7 @@ class PersonalPlantWateringsController < ApplicationController
 
     respond_to do |format|
       if @personal_plant_watering.save
-        format.html { redirect_to personal_plant_waterings_path, notice: 'Personal plant watering was successfully created.' }
+        format.html { redirect_to personal_plant_waterings_path+"?pp="+@personal_plant_watering[:personal_plant_id].to_s, notice: 'Personal plant watering was successfully created.' }
         format.json { render json: personal_plant_waterings_path, status: :created, location: @personal_plant_watering }
       else
         format.html { render action: "new" }
