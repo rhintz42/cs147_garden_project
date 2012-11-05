@@ -5,7 +5,13 @@ class Garden < ActiveRecord::Base
   attr_accessible :name,
                   :city,
                   :state,
-                  :theme
+                  :latitude,
+                  :longitude,
+                  :picture_path,
+                  :theme,
+                  :user_id
+
+  accepts_nested_attributes_for :personal_plants
 
 	def location
 		return self[:city] + ", " + self[:state]

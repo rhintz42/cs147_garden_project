@@ -1,6 +1,8 @@
 class PersonalPlantWatering < ActiveRecord::Base
   belongs_to :personal_plant
-  attr_accessible :watering_amount, :watering_time, :personal_plant_id
+  attr_accessible :watering_amount,
+                  :watering_time,
+                  :personal_plant_id
 
   def watering_time=(time)
     if time.class == String then

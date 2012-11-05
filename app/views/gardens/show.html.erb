@@ -2,6 +2,10 @@
 
 <p id="notice"><%= notice %></p>
 
+<a data-role="button" href="/gardens?def=0" data-theme="a" data-ajax="false" >
+   Your Gardens
+</a>
+
 <p>
   <b>Name:</b>
   <%= @garden.name %>
@@ -27,12 +31,14 @@
   <% end %>
 
 
-  <a data-role="button" data-theme="e" href="/personal_plants/new?garden_id=<%=@garden[:id] %>" data-ajax="false">
-    Add a New Plant!
-  </a>
+    <a data-role="button" data-theme="e" href="/personal_plants/new?garden_id=<%=@garden[:id] %>" data-ajax="false">
+      Add a New Plant!
+    </a>
+
+    <a data-role="button" href="/weather?garden=<%= @garden[:id] %>" id="weather" data-theme="a" data-ajax="false" >
+       Weather
+    </a>
+  </div>
 </div>
-</div>
-<%= link_to 'Edit', edit_garden_path(@garden) %> |
-<%= link_to 'Back', gardens_path %>
 
 <%= render "/layouts/footer" %>

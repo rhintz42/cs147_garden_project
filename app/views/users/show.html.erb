@@ -1,36 +1,6 @@
 <div data-role="page" id="home_one">
 
-	<div data-theme="a" data-role="header">
-      
-    <h1>Guardener</h1>
-    <div id="nav_bar_top">
-      <ul>
-        <li>
-          <a href="#page1" data-theme="" data-icon="">
-            Button
-          </a>
-           -&gt;
-        </li>
-        <li>
-          <a href="#page1" data-theme="" data-icon="">
-            Button
-          </a>
-           -&gt;
-        </li>
-        <li>
-          <a href="#page1" data-theme="" data-icon="">
-            Button
-          </a>
-           -&gt;
-        </li>
-        <li>
-          <a href="#page1" data-theme="" data-icon="">
-            Button
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
+	<%= render '/layouts/header' %>
 
 	<div class="user-home-name">
 		<p>
@@ -40,169 +10,19 @@
 	<div class="ui-block-a">
     <p><a href="#home_two" data-role="button">Next Page</a></p> 
   </div>
-  <div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-    <div data-role="navbar" data-iconpos="top">
-       <ul>
-           <li>
-              <% if params[:controller] == 'users' then %>
-                <a href="/home/index" id="home" data-icon="custom" class="ui-btn-active">
-                   Home
-                </a>
-              <% else %>
-                <a href="/home/index" id="home" data-icon="custom">
-                   Home
-                </a>
-              <% end %>
-           </li>
-           <li>
-              <% if params[:controller] == 'gardens' then %>
-                <a href="/gardens" id="garden" data-icon="custom" class="ui-btn-active">
-                   Gardens
-                </a>
-              <% else %>
-                <a href="/gardens" id="garden" data-icon="custom">
-                   Gardens
-                </a>
-              <% end %>
-           </li>
-           <li>
-              <% if params[:controller] == 'plants' then %>
-                <a href="/plants" id="plants" data-icon="custom" class="ui-btn-active">
-                   Plants
-                </a>
-              <% else %>
-                <a href="/plants" id="plants" data-icon="custom">
-                   Plants
-                </a>
-              <% end %>
-           </li>
-           <li>
-              <% if params[:controller] == 'weather' then %>
-                <a href="/weather" id="weather" data-icon="custom" class="ui-btn-active">
-                   Weather
-                </a>
-              <% else %>
-                <a href="/weather" id="weather" data-icon="custom">
-                   Weather
-                </a>
-              <% end %>
-           </li>
-           <li>
-              <% if params[:controller] == 'community' then %>
-                <a href="/community" id="community" data-icon="custom" class="ui-btn-active">
-                   Community
-                </a>
-              <% else %>
-                <a href="/community" id="community" data-icon="custom">
-                   Community
-                </a>
-              <% end %>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <%= render '/layouts/footer' %>
 </div>
 
 </div><!-- End of page one -->
 
 <div data-role="page" id="home_two">
 
-	<div data-theme="a" data-role="header">
-      
-      <h1>Guardener</h1>
-      <div id="nav_bar_top">
-        <ul>
-          <li>
-            <a href="#page1" data-theme="" data-icon="">
-              Button
-            </a>
-             -&gt;
-          </li>
-          <li>
-            <a href="#page1" data-theme="" data-icon="">
-              Button
-            </a>
-             -&gt;
-          </li>
-          <li>
-            <a href="#page1" data-theme="" data-icon="">
-              Button
-            </a>
-             -&gt;
-          </li>
-          <li>
-            <a href="#page1" data-theme="" data-icon="">
-              Button
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+	<%= render '/layouts/header' %>
 
 	<div data-role="content" id="login_info">
 		Wowzers
 	</div>
-	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-    <div data-role="navbar" data-iconpos="top">
-       <ul>
-           <li>
-              <% if params[:controller] == 'users' then %>
-                <a href="/home/index" id="home" data-icon="custom" class="ui-btn-active">
-                   Home
-                </a>
-              <% else %>
-                <a href="/home/index" id="home" data-icon="custom">
-                   Home
-                </a>
-              <% end %>
-           </li>
-           <li>
-              <% if params[:controller] == 'gardens' then %>
-                <a href="/gardens" id="garden" data-icon="custom" class="ui-btn-active">
-                   Gardens
-                </a>
-              <% else %>
-                <a href="/gardens" id="garden" data-icon="custom">
-                   Gardens
-                </a>
-              <% end %>
-           </li>
-           <li>
-              <% if params[:controller] == 'plants' then %>
-                <a href="/plants" id="plants" data-icon="custom" class="ui-btn-active">
-                   Plants
-                </a>
-              <% else %>
-                <a href="/plants" id="plants" data-icon="custom">
-                   Plants
-                </a>
-              <% end %>
-           </li>
-           <li>
-              <% if params[:controller] == 'weather' then %>
-                <a href="/weather" id="weather" data-icon="custom" class="ui-btn-active">
-                   Weather
-                </a>
-              <% else %>
-                <a href="/weather" id="weather" data-icon="custom">
-                   Weather
-                </a>
-              <% end %>
-           </li>
-           <li>
-              <% if params[:controller] == 'community' then %>
-                <a href="/community" id="community" data-icon="custom" class="ui-btn-active">
-                   Community
-                </a>
-              <% else %>
-                <a href="/community" id="community" data-icon="custom">
-                   Community
-                </a>
-              <% end %>
-        </li>
-      </ul>
-    </div>
-  </div>
+	<%= render '/layouts/footer' %>
 </div>
 
 <script type="text/javascript">

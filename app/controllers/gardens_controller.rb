@@ -3,6 +3,16 @@ class GardensController < ApplicationController
   # GET /gardens.json
   def index
     #@gardens = Garden.all
+    if params[:def] == nil or params[:def] == "1" then
+      if session[:user][:default_garden_id] != nil then
+      
+        #redirect_to "/gardens/"+session[:user][:default_garden_id].to_s
+        redirect_to gardens_path + "/" + session[:user][:default_garden_id].to_s
+        
+        return
+      end
+    end
+
     @gardens = Garden.where(:user_id => session[:user][:id])
     #debugger
     
@@ -48,6 +58,19 @@ class GardensController < ApplicationController
 
     respond_to do |format|
       if @garden.save
+        if session[:user][:default_garden_id] == nil then
+          @user = User.find(session[:user][:id])
+
+          if @user[:default_garden_id] == nil then
+          #if @user.update_attributes(@user) then
+            @user[:default_garden_id] = @garden[:id]
+            if @user.save(:validate => false) then
+              #do nothing
+            end
+          end
+          session[:user] = @user
+        end
+
         format.html { redirect_to @garden, notice: 'Garden was successfully created.' }
         format.json { render json: @garden, status: :created, location: @garden }
       else

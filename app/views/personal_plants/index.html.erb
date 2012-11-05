@@ -8,8 +8,6 @@
     <th>Name Common</th>
     <th>Name Botanical</th>
     <th>Group Name</th>
-    <th>Last Watered</th>
-    <th>Watering Amount</th>
     <th></th>
     <th></th>
     <th></th>
@@ -22,8 +20,6 @@
     <td><%= personal_plant.plant.name_common %></td>
     <td><%= personal_plant.plant.name_botanical %></td>
     <td>none</td>
-    <td><%= @waterings[0].watering_time %></td>
-    <td><%= @waterings[0].watering_amount %></td>
     <td><%= link_to 'Show', personal_plant %></td>
     <td><%= link_to 'Edit', edit_personal_plant_path(personal_plant) %></td>
     <td><%= link_to 'Destroy', personal_plant, confirm: 'Are you sure?', method: :delete %></td>

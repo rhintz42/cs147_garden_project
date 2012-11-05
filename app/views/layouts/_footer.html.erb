@@ -2,23 +2,12 @@
   <div data-role="navbar" data-iconpos="top">
      <ul>
          <li>
-            <% if params[:controller] == 'users' then %>
-              <a href="/home/index" id="home" data-icon="custom" data-ajax="false" class="ui-btn-active">
-                 Home
-              </a>
-            <% else %>
-              <a href="/home/index" id="home" data-icon="custom" data-ajax="false" >
-                 Home
-              </a>
-            <% end %>
-         </li>
-         <li>
             <% if params[:controller] == 'gardens' then %>
-              <a href="/gardens" id="garden" data-icon="custom" data-ajax="false" class="ui-btn-active">
+              <a href="/gardens?def=1" id="garden" data-icon="custom" data-ajax="false" class="ui-btn-active">
                  Gardens
               </a>
             <% else %>
-              <a href="/gardens" id="garden" data-icon="custom" data-ajax="false" >
+              <a href="/gardens?def=true" id="garden" data-icon="custom" data-ajax="false" >
                  Gardens
               </a>
             <% end %>
@@ -36,18 +25,30 @@
               </a>
             <% end %>
          </li>
-         <li>
-            <% if params[:controller] == 'weather' then %>
-              <a href="/weather" id="weather" data-icon="custom" data-ajax="false" class="ui-btn-active">
-                 Weather
+    </ul>
+  </div>
+</div>
+
+
+
+
+<!-- the following has been taken out, and may be added back in later -->
+<% if false then %>
+          <li>
+            <% if params[:controller] == 'users' then %>
+              <a href="/home/index" id="home" data-icon="custom" data-ajax="false" class="ui-btn-active">
+                 Home
               </a>
             <% else %>
-              <a href="/weather" id="weather" data-icon="custom" data-ajax="false" >
-                 Weather
+              <a href="/home/index" id="home" data-icon="custom" data-ajax="false" >
+                 Home
               </a>
             <% end %>
-         </li>
-         <li>
+          </li>
+
+
+  <!-- Community will be added once we get a hold of doing all the watering and such -->
+          <li>
             <% if params[:controller] == 'community' then %>
               <a href="/community" id="community" data-icon="custom" data-ajax="false" class="ui-btn-active">
                  Community
@@ -57,7 +58,19 @@
                  Community
               </a>
             <% end %>
-      </li>
-    </ul>
-  </div>
-</div>
+          </li>
+
+
+  <!-- Weather is taken out for now to see how the app looks without it in the footer and just accessed from gardens -->
+           <li>
+            <% if params[:controller] == 'weather' then %>
+              <a href="/weather" id="weather" data-icon="custom" data-ajax="false" class="ui-btn-active">
+                 Weather
+              </a>
+            <% else %>
+              <a href="/weather" id="weather" data-icon="custom" data-ajax="false" >
+                 Weather
+              </a>
+            <% end %>
+          </li>
+<% end %>

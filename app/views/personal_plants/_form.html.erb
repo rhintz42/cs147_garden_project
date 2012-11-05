@@ -1,22 +1,18 @@
 
-      <script>
-        var plants = JSON.parse('<%=raw @plants.to_json %>');
+<script>
+  var plants = JSON.parse('<%=raw @plants.to_json %>');
 
-      </script>
+</script>
 
 <div data-role="page" id="one">
 
-  <div data-role="header">
-    <h1>Multi-Page</h1>
-  </div><!-- /header -->
-
-
-
-
+  <%= render 'layouts/header' %>
 
   <% if not @plant_id then %> <!-- this is hit if no plant has been chosen -->
 
-
+  <div>
+    Please choose which type of plant you are adding to your garden
+  </div>
 
 
   <div class="field">

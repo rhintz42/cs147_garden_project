@@ -13,15 +13,31 @@
  *= require ui-lightness/jquery-ui-1.8.23.custom.css
 */
 
+.header_third {
+  width: 33%;
+  height: 10px;
+  float: left;
+  text-align: center;
+}
+
+.header_third_center{
+  margin-top: 10px;
+}
+
+.header_third_right{
+  margin-top: -8px;
+}
+
 #nav_bar_top {
-  list-style-type: none
+  list-style-type: none;
+  height: 30px;
 }
 
 #nav_bar_top ul li {
   display: inline;
 }
 
-//a:link {text-decoration:none;}
+a:link {text-decoration:none;}
 
 .container-header-center {
   text-align: center;

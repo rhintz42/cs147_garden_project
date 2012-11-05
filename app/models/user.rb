@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :personal_plants
   has_many :user_comments, :dependent => :destroy
   has_many :user_messages, :dependent => :destroy
+  has_many :gardens, :dependent => :destroy
   accepts_nested_attributes_for :user_comments, :user_messages
 
   attr_accessible :address_latitude,
@@ -11,6 +12,7 @@ class User < ActiveRecord::Base
                   :address_state,
                   :address_zipcode,
                   :authorization,
+                  :default_garden_id,
                   :email,
                   :email_confirmation,
                   :gender,

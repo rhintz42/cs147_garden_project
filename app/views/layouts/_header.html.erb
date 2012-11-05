@@ -1,6 +1,35 @@
 <div data-theme="a" data-role="header">
-  
-  <h1>Guardener</h1>
+  <div id="nav_bar_top">
+    <ul>
+      <li>
+        <div class="header_third">
+          <% if @back != nil %>
+            Back
+          <% end %>
+        </div>
+      </li>
+      <li>
+        <div class="header_third header_third_center">
+          Guardener
+        </div>
+      </li>
+      <li>
+        <div class="header_third header_third_right">
+          <a href="/users/<%= session[:user][:id] %>" id="home" data-role="button" data-icon="custom" data-ajax="false">
+            User Account
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+<!-- this was the button navigation system -->
+<% if false then %>
+
   <div id="nav_bar_top">
     <ul>
       <li>
@@ -28,4 +57,6 @@
       </li>
     </ul>
   </div>
-</div>
+
+
+<% end %>

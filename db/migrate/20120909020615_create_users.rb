@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string  :address_state
       t.integer :address_zipcode
       t.integer :authorization
+			t.integer :default_garden_id
       t.string  :email
       t.boolean :gender
       t.float   :last_login
@@ -19,7 +20,6 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :salt
       t.string  :time_zone
       t.string  :username
-			t.integer :defaultGardenId
 
       t.timestamps
     end
