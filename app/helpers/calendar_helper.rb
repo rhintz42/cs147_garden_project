@@ -24,13 +24,14 @@ module CalendarHelper
     def week_rows
       weeks.map do |week|
         content_tag :tr do
-          week.map { |day| day_cell(day) }.join.html_safe
+          week.map {|day| day_cell(day) }.join.html_safe
         end
       end.join.html_safe
     end
 
     def day_cell(day)
-      content_tag :td, view.capture(day, &callback), class: day_classes(day)
+      #content_tag :td, :a, hello, class: day_classes(day)#view.capture(day, &callback), class: day_classes(day)
+      '<td><a class="fill-div" href="/gardens">Hello</a></td>'
     end
 
     def day_classes(day)
