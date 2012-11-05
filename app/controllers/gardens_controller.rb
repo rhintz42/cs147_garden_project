@@ -1,4 +1,7 @@
 class GardensController < ApplicationController
+
+  include MyModule
+  
   # GET /gardens
   # GET /gardens.json
   def index

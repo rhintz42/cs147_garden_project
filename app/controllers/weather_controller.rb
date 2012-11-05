@@ -1,5 +1,7 @@
 class WeatherController < ApplicationController
 
+	include MyModule
+
 	def index
 		
  		@gardens = Garden.where(:user_id => session[:user][:id])
