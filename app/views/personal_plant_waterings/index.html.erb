@@ -1,6 +1,16 @@
 <%= render 'layouts/header' %>
 
-<h1>Listing personal_plant_waterings</h1>
+<h1>Listing Personal Plant Waterings</h1>
+
+
+<div data-role="content">
+    <a data-role="button" data-ajax="false" href="/personal_plant_waterings/new?pp=<%= @personal_plant_waterings[0].personal_plant[:id] %>">
+        Add Watering for plant
+    </a>
+    <a data-role="button" data-ajax="false" href="/personal_plants/<%= @personal_plant_waterings[0].personal_plant[:id] %>">
+        Back to Personal Plant
+    </a>
+</div>
 
 <table>
   <tr>
@@ -25,7 +35,5 @@
 </table>
 
 <br />
-
-<%= link_to 'New Personal plant watering', new_personal_plant_watering_path %>
 
 <%= render 'layouts/footer' %>

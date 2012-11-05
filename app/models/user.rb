@@ -85,9 +85,24 @@ class User < ActiveRecord::Base
 
     return false
   end
+
+  def username_exists?
+    if (User.where(:username => self[:username])).length > 0 then
+      #self.errors.append "Username already Exists"
+      return true
+    end
+    return false
+  end
+
+  def validate!
+    debugger
+    errors.add(:username, "already exists") if self.username_exists?
+  end
 #--------------------------------------------------------------
 #--------------------------------------------------------------  
   validates :username, :presence => true
+
+  validates :validate!, :presence => true
   
   validates :password, :presence => true, :confirmation => true
   validates :password_confirmation, :presence => true

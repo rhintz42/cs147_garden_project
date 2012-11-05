@@ -1,3 +1,7 @@
+
+
+<%= render 'layouts/header' %>
+<% if false then %>
 <p>
 	How would you like to view your plants by?
 </p>
@@ -10,11 +14,17 @@
 </div>
 <!--<div id="result"></div>
 -->
-<script>
+
+<script type="text/javascript">
+<![CDATA[
 	var personal_plants = JSON.parse('<%=raw @personal_plants.to_json %>');
 	var plants = JSON.parse('<%=raw @plants_hash.to_json %>');
+]]>
 </script>
 
+<% end %>
+
+<!--
 <div class="clear_both"></div>
 
 <div id="calendar_view_by_group">
@@ -26,13 +36,13 @@
 		Group Name:
 	</p>
 
-	<ol id="plant_selectable">
+	<ol id="plant_selectable"> -->
     <!--
 		Contains all the listings for plants
-		-->
+		--><!--
 	</ol>
 </div>
-
+-->
 <h1>Plant Calendar</h1>
 
 <div id="plant_watering">
@@ -47,3 +57,5 @@
 		<% end %>
 	<% end %>
 </div>
+
+<%= render 'layouts/footer' %>

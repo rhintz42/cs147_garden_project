@@ -2,9 +2,15 @@
   <div id="nav_bar_top">
     <ul>
       <li>
-        <div class="header_third">
-          <% if @back != nil %>
-            Back
+        <div class="header_third header_third_right">
+          <% if @no_back == nil then %>
+            <% if @back_url != nil then %>
+              <a data-role="button" href="<%= @back_url %>" data-ajax="false">
+            <% else %>
+              <a data-role="button" href="<%= request.referrer %>" data-ajax="false">
+            <% end %>
+              Back
+            </a>
           <% end %>
         </div>
       </li>

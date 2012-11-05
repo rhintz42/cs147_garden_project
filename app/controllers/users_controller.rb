@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   # GET /users/login.json
   def login
     if session[:user] != nil then
-      logged_in_home_page = users_path + '/' +  session[:user][:id].to_s
+      logged_in_home_page = home_index_path
       respond_to do |format|
         format.html { redirect_to logged_in_home_page}
         format.json { head :no_content }
@@ -121,7 +121,15 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-    
+    #debugger
+
+    #errors = @user.username_valid?
+    #if errors then
+    #  @user.errors << {:username => errors}
+    #end
+    if @user.username_exists? then
+      @user.errors.add(:username, "Username Exists")
+    end
     respond_to do |format|
       if @user.save
         session[:user] = @user

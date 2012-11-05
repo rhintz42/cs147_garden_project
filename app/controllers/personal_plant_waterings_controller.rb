@@ -6,7 +6,7 @@ class PersonalPlantWateringsController < ApplicationController
     if not check_logged_in then
       return
     end
-
+    
     @personal_plant_waterings = PersonalPlantWatering.all
 
     respond_to do |format|
@@ -18,8 +18,14 @@ class PersonalPlantWateringsController < ApplicationController
   # GET /personal_plant_waterings/1
   # GET /personal_plant_waterings/1.json
   def show
-    #debugger
+    debugger
     @personal_plant_watering = PersonalPlantWatering.find(params[:id])
+
+    #respond_to do |format|
+    #  redirect_to personal_plants_path + "/" + @personal_plant_watering[:personal_plant_id].to_s
+    #redirect_to controller: "personal_plants", action: "index"
+    #  return
+    #end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -48,18 +54,19 @@ class PersonalPlantWateringsController < ApplicationController
   # POST /personal_plant_waterings
   # POST /personal_plant_waterings.json
   def create
-    #debugger
+
     @personal_plant_watering = PersonalPlantWatering.new(params[:personal_plant_watering])
     @personal_plant_watering[:watering_time] = Time.strptime(params[:watering_time], "%m/%d/%Y").to_f
-    
+    @personal_plant_watering[:watering_amount] = params[:watering_amount]
+
     #a = Time.strptime("2012-09-14", "%Y-%m-%d").to_f
     #b = Time.strptime("09/14/2012", "%m/%d/%Y").to_f
     #c = Time.strptime("09/14/2012", "%m/%d/%Y").to_f
 
     respond_to do |format|
       if @personal_plant_watering.save
-        format.html { redirect_to @personal_plant_watering, notice: 'Personal plant watering was successfully created.' }
-        format.json { render json: @personal_plant_watering, status: :created, location: @personal_plant_watering }
+        format.html { redirect_to personal_plant_waterings_path, notice: 'Personal plant watering was successfully created.' }
+        format.json { render json: personal_plant_waterings_path, status: :created, location: @personal_plant_watering }
       else
         format.html { render action: "new" }
         format.json { render json: @personal_plant_watering.errors, status: :unprocessable_entity }
