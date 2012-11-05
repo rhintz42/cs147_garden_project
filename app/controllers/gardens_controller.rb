@@ -2,6 +2,9 @@ class GardensController < ApplicationController
   # GET /gardens
   # GET /gardens.json
   def index
+    if not check_logged_in then
+      return
+    end
     #@gardens = Garden.all
     if params[:def] == nil or params[:def] == "1" then
       if session[:user][:default_garden_id] != nil then
@@ -25,6 +28,9 @@ class GardensController < ApplicationController
   # GET /gardens/1
   # GET /gardens/1.json
   def show
+    if not check_logged_in then
+      return
+    end
     @garden = Garden.find(params[:id])
     @plants_in_garden = PersonalPlant.where(:garden_id => @garden[:id] )
 
@@ -37,6 +43,9 @@ class GardensController < ApplicationController
   # GET /gardens/new
   # GET /gardens/new.json
   def new
+    if not check_logged_in then
+      return
+    end
     @garden = Garden.new
 
     respond_to do |format|
@@ -47,12 +56,18 @@ class GardensController < ApplicationController
 
   # GET /gardens/1/edit
   def edit
+    if not check_logged_in then
+      return
+    end
     @garden = Garden.find(params[:id])
   end
 
   # POST /gardens
   # POST /gardens.json
   def create
+    if not check_logged_in then
+      return
+    end
     @garden = Garden.new(params[:garden])
     @garden[:user_id] = session[:user][:id]
 
@@ -83,6 +98,9 @@ class GardensController < ApplicationController
   # PUT /gardens/1
   # PUT /gardens/1.json
   def update
+    if not check_logged_in then
+      return
+    end
     @garden = Garden.find(params[:id])
 
     respond_to do |format|
@@ -99,6 +117,9 @@ class GardensController < ApplicationController
   # DELETE /gardens/1
   # DELETE /gardens/1.json
   def destroy
+    if not check_logged_in then
+      return
+    end
     @garden = Garden.find(params[:id])
     @garden.destroy
 
