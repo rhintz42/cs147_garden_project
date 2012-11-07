@@ -160,7 +160,6 @@ ActiveRecord::Schema.define(:version => 20121106070516) do
     t.string   "address_state"
     t.integer  "address_zipcode"
     t.integer  "authorization"
-    t.integer  "default_garden_id"
     t.string   "email"
     t.boolean  "gender"
     t.float    "last_login"

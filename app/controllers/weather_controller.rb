@@ -3,18 +3,12 @@ class WeatherController < ApplicationController
 	include MyModule
 
 	def index
-		
- 		@gardens = Garden.where(:user_id => session[:user][:id])
-		@garden = @gardens[0]
-		@formattedLocation = @garden[:city] + " " + @garden[:state]
-
-		@queryURL = getQuery(@formattedLocation.gsub(/\s/, "+"))
+		lat = 39.0000
+		lon = -77.0000
+		date = ""
+		@weatherData = Weather.new(lat, lon, date).testData
 	end
 
-	def getQuery(location)
-		@query = "http://free.worldweatheronline.com/feed/weather.ashx?q=" + location + "&format=json&num_of_days=5&key=9ae687bfc7235922120311&callback=renderWeather"
-		return @query
-	end
 
 	def show
 
