@@ -1,0 +1,66 @@
+<%= form_for(@garden_watering) do |f| %>
+  <% if @garden_watering.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@garden_watering.errors.count, "error") %> prohibited this garden_watering from being saved:</h2>
+
+      <ul>
+      <% @garden_watering.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :watering_amount %><br />
+    <%= f.text_field :watering_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :watering_time %><br />
+    <%= f.text_field :watering_time %>
+  </div>
+  <div class="field">
+    <%= f.label :garden %><br />
+    <%= f.text_field :garden %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= form_for(@garden_watering) do |f| %>
+  <% if @garden_watering.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@garden_watering.errors.count, "error") %> prohibited this personal_plant_watering from being saved:</h2>
+
+      <ul>
+      <% @garden_watering.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div data-role="fieldcontain">
+    <label for="watering_time">Date you Watered your plant</label>
+    <input name="watering_time" id="watering_time" type="text" data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' />
+  </div>
+
+  <div data-role="fieldcontain">
+    <fieldset data-role="controlgroup">
+      <label for="watering_amount">
+        Watering Percentage
+      </label>
+      <input name="watering_amount" value="100" min="0" max="100" data-highlight="true" type="range">
+    </fieldset>
+  </div>
+
+  
+  <div class="field">
+    <%= f.hidden_field :personal_plant_id, { :value => @personal_plant[:id] } %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

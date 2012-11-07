@@ -94,15 +94,14 @@ class User < ActiveRecord::Base
     return false
   end
 
-  def validate!
-    debugger
-    errors.add(:username, "already exists") if self.username_exists?
-  end
+  #def validate!
+  #  errors.add(:username, "already exists") if self.username_exists?
+  #end
 #--------------------------------------------------------------
 #--------------------------------------------------------------  
   validates :username, :presence => true
 
-  validates :validate!, :presence => true
+  #validates :validate!, :presence => true
   
   validates :password, :presence => true, :confirmation => true
   validates :password_confirmation, :presence => true

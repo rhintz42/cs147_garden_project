@@ -1,8 +1,13 @@
 GardenCookbook::Application.routes.draw do
 
+  resources :garden_waterings
+
   resources :gardens
 
   resources :personal_plant_waterings
+  
+  #get 'personal_plant_waterings', :to => 'gardens#index', :as => :personal_plant_watering_root
+  #match 'personal_plant_watering_root' => redirect("/gardens")
 
   resources :personal_plants do
     collection do
@@ -16,6 +21,8 @@ GardenCookbook::Application.routes.draw do
       get 'logout'
     end
   end
+  
+  #match "/personal_plant_waterings/:id" => redirect("/gardens")
   
 
   resources :plants
@@ -33,7 +40,17 @@ GardenCookbook::Application.routes.draw do
   match "/community" => "community#index"
   match "/weather" => "weather#index"
   match 'users/login', :controller => 'users', :action => 'login_post', :via => "post"
-  
+  #match "/personal_plant_waterings" => redirect("/gardens")
+  #match "/personal_plant_waterings" => "gardens#index"
+  #match "personal_plant_waterings#index" => "gardens#index", :via => "get"
+  #match "personal_plant_waterings#index" => "gardens#index", :via => "post"
+  #match "personal_plant_watering_root" => redirect("/gardens")
+  #match "/ob1" => redirect("/gardens")
+  #devise_for :personal_plant_waterings do
+  #end
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

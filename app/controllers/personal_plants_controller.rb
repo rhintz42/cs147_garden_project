@@ -23,9 +23,30 @@ class PersonalPlantsController < ApplicationController
     if not check_logged_in then
       return
     end
+
+
+
+
     @personal_plant = PersonalPlant.find(params[:id])
     @personal_plant_waterings = PersonalPlantWatering.where(:personal_plant_id => @personal_plant[:id])
     
+
+    @personal_plant_waterings_by_date = {}
+    #@personal_plant_waterings_by_date[Time.now().to_date - 2] = [PersonalPlant.new] 
+    
+    waterings_for_date = @personal_plant_waterings
+    
+    waterings_for_date.each do |watering|
+      date = Time.at(watering[:watering_time]).to_date
+
+      if @personal_plant_waterings_by_date[date] then
+        @personal_plant_waterings_by_date[date] << @personal_plant
+      else
+        @personal_plant_waterings_by_date[date] = [@personal_plant]
+      end
+    end
+
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @personal_plant }

@@ -1,48 +1,7 @@
 
 
 <%= render 'layouts/header' %>
-<% if false then %>
-<p>
-	How would you like to view your plants by?
-</p>
-<div class="field">
-  <ol id="calendar_view_selectable">
-    <li class="ui-state-default" id="view_all_plants">View All Plants</li>
-    <li class="ui-state-default" id="view_by_group">View By Group</li>
-    <li class="ui-state-default" id="view_by_plant">View By Plant</li>
-  </ol>
-</div>
-<!--<div id="result"></div>
--->
 
-<script type="text/javascript">
-<![CDATA[
-	var personal_plants = JSON.parse('<%=raw @personal_plants.to_json %>');
-	var plants = JSON.parse('<%=raw @plants_hash.to_json %>');
-]]>
-</script>
-
-<% end %>
-
-<!--
-<div class="clear_both"></div>
-
-<div id="calendar_view_by_group">
-
-</div>
-
-<div id="calendar_view_by_plant">
-	<p>
-		Group Name:
-	</p>
-
-	<ol id="plant_selectable"> -->
-    <!--
-		Contains all the listings for plants
-		--><!--
-	</ol>
-</div>
--->
 <h1>Plant Calendar</h1>
 
 <div id="plant_watering">

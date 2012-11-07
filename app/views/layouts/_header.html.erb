@@ -3,7 +3,7 @@
     <ul>
       <li>
         <div class="header_third header_third_right">
-          <% if @no_back == nil then %>
+          <% if session[:no_back] == nil then %>
             <% if @back_url != nil then %>
               <a data-role="button" href="<%= @back_url %>" data-ajax="false">
             <% else %>
@@ -11,6 +11,8 @@
             <% end %>
               Back
             </a>
+          <% else %>
+            <% session[:no_back] = nil %>
           <% end %>
         </div>
       </li>

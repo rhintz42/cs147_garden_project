@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> 
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    
     <script type="text/javascript" src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
 
     <!-- Optional Mousewheel support: http://brandonaaron.net/code/mousewheel/docs -->
@@ -34,8 +35,14 @@
     <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
 
 
+
   </head>
   <body>
     <%= yield %>
   </body>
 </html>
+
+
+<% if false then %>
+<div data-role="page" data-url="<%= request.path %>">
+<% end %>

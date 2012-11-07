@@ -3,6 +3,7 @@
 <h1>Listing Personal Plant Waterings</h1>
 
 
+<% if false then %>
 <div data-role="content">
     <a data-role="button" data-ajax="false" href="/personal_plant_waterings/new?pp=<%= @personal_plant_waterings[0].personal_plant[:id] %>">
         Add Watering for plant
@@ -35,5 +36,6 @@
 </table>
 
 <br />
+<% end %>
 
 <%= render 'layouts/footer' %>

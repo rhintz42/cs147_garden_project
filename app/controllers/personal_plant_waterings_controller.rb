@@ -20,7 +20,7 @@ class PersonalPlantWateringsController < ApplicationController
   # GET /personal_plant_waterings/1
   # GET /personal_plant_waterings/1.json
   def show
-    debugger
+    #debugger
     @personal_plant_watering = PersonalPlantWatering.find(params[:id])
 
     #respond_to do |format|
@@ -65,15 +65,24 @@ class PersonalPlantWateringsController < ApplicationController
     #b = Time.strptime("09/14/2012", "%m/%d/%Y").to_f
     #c = Time.strptime("09/14/2012", "%m/%d/%Y").to_f
 
-    respond_to do |format|
-      if @personal_plant_watering.save
-        format.html { redirect_to personal_plant_waterings_path+"?pp="+@personal_plant_watering[:personal_plant_id].to_s, notice: 'Personal plant watering was successfully created.' }
-        format.json { render json: personal_plant_waterings_path, status: :created, location: @personal_plant_watering }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @personal_plant_watering.errors, status: :unprocessable_entity }
-      end
+    if @personal_plant_watering.save
+      redirect_to "/personal_plants/"+@personal_plant_watering.personal_plant[:id].to_s+"#plant_info_two"
     end
+
+#    respond_to do |format|
+#      if @personal_plant_watering.save
+
+#        #format.html { redirect_to @personal_plant_watering.personal_plant
+#        format.html { redirect_to "/personal_plants/"+@personal_plant_watering.personal_plant[:id].to_s+"#plant_info_two" }#, notice: 'Personal plant watering was successfully created.' }
+#        format.json { render json: @personal_plant_watering.personal_plant, status: :created, location: @personal_plant_watering }
+
+#        #format.html { redirect_to @personal_plant_watering, notice: 'Personal plant watering was successfully created.' }
+#        #format.json { render json: @personal_plant_watering, status: :created, location: @personal_plant_watering }
+#      else
+#        format.html { render action: "new" }
+#        format.json { render json: @personal_plant_watering.errors, status: :unprocessable_entity }
+#      end
+#    end
   end
 
   # PUT /personal_plant_waterings/1

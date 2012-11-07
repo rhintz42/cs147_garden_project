@@ -76,6 +76,7 @@ class UsersController < ApplicationController
 
       if session[:previous_page] then
         respond_to do |format| 
+          session[:no_back] = true
           format.html { redirect_to session[:previous_page] }
           format.json { head :no_content }
         end
@@ -86,7 +87,7 @@ class UsersController < ApplicationController
       
       logged_in_home_page = users_path + '/' +  session[:user][:id].to_s
       respond_to do |format|
-        format.html { redirect_to logged_in_home_page}
+        format.html { redirect_to gardens_path}
         format.json { head :no_content }
       end
       return
@@ -121,21 +122,17 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-    #debugger
-
-    #errors = @user.username_valid?
-    #if errors then
-    #  @user.errors << {:username => errors}
-    #end
+    
     if @user.username_exists? then
       @user.errors.add(:username, "Username Exists")
     end
     respond_to do |format|
       if @user.save
         session[:user] = @user
+        session[:no_back] = true
 
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
+        format.html { redirect_to gardens_path, notice: 'User was successfully created.' }
+        format.json { render json: gardens_path, status: :created, location: @user }
       else
         format.html { render action: "new" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
