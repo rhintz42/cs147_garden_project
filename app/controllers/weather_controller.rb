@@ -7,7 +7,7 @@ class WeatherController < ApplicationController
 		lon = -77.0000
 		date = ""
 		@weatherData = Weather.new(lat, lon, date).testData
-	end
+  end
 
 
 	def show
