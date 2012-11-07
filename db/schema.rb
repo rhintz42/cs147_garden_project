@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121106070516) do
+ActiveRecord::Schema.define(:version => 20121106233729) do
 
   create_table "garden_waterings", :force => true do |t|
     t.float    "watering_amount"
@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(:version => 20121106070516) do
     t.string   "address_state"
     t.integer  "address_zipcode"
     t.integer  "authorization"
+    t.integer  "default_garden_id"
     t.string   "email"
     t.boolean  "gender"
     t.float    "last_login"
@@ -173,6 +174,11 @@ ActiveRecord::Schema.define(:version => 20121106070516) do
     t.string   "username"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+  end
+
+  create_table "weathers", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
