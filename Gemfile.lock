@@ -67,6 +67,7 @@ GEM
     factory_girl (4.0.0)
       activesupport (>= 3.0.0)
     ffi (1.1.5)
+    geocoder (1.1.4)
     gyoku (0.4.6)
       builder (>= 2.1.2)
     haml (3.1.7)
@@ -192,6 +193,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   debugger
   factory_girl
+  geocoder
   haml
   jquery-rails
   jquery-ui-rails

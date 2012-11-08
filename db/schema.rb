@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(:version => 20121106233729) do
   create_table "gardens", :force => true do |t|
     t.string   "name"
     t.string   "city"
-    t.boolean  "is_outside"
     t.string   "state"
     t.float    "latitude"
     t.float    "longitude"
@@ -160,7 +159,6 @@ ActiveRecord::Schema.define(:version => 20121106233729) do
     t.string   "address_state"
     t.integer  "address_zipcode"
     t.integer  "authorization"
-    t.integer  "default_garden_id"
     t.string   "email"
     t.boolean  "gender"
     t.float    "last_login"

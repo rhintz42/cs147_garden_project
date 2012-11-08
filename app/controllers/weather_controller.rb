@@ -3,12 +3,12 @@ class WeatherController < ApplicationController
 	include MyModule
 
 	def index
-		lat = 39.0000
-		lon = -77.0000
-		date = ""
-		@weatherData = Weather.new(lat, lon, date).testData
-  end
 
+#		gardens = Garden.where(:id => params[:garden])
+		garden = Garden.find(params[:garden])
+		loc = garden.location
+		@weatherData = Weather.new(loc).testData
+	end
 
 	def show
 
