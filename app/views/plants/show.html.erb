@@ -1,11 +1,10 @@
+<% @page_title = @plant.name_common %>
+
 <div data-role="page" id="plant_info_one">
   
   <%= render '/layouts/header' %>
 
-  <div class="plant_title">
-    <h1><%= @plant.name_common %></h1>
-  </div>
-  <div data-role="navbar" data-iconpos="top">
+  <div data-role="navbar" data-iconpos="left">
     <ul>
       <li>
         <a href="#plant_info_one" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
@@ -45,10 +44,7 @@
 
   <%= render '/layouts/header' %>
 
-  <div class="plant_title">
-    <h1><%= @plant.name_common %></h1>
-  </div>
-  <div data-role="navbar" data-iconpos="top">
+  <div data-role="navbar" data-iconpos="left">
     <ul>
       <li>
         <a href="#plant_info_one" data-theme="" data-icon="">

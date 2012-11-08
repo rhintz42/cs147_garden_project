@@ -1,27 +1,10 @@
-
+<% @page_title = @personal_plant.name_personalized %>
 <div data-role="page" id="plant_info_one">
   <%= render '/layouts/header' %>
 
-  <div class="plant_title">
-    <h1><%= @personal_plant.name_personalized %></h1>
-    <div data-role="navbar">
-      <ul>
-        <li>
-          <a data-role="button" data-ajax="false" href="/gardens/<%= @personal_plant[:garden_id] %>">
-            Plant's Garden
-          </a>
-        </li>
-        <li>
-          <a data-role="button" data-theme="e" data-ajax="false" href="/personal_plant_waterings/new?pp=<%= @personal_plant[:id] %>">
-            Water Plant
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
   <p id="notice"><%= notice %></p>
 
-  <div data-role="navbar" data-iconpos="top">
+  <div data-role="navbar" data-iconpos="left">
     <ul>
     	<li>
         <a href="/personal_plants/<%= @personal_plant[:id] %>#plant_info_one" data-ajax="false" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
@@ -38,6 +21,11 @@
           Caring
         </a>
       </li>
+      <li>
+          <a data-role="button" data-theme="e" data-ajax="false" href="/personal_plant_waterings/new?pp=<%= @personal_plant[:id] %>">
+            Water Plant
+          </a>
+        </li>
     </ul>
   </div>
 
@@ -85,24 +73,7 @@
 
 <div data-role="page" id="plant_info_two">
   <%= render '/layouts/header' %>
-  <div class="plant_title">
-    <h1><%= @personal_plant.name_personalized %></h1>
-    <div data-role="navbar">
-      <ul>
-        <li>
-          <a data-role="button" data-ajax="false" href="/gardens/<%= @personal_plant[:garden_id] %>">
-            Plant's Garden
-          </a>
-        </li>
-        <li>
-          <a data-role="button" data-theme="e" data-ajax="false" href="/personal_plant_waterings/new?pp=<%= @personal_plant[:id] %>">
-            Water Plant
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div data-role="navbar" data-iconpos="top">
+  <div data-role="navbar" data-iconpos="left">
     <ul>
     	<li>
         <a href="/personal_plants/<%= @personal_plant[:id] %>#plant_info_one" data-ajax="false" data-theme="" data-icon="">
@@ -119,6 +90,11 @@
           Caring
         </a>
       </li>
+      <li>
+          <a data-role="button" data-theme="e" data-ajax="false" href="/personal_plant_waterings/new?pp=<%= @personal_plant[:id] %>">
+            Water Plant
+          </a>
+        </li>
     </ul>
   </div>
 
@@ -159,24 +135,7 @@
 
 <div data-role="page" id="plant_info_three">
   <%= render '/layouts/header' %>
-  <div class="plant_title">
-    <h1><%= @personal_plant.name_personalized %></h1>
-    <div data-role="navbar">
-      <ul>
-        <li>
-          <a data-role="button" data-ajax="false" href="/gardens/<%= @personal_plant[:garden_id] %>">
-            Plant's Garden
-          </a>
-        </li>
-        <li>
-          <a data-role="button" data-theme="e" data-ajax="false" href="/personal_plant_waterings/new?pp=<%= @personal_plant[:id] %>">
-            Water Plant
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div data-role="navbar" data-iconpos="top">
+  <div data-role="navbar" data-iconpos="left">
     <ul>
       <li>
         <a href="/personal_plants/<%= @personal_plant[:id] %>#plant_info_one" data-theme="" data-icon="">
@@ -193,6 +152,11 @@
           Caring
         </a>
       </li>
+      <li>
+          <a data-role="button" data-theme="e" data-ajax="false" href="/personal_plant_waterings/new?pp=<%= @personal_plant[:id] %>">
+            Water Plant
+          </a>
+        </li>
     </ul>
   </div>
 

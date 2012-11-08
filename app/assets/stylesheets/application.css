@@ -13,6 +13,21 @@
  *= require ui-lightness/jquery-ui-1.8.23.custom.css
 */
 
+body {
+  	background: url(plantback.png);
+}
+
+body.ui-mobile-viewport.ui-overlay-c {
+	background: url(plantback.png);
+}
+
+.ui-page.ui-body-c.ui-page-footer-fixed.ui-page-active {
+    background: transparent;
+}
+.ui-content{
+    background: transparent;
+}
+
 .nav-bot {
   height: 200px;
 }

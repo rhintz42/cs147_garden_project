@@ -1,16 +1,7 @@
-
+<% @page_title= @garden.name %>
 <%= render "/layouts/header" %>
 
 <p id="notice"><%= notice %></p>
-
-<a data-role="button" href="/gardens?def=0" data-theme="a" data-ajax="false" >
-   Your Gardens
-</a>
-
-<p>
-  <b>Name:</b>
-  <%= @garden.name %>
-</p>
 
 <div data-role="content">
   <div id="iphone_container">

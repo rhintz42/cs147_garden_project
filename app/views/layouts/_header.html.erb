@@ -1,4 +1,17 @@
 <div data-theme="a" data-role="header">
+	<a data-role="button" data-rel="back" href="#" data-icon="back" data-ajax="false">
+		Back
+	</a>
+	<h1><%= @page_title %></h1>
+	<a href="/users/<%= session[:user][:id] %>" id="home" data-role="button" data-icon="custom" data-ajax="false">
+        Account
+    </a>	
+</div>
+
+
+
+<% if false then %>
+<div>
   <div id="nav_bar_top">
     <ul>
       <li>
@@ -32,7 +45,7 @@
   </div>
 </div>
 
-
+<% end %>
 
 
 <!-- this was the button navigation system -->
