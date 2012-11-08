@@ -7,11 +7,54 @@
   		<b>Welcome Back, <%= @user.name_first.capitalize %>!</b>
 		</p>
 	</div>
+  <div class="basic_info">
+    <p>
+      First Name: <%= @user.name_first %>
+    </p>
+    <p>
+      Last Name: <%= @user.name_last %>
+    </p>
+    <p>
+      Email: <%= @user.email %>
+    </p>
+  </div>
+  <%= render '/layouts/footer' %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if false then %>
+<div data-role="page" id="home_one">
+
+	<%= render '/layouts/header' %>
+
+	<div class="user-home-name">
+		<p>
+  		<b>Welcome Back, <%= @user.name_first.capitalize %>!</b>
+		</p>
+	</div>
 	<div class="ui-block-a">
     <p><a href="#home_two" data-role="button">Next Page</a></p> 
   </div>
   <%= render '/layouts/footer' %>
 </div>
+
+
 
 </div><!-- End of page one -->
 
@@ -28,3 +71,5 @@
 <script type="text/javascript">
 	
 </script>
+
+<% end %>
