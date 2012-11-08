@@ -12,7 +12,6 @@ gem 'jquery-rails'
 gem 'therubyracer'
 gem 'rspec'
 gem 'json'
-gem 'savon'
 gem 'geocoder'
 
 group :assets do
