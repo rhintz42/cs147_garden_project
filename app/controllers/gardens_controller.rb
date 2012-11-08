@@ -9,6 +9,8 @@ class GardensController < ApplicationController
       return
     end
     #@gardens = Garden.all
+    #@garden = @gardens[1]
+    #debugger
     if params[:def] == nil or params[:def] == "1" then
       if session[:user][:default_garden_id] != nil then
       
