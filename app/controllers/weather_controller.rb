@@ -5,8 +5,9 @@ class WeatherController < ApplicationController
 	def index
 		garden = Garden.find(params[:garden])
 		loc = garden.location
-		@weatherData = Weather.new(loc).testData
+		@weather = Weather.new(loc)
 	end
+
 
 	def show
 

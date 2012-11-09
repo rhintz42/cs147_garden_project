@@ -1,12 +1,17 @@
 <% @page_title = "Weather" %>
 <%= render "/layouts/header" %>
-
-This is the weather
-
-<div id="weather-data"><%=@weatherData%></div>
-
+<h2><%=@weather.location%></h2>
+<h3><%=@weather.description%></h3>
 <div id="img-temp-container">
-	<img id="weather-image">
-	<div id="weather-temp"></div>
+	<img id="weather-image" src=<%=@weather.imgURL%>>
+	<div id="weather-temp"><%=@weather.temp%> F</div>
+</div>
+
+<div id="weather-data">
+<table>
+<tr><td>Rain Precipitation: <%=@weather.precipMM%> mm</td></tr>
+<tr><td>Wind Speed: <%=@weather.windSpeed%> mph</td></tr>
+
+</table>
 </div>
 <%= render "/layouts/footer" %>
