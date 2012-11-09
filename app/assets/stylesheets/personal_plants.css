@@ -152,7 +152,7 @@ a.mover 							{ background: #900; padding: 6px 12px; position: absolute;
   Divs in inside the container-center-body
 */
 /*
-#name {
+.name {
   float: left;
   width: 175px;
   height: 100px;
