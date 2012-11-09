@@ -8,7 +8,7 @@
     <ul>
     	<li>
         <a href="/personal_plants/<%= @personal_plant[:id] %>#plant_info_one" data-ajax="false" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
-          Watering
+          Water
         </a>
       </li>
       <li>
@@ -18,14 +18,9 @@
       </li>
       <li>
         <a href="/personal_plants/<%= @personal_plant[:id] %>#plant_info_three" data-ajax="false" data-theme="" data-icon="">
-          Caring
+          Care
         </a>
       </li>
-      <li>
-          <a data-role="button" data-theme="e" data-ajax="false" href="/personal_plant_waterings/new?pp=<%= @personal_plant[:id] %>">
-            Water Plant
-          </a>
-        </li>
     </ul>
   </div>
 
@@ -52,21 +47,23 @@
   <% end %>
 
 
-
-
-
-
   <h1>Plant Calendar</h1>
 
-<div id="plant_watering">
-  <%= calendar do |date| %>
-    <%= date.day %>
+  <div id="plant_watering">
+    <%= calendar do |date| %>
+      <%= date.day %>
     
-    <% if @personal_plant_waterings_by_date[date] then %>
-      <p> Watered </p>
+      <% if @personal_plant_waterings_by_date[date] then %>
+        <p> Watered </p>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+  
+  <div>
+    <a data-role="button" data-theme="e" data-ajax="false" href="/personal_plant_waterings/new?pp=<%= @personal_plant[:id] %>">
+      Water Plant
+    </a>
+  </div>
   
   <%= render '/layouts/footer' %>
 </div>
@@ -77,7 +74,7 @@
     <ul>
     	<li>
         <a href="/personal_plants/<%= @personal_plant[:id] %>#plant_info_one" data-ajax="false" data-theme="" data-icon="">
-          Watering
+          Water
         </a>
       </li>
       <li>
@@ -87,14 +84,9 @@
       </li>
       <li>
         <a href="/personal_plants/<%= @personal_plant[:id] %>#plant_info_three" data-ajax="false" data-theme="" data-icon="">
-          Caring
+          Care
         </a>
       </li>
-      <li>
-          <a data-role="button" data-theme="e" data-ajax="false" href="/personal_plant_waterings/new?pp=<%= @personal_plant[:id] %>">
-            Water Plant
-          </a>
-        </li>
     </ul>
   </div>
 
@@ -139,7 +131,7 @@
     <ul>
       <li>
         <a href="/personal_plants/<%= @personal_plant[:id] %>#plant_info_one" data-theme="" data-icon="">
-          Watering
+          Water
         </a>
       </li>
       <li>
@@ -149,14 +141,9 @@
       </li>
       <li>
         <a href="/personal_plants/<%= @personal_plant[:id] %>#plant_info_three" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
-          Caring
+          Care
         </a>
       </li>
-      <li>
-          <a data-role="button" data-theme="e" data-ajax="false" href="/personal_plant_waterings/new?pp=<%= @personal_plant[:id] %>">
-            Water Plant
-          </a>
-        </li>
     </ul>
   </div>
 
