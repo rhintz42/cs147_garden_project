@@ -14,11 +14,11 @@
 */
 
 body {
-  	background: url(plantback.png);
+  	background: url(wateringcan.png);
 }
 
 body.ui-mobile-viewport.ui-overlay-c {
-	background: url(plantback.png);
+	background: url(wateringcan.png);
 }
 
 .ui-page.ui-body-c.ui-page-footer-fixed.ui-page-active {

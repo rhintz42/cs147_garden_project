@@ -47,11 +47,20 @@
   <% end %>
 
 
+<<<<<<< HEAD
+
+
+
+<div id="plant_watering">
+  <%= calendar do |date| %>
+    <%= date.day %>
+=======
   <h1>Plant Calendar</h1>
 
   <div id="plant_watering">
     <%= calendar do |date| %>
       <%= date.day %>
+>>>>>>> 74f5734ec456c00329408a5a04de666693a2aca5
     
       <% if @personal_plant_waterings_by_date[date] then %>
         <p> Watered </p>
