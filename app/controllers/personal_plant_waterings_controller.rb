@@ -6,6 +6,12 @@ class PersonalPlantWateringsController < ApplicationController
     if not check_logged_in then
       return
     end
+    #debugger
+    if params[:pp] then
+
+      redirect_to "/personal_plants/"+params[:pp]
+      return
+    end
     
     @personal_plant_waterings = PersonalPlantWatering.where(:personal_plant_id => params[:pp])
 
@@ -42,6 +48,13 @@ class PersonalPlantWateringsController < ApplicationController
     
     @personal_plant = PersonalPlant.find(params[:pp])
     
+    if params[:wt] then
+      @has_watering_time = true;
+      @watering_time = params[:wt]
+    else
+      @has_watering_time = false;
+    end
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @personal_plant_watering }
@@ -58,31 +71,32 @@ class PersonalPlantWateringsController < ApplicationController
   def create
 
     @personal_plant_watering = PersonalPlantWatering.new(params[:personal_plant_watering])
-    @personal_plant_watering[:watering_time] = Time.strptime(params[:watering_time], "%m/%d/%Y").to_f
+    @personal_plant_watering[:watering_time] = Time.strptime(params[:watering_time], "%Y-%m-%d").to_f
+#"%m/%d/%Y").to_f
     @personal_plant_watering[:watering_amount] = params[:watering_amount]
 
     #a = Time.strptime("2012-09-14", "%Y-%m-%d").to_f
     #b = Time.strptime("09/14/2012", "%m/%d/%Y").to_f
     #c = Time.strptime("09/14/2012", "%m/%d/%Y").to_f
 
-    if @personal_plant_watering.save
-      redirect_to "/personal_plants/"+@personal_plant_watering.personal_plant[:id].to_s+"#plant_info_two"
-    end
+    #if @personal_plant_watering.save
+    #  redirect_to "/personal_plants/"+@personal_plant_watering.personal_plant[:id].to_s
+    #end
 
-#    respond_to do |format|
-#      if @personal_plant_watering.save
+    respond_to do |format|
+      if @personal_plant_watering.save
 
 #        #format.html { redirect_to @personal_plant_watering.personal_plant
 #        format.html { redirect_to "/personal_plants/"+@personal_plant_watering.personal_plant[:id].to_s+"#plant_info_two" }#, notice: 'Personal plant watering was successfully created.' }
 #        format.json { render json: @personal_plant_watering.personal_plant, status: :created, location: @personal_plant_watering }
 
-#        #format.html { redirect_to @personal_plant_watering, notice: 'Personal plant watering was successfully created.' }
-#        #format.json { render json: @personal_plant_watering, status: :created, location: @personal_plant_watering }
-#      else
-#        format.html { render action: "new" }
-#        format.json { render json: @personal_plant_watering.errors, status: :unprocessable_entity }
-#      end
-#    end
+        format.html { redirect_to "/personal_plant_waterings"+'?pp='+@personal_plant_watering.personal_plant[:id].to_s, notice: 'Personal plant watering was successfully created.' }
+        format.json { render json: "/personal_plant_waterings"+'?pp='+@personal_plant_watering.personal_plant[:id].to_s, status: :created, location: @personal_plant_watering }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @personal_plant_watering.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PUT /personal_plant_waterings/1

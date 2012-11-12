@@ -13,19 +13,13 @@
 
   <div data-role="fieldcontain">
     <label for="mode1">Date you Watered your plant</label>
-    <input name="watering_time" id="watering_time" type="text" data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' />
+    <% if @has_watering_time then %>
+      <input type="hidden" name="watering_time" id="watering_time" value="<%=@watering_time%>" />
+      <p><%=@watering_time%></p>
+    <% else %>
+      <input name="watering_time" id="watering_time" type="text" data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' />
+    <% end %>
   </div>
-
-  <% if false then %>
-  <div class="field">
-    <%= f.label :watering_time %><br />
-    <%= f.text_field :watering_time, :id => "watering_time" %>
-  </div>
-  <div class="field">
-    <%= f.label :watering_amount %><br />
-    <%= f.text_field :watering_amount%>
-  </div>
-  <% end %>
 
   <div data-role="fieldcontain">
     <fieldset data-role="controlgroup">
@@ -44,3 +38,35 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if false then %>
+  <div class="field">
+    <%= f.label :watering_time %><br />
+    <%= f.text_field :watering_time, :id => "watering_time" %>
+  </div>
+  <div class="field">
+    <%= f.label :watering_amount %><br />
+    <%= f.text_field :watering_amount%>
+  </div>
+  <% end %> 

@@ -24,37 +24,16 @@
     </ul>
   </div>
 
-
-
-
-  <% if false then %>
-  <h1>Waterings for Plant</h1>
-
-  <table>
-    <tr>
-      <th>Watering time</th>
-      <th>Watering amount</th>
-    </tr>
-
-  <% @personal_plant_waterings.each do |personal_plant_watering| %>
-    <tr>
-      <td><%= personal_plant_watering.watering_time %></td>
-      <td><%= personal_plant_watering.watering_amount %></td>
-    </tr>
-  <% end %>
-
-  </table>
-  <% end %>
-
-
-
+  <h2>Click on a square to water your plant</h2>
 
   <div id="plant_watering">
     <%= calendar do |date| %>
       <%= date.day %>
     
       <% if @personal_plant_waterings_by_date[date] then %>
-        <p> Watered </p>
+        <div class="watered">
+          <p> Watered </p>
+        </div>
       <% end %>
     <% end %>
   </div>
@@ -64,7 +43,45 @@
       Water Plant
     </a>
   </div>
+
+  <div data-role="popup" id="popupWater" data-theme="a" class="ui-corner-all">
+      <%= form_for(@personal_plant_watering) do |f| %>
+  <% if @personal_plant_watering.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@personal_plant_watering.errors.count, "error") %> prohibited this personal_plant_watering from being saved:</h2>
+
+      <ul>
+      <% @personal_plant_watering.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div data-role="fieldcontain">
+    <label for="mode1">Date you Watered your plant</label>
+    <input name="watering_time" id="watering_time" type="text" data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' />
+  </div>
+
+  <div data-role="fieldcontain">
+    <fieldset data-role="controlgroup">
+      <label for="watering_amount">
+        Watering Percentage
+      </label>
+      <input name="watering_amount" value="100" min="0" max="100" data-highlight="true" type="range">
+    </fieldset>
+  </div>
+
   
+  <div class="field">
+    <%= f.hidden_field :personal_plant_id, { :value => @personal_plant[:id] } %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+    </div>
+        
   <%= render '/layouts/footer' %>
 </div>
 
@@ -73,17 +90,17 @@
   <div data-role="navbar" data-iconpos="left">
     <ul>
     	<li>
-        <a href="/personal_plants/<%= @personal_plant[:id] %>#plant_info_one" data-ajax="false" data-theme="" data-icon="">
+        <a href="/personal_plants/<%= @personal_plant[:id] %>#plant_info_one" data-theme="" data-icon="">
           Water
         </a>
       </li>
       <li>
-        <a href="/personal_plants/<%= @personal_plant[:id] %>#plant_info_two" data-ajax="false" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
+        <a href="/personal_plants/<%= @personal_plant[:id] %>#plant_info_two" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
           Info
         </a>
       </li>
       <li>
-        <a href="/personal_plants/<%= @personal_plant[:id] %>#plant_info_three" data-ajax="false" data-theme="" data-icon="">
+        <a href="/personal_plants/<%= @personal_plant[:id] %>#plant_info_three" data-theme="" data-icon="">
           Care
         </a>
       </li>
@@ -177,3 +194,26 @@
   <%= render '/layouts/footer' %>
 </div>
 
+<%= render '/layouts/footer' %>
+
+
+
+
+  <% if false then %>
+  <h1>Waterings for Plant</h1>
+
+  <table>
+    <tr>
+      <th>Watering time</th>
+      <th>Watering amount</th>
+    </tr>
+
+  <% @personal_plant_waterings.each do |personal_plant_watering| %>
+    <tr>
+      <td><%= personal_plant_watering.watering_time %></td>
+      <td><%= personal_plant_watering.watering_amount %></td>
+    </tr>
+  <% end %>
+
+  </table>
+  <% end %>

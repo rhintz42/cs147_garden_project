@@ -1,33 +1,33 @@
 <div data-role="footer" data-position="fixed" data-tap-toggle="false">
-  <div id="nav-bot">
-  <div data-role="navbar" class="nav-glyphish-example" data-iconpos="top">
-     <ul>
-         <li>
-            <% if params[:controller] == 'gardens' then %>
-              <a href="/gardens?def=1" id="garden" data-ajax="false" data-icon="custom" class="ui-btn-active">
-                 Gardens
-              </a>
-            <% else %>
-              <a href="/gardens?def=true" id="garden" data-icon="custom" data-ajax="false" >
-                 Gardens
-              </a>
-            <% end %>
-         </li>
-         <li>
-            <% if params[:controller] == 'plants' or 
-                  params[:controller] == 'personal_plants' or 
-                  params[:controller] == 'personal_plants_waterings' then %>
-              <a href="/plants" id="plants" data-ajax="false" data-icon="custom" class="ui-btn-active">
-                 Plants
-              </a>
-            <% else %>
-              <a href="/plants" id="plants" data-icon="custom" data-ajax="false" >
-                 Plants
-              </a>
-            <% end %>
-         </li>
-    </ul>
-  </div>
+  <div class="nav-bot">
+    <div data-role="navbar" class="nav-glyphish-example" data-iconpos="top">
+       <ul>
+           <li>
+              <% if params[:controller] == 'gardens' then %>
+                <a href="/gardens?def=1" class="garden ui-btn-active" data-ajax="false" data-icon="custom">
+                   Gardens
+                </a>
+              <% else %>
+                <a href="/gardens?def=true" class="garden" data-icon="custom" data-ajax="false" >
+                   Gardens
+                </a>
+              <% end %>
+           </li>
+           <li>
+              <% if params[:controller] == 'plants' or 
+                    params[:controller] == 'personal_plants' or 
+                    params[:controller] == 'personal_plants_waterings' then %>
+                <a href="/plants" class="plants ui-btn-active" data-ajax="false" data-icon="custom">
+                   Plants
+                </a>
+              <% else %>
+                <a href="/plants" class="plants" data-icon="custom" data-ajax="false" >
+                   Plants
+                </a>
+              <% end %>
+           </li>
+      </ul>
+    </div>
   </div>
 </div>
 

@@ -25,7 +25,7 @@ class PersonalPlantsController < ApplicationController
     end
 
 
-
+    @personal_plant_watering = PersonalPlantWatering.new
 
     @personal_plant = PersonalPlant.find(params[:id])
     @personal_plant_waterings = PersonalPlantWatering.where(:personal_plant_id => @personal_plant[:id])

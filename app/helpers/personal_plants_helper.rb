@@ -31,13 +31,15 @@ module PersonalPlantsHelper
 
     def day_cell(day)
       #content_tag :td, view.capture(day, &callback), class: day_classes(day)
-      '<td class="'+day_classes(day).to_s+'"><a class="fill-div" href="/gardens">'+view.capture(day, &callback)+'</a></td>'
+      #debugger
+      '<td class="'+day_classes(day).to_s+'"><a class="fill-div" href="/personal_plant_waterings/new?pp=1&wt='+day.to_s+'" data-rel="popup" data-position-to="window" data-inline="true">'+view.capture(day, &callback)+'</a></td>'
     end
 
     def day_classes(day)
       classes = []
       classes << "today" if day == Date.today
       classes << "notmonth" if day.month != date.month
+      classes << "watered" if view.capture(day, &callback)['watered']
       classes.empty? ? nil : classes.join(" ")
     end
 
