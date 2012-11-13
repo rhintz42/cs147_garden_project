@@ -9,7 +9,7 @@ class PersonalPlantWateringsController < ApplicationController
 
     @personal_plant = PersonalPlant.find(params[:pp])
     @watering_time = Time.strptime(params[:wt], "%Y-%m-%d").to_f
-    @personal_plant_waterings = PersonalPlantWatering.where("personal_plant_id == #{params[:pp]} and watering_time >= #{@watering_time} and watering_time < #{@watering_time+86400}")
+    @personal_plant_waterings = PersonalPlantWatering.where("personal_plant_id = #{params[:pp]} and watering_time >= #{@watering_time} and watering_time < #{@watering_time+86400}")
     
     @back_url = "/personal_plants/"+@personal_plant[:id].to_s
     @back_label = "Plant"
