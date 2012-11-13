@@ -96,6 +96,11 @@ class UsersController < ApplicationController
 
   def logout
     session[:user] = nil
+    
+    respond_to do |format|
+      format.html { redirect_to login_users_path, notice: 'Logged Out' }
+      format.json { render json: login_users_path }
+    end
   end
 
 

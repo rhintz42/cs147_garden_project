@@ -6,16 +6,15 @@ class PersonalPlantWateringsController < ApplicationController
     if not check_logged_in then
       return
     end
-    #debugger
-    if params[:pp] then
 
-      redirect_to "/personal_plants/"+params[:pp]
-      return
-    end
+    @personal_plant = PersonalPlant.find(params[:pp])
+    @watering_time = Time.strptime(params[:wt], "%Y-%m-%d").to_f
+    @personal_plant_waterings = PersonalPlantWatering.where("personal_plant_id == #{params[:pp]} and watering_time >= #{@watering_time} and watering_time < #{@watering_time+86400}")
     
-    @personal_plant_waterings = PersonalPlantWatering.where(:personal_plant_id => params[:pp])
+    @back_url = "/personal_plants/"+@personal_plant[:id].to_s
+    @back_label = "Plant"
 
-    #@personal_plant_waterings = PersonalPlantWatering.all
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,14 +25,7 @@ class PersonalPlantWateringsController < ApplicationController
   # GET /personal_plant_waterings/1
   # GET /personal_plant_waterings/1.json
   def show
-    #debugger
     @personal_plant_watering = PersonalPlantWatering.find(params[:id])
-
-    #respond_to do |format|
-    #  redirect_to personal_plants_path + "/" + @personal_plant_watering[:personal_plant_id].to_s
-    #redirect_to controller: "personal_plants", action: "index"
-    #  return
-    #end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -45,16 +37,21 @@ class PersonalPlantWateringsController < ApplicationController
   # GET /personal_plant_waterings/new.json
   def new
     @personal_plant_watering = PersonalPlantWatering.new
-    
     @personal_plant = PersonalPlant.find(params[:pp])
+    
+    @back_url = "/personal_plant_waterings?pp="+@personal_plant[:id].to_s
+    @back_label = "Waterings"
+
+
     
     if params[:wt] then
       @has_watering_time = true;
       @watering_time = params[:wt]
+      @back_url += CGI.unescapeHTML("&wt="+@watering_time)
     else
       @has_watering_time = false;
     end
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @personal_plant_watering }
@@ -70,28 +67,23 @@ class PersonalPlantWateringsController < ApplicationController
   # POST /personal_plant_waterings.json
   def create
 
+
     @personal_plant_watering = PersonalPlantWatering.new(params[:personal_plant_watering])
-    @personal_plant_watering[:watering_time] = Time.strptime(params[:watering_time], "%Y-%m-%d").to_f
-#"%m/%d/%Y").to_f
+    
+    if /\d{4}-\d{1,2}-\d{1,2}/.match(params[:watering_time]) then
+      @personal_plant_watering[:watering_time] = Time.strptime(params[:watering_time], "%Y-%m-%d").to_f
+      if params[:mode6].length > 0 then
+        @personal_plant_watering[:watering_time] = Time.strptime(params[:watering_time]+"/"+params[:mode6], "%Y-%m-%d/%H:%M").to_f
+      end
+    else
+      @personal_plant_watering[:watering_time] = Time.strptime(params[:watering_time], "%m/%d/%Y").to_f
+    end
     @personal_plant_watering[:watering_amount] = params[:watering_amount]
-
-    #a = Time.strptime("2012-09-14", "%Y-%m-%d").to_f
-    #b = Time.strptime("09/14/2012", "%m/%d/%Y").to_f
-    #c = Time.strptime("09/14/2012", "%m/%d/%Y").to_f
-
-    #if @personal_plant_watering.save
-    #  redirect_to "/personal_plants/"+@personal_plant_watering.personal_plant[:id].to_s
-    #end
 
     respond_to do |format|
       if @personal_plant_watering.save
-
-#        #format.html { redirect_to @personal_plant_watering.personal_plant
-#        format.html { redirect_to "/personal_plants/"+@personal_plant_watering.personal_plant[:id].to_s+"#plant_info_two" }#, notice: 'Personal plant watering was successfully created.' }
-#        format.json { render json: @personal_plant_watering.personal_plant, status: :created, location: @personal_plant_watering }
-
-        format.html { redirect_to "/personal_plant_waterings"+'?pp='+@personal_plant_watering.personal_plant[:id].to_s, notice: 'Personal plant watering was successfully created.' }
-        format.json { render json: "/personal_plant_waterings"+'?pp='+@personal_plant_watering.personal_plant[:id].to_s, status: :created, location: @personal_plant_watering }
+        format.html { redirect_to "/personal_plant_waterings"+"?pp="+@personal_plant_watering.personal_plant[:id].to_s+CGI.unescapeHTML("&wt=")+params[:watering_time], notice: 'Personal plant watering was successfully created.' }
+        format.json { render json: "/personal_plant_waterings"+"?pp="+@personal_plant_watering.personal_plant[:id].to_s+CGI.unescapeHTML("&wt=")+params[:watering_time], status: :created, location: @personal_plant_watering }
       else
         format.html { render action: "new" }
         format.json { render json: @personal_plant_watering.errors, status: :unprocessable_entity }

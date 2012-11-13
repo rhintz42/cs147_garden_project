@@ -19,7 +19,10 @@ class PlantsController < ApplicationController
   def show
     
     @plant = Plant.find(params[:id])
-
+    
+    @back_url = plants_path
+    @back_label = "Plants"
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @plant }
@@ -32,7 +35,7 @@ class PlantsController < ApplicationController
     if not check_logged_in then
       return
     end
-
+    
     @plant = Plant.new
     
     @created_from_user = false
@@ -61,12 +64,10 @@ class PlantsController < ApplicationController
       return
     end
     
-    #debugger
-    
     if params[:plant][:id] then
       @personal_plant = PersonalPlant.new(params[:plant][:personal_plants_attributes]["0"])
-      #params[:plant][:personal_plants_attributes]["0"]
       @personal_plant[:plant_id] = params[:plant][:id]
+      
       respond_to do |format|
         if @personal_plant.save
           format.html { redirect_to @personal_plant, notice: 'Personal plant was successfully created.' }
@@ -79,15 +80,18 @@ class PlantsController < ApplicationController
     else
       @plant = Plant.new(params[:plant])
     
-      #debugger
       #@plant.personal_plants[0].save
       respond_to do |format|
         if @plant.save
           #I BELIEVE THIS GO_TO IS NOT RELEVENT ANYMORE, BUT NOT SURE
           @go_to = @plant
-
+          
           if @plant[:created_from_user] then
             @go_to = new_personal_plant_path + '?plant_id=' + @plant[:id].to_s
+          end
+
+          if params[:plant][:created_from_garden_id].length > 0 then
+            @go_to = new_personal_plant_path + '?garden_id=' + params[:plant][:created_from_garden_id] + CGI.unescapeHTML('&plant_id=') + @plant[:id].to_s
           end
 
           format.html { redirect_to @go_to, notice: 'Plant was successfully created.' }

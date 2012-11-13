@@ -30,6 +30,8 @@ class PersonalPlantsController < ApplicationController
     @personal_plant = PersonalPlant.find(params[:id])
     @personal_plant_waterings = PersonalPlantWatering.where(:personal_plant_id => @personal_plant[:id])
     
+    @back_url = "/gardens/"+@personal_plant.garden[:id].to_s
+    @back_label = "Garden"
 
     @personal_plant_waterings_by_date = {}
     #@personal_plant_waterings_by_date[Time.now().to_date - 2] = [PersonalPlant.new] 
@@ -110,31 +112,18 @@ class PersonalPlantsController < ApplicationController
     if not check_logged_in then
       return
     end
-    #@plant = Plant.new(params[:plant])
-    #debugger
+    
     @personal_plant = PersonalPlant.new(params[:personal_plant])
     
     respond_to do |format|
       if @personal_plant.save
-        format.html { redirect_to @personal_plant, notice: 'Personal plant was successfully created.' }
-        format.json { render json: @personal_plant, status: :created, location: @personal_plant }
+        format.html { redirect_to "/gardens/"+@personal_plant.garden[:id].to_s, notice: 'Personal plant was successfully created.' }
+        format.json { render json: "/gardens/"+@personal_plant.garden[:id].to_s, status: :created, location: @personal_plant }
       else
         format.html { render action: "new" }
         format.json { render json: @personal_plant.errors, status: :unprocessable_entity }
       end
     end
-    
-    #@personal_plant = PersonalPlant.new(params[:personal_plant])
-
-    #respond_to do |format|
-    #  if @personal_plant.save
-    #    format.html { redirect_to @personal_plant, notice: 'Personal plant was successfully created.' }
-    #    format.json { render json: @personal_plant, status: :created, location: @personal_plant }
-    #  else
-    #    format.html { render action: "new" }
-    #    format.json { render json: @personal_plant.errors, status: :unprocessable_entity }
-    #  end
-    #end
   end
 
   # PUT /personal_plants/1

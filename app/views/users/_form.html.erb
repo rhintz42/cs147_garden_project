@@ -10,19 +10,6 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name_first %><br />
-    <%= f.text_field :name_first %>
-  </div>
-  <div class="field">
-    <%= f.label :name_middle %><br />
-    <%= f.text_field :name_middle %>
-  </div>
-  <div class="field">
-    <%= f.label :name_last %><br />
-    <%= f.text_field :name_last %>
-  </div>
   <div class="field">
     <%= f.label :username %><br />
     <%= f.text_field :username %>
@@ -32,16 +19,8 @@
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :email_confirmation %><br />
-    <%= f.text_field :email_confirmation %>
   </div>
   <div class="actions">
     <%= f.submit 'Register' %>

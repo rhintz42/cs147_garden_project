@@ -19,10 +19,18 @@ class Plant < ActiveRecord::Base
                   :watering_frequency_old,
                   :watering_frequency_new,
                   :watering_weekly_amount,
-                  :personal_plants_attributes
+                  :personal_plants_attributes,
+                  :created_from_garden_id
                   
 
+  def created_from_garden_id
+    @created_from_garden_id
+  end
 
+  def created_from_garden_id=(id)
+    @created_from_garden_id=id
+  end
+  
   has_many :personal_plants, :dependent => :destroy
   has_many :plant_comments, :dependent => :destroy
   accepts_nested_attributes_for :personal_plants, :plant_comments

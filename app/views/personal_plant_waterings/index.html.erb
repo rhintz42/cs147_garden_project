@@ -2,14 +2,12 @@
 
 <h1>Listing Personal Plant Waterings</h1>
 
-
-<% if false then %>
 <div data-role="content">
-    <a data-role="button" data-ajax="false" href="/personal_plant_waterings/new?pp=<%= @personal_plant_waterings[0].personal_plant[:id] %>">
-        Add Watering for plant
+    <a data-role="button" data-ajax="false" href="/personal_plant_waterings/new?pp=<%= params[:pp] %>&wt=<%= params[:wt] %>">
+        Add Watering for Plant
     </a>
-    <a data-role="button" data-ajax="false" href="/personal_plants/<%= @personal_plant_waterings[0].personal_plant[:id] %>">
-        Back to Personal Plant
+    <a data-role="button" data-ajax="false" href="/personal_plants/<%= @personal_plant[:id] %>">
+        Back to Plant Page
     </a>
 </div>
 
@@ -36,6 +34,6 @@
 </table>
 
 <br />
-<% end %>
+
 
 <%= render 'layouts/footer' %>

@@ -8,21 +8,7 @@ class GardensController < ApplicationController
     if not check_logged_in then
       return
     end
-    #@gardens = Garden.all
-    #@garden = @gardens[1]
-    #debugger
-    if params[:def] == nil or params[:def] == "1" then
-      if session[:user][:default_garden_id] != nil then
-      
-        #redirect_to "/gardens/"+session[:user][:default_garden_id].to_s
-        redirect_to gardens_path + "/" + session[:user][:default_garden_id].to_s
-        
-        return
-      end
-    end
-
     @gardens = Garden.where(:user_id => session[:user][:id])
-    #debugger
     
     respond_to do |format|
       format.html # index.html.erb
@@ -39,6 +25,9 @@ class GardensController < ApplicationController
     @garden = Garden.find(params[:id])
     @plants_in_garden = PersonalPlant.where(:garden_id => @garden[:id] )
 
+    @back_url = gardens_path
+    @back_label = "My Gardens"
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @garden }
@@ -52,7 +41,10 @@ class GardensController < ApplicationController
       return
     end
     @garden = Garden.new
-
+    
+    @back_url = gardens_path
+    @back_label = "My Gardens"
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @garden }
@@ -82,7 +74,6 @@ class GardensController < ApplicationController
           @user = User.find(session[:user][:id])
 
           if @user[:default_garden_id] == nil then
-          #if @user.update_attributes(@user) then
             @user[:default_garden_id] = @garden[:id]
             if @user.save(:validate => false) then
               #do nothing
@@ -91,8 +82,8 @@ class GardensController < ApplicationController
           session[:user] = @user
         end
 
-        format.html { redirect_to @garden, notice: 'Garden was successfully created.' }
-        format.json { render json: @garden, status: :created, location: @garden }
+        format.html { redirect_to gardens_path, notice: 'Garden was successfully created.' }
+        format.json { render json: gardens_path, status: :created, location: @garden }
       else
         format.html { render action: "new" }
         format.json { render json: @garden.errors, status: :unprocessable_entity }

@@ -27,7 +27,6 @@
   <h2>Click on a square to water your plant</h2>
 
   <div id="plant_watering">
-    
     <%= calendar do |date| %>
       <%= date.day %>
       <% if @personal_plant_waterings_by_date[date] then %>
@@ -38,11 +37,7 @@
     <% end %>
   </div>
   
-  <div>
-    <a data-role="button" data-theme="e" data-ajax="false" href="/personal_plant_waterings/new?pp=<%= @personal_plant[:id] %>">
-      Water Plant
-    </a>
-  </div>
+  
 
   <div data-role="popup" id="popupWater" data-theme="a" class="ui-corner-all">
       <%= form_for(@personal_plant_watering) do |f| %>

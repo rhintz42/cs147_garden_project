@@ -31,11 +31,8 @@ module PersonalPlantsHelper
     end
 
     def day_cell(day)
-      #debugger
-      #content_tag :td, view.capture(day, &callback), class: day_classes(day)
-      #debugger
       '<td class="'+day_classes(day).to_s+'">
-        <a class="fill-div" href="/personal_plant_waterings/new?pp='+pp.to_s+'&wt='+day.to_s+'" data-rel="popup" data-position-to="window" data-inline="true">'+/\d{1,2}/.match(view.capture(day, &callback)).to_s+'</a></td>'
+        <a class="fill-div" href="/personal_plant_waterings?pp='+pp.to_s+'&wt='+day.to_s+'" data-rel="popup" data-position-to="window" data-inline="true">'+/\d{1,2}/.match(view.capture(day, &callback)).to_s+'</a></td>'
     end
 
     def day_classes(day)

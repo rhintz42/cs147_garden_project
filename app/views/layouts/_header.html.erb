@@ -1,18 +1,43 @@
+
 <div data-theme="b" data-role="header">
-	<a data-role="button" data-rel="back" href="#" data-icon="back" data-ajax="false">
-		Back
-	</a>
+
+  <% if @back_label == nil then %>
+    <% @back_label = "Back" %>
+  <% end %>
+  <% if @no_back == nil then %>
+	 <% if @back_url != nil then %>
+      <a data-role="button" href="<%= @back_url %>" data-icon="back" data-ajax="false">
+  	    <%= @back_label %>
+      </a>
+    <% else %>
+
+    <% end %>
+  <% end %>
+
 	<h1><%= @page_title %></h1>
-	<a href="/users/<%= session[:user][:id] %>" data-role="button" data-icon="home" data-ajax="false">
-        Account
-    </a>	
+	
+  <a class="ui-btn-right" href="/users/<%= session[:user][:id] %>" data-role="button" data-icon="home" data-ajax="false">
+    Account
+  </a>
+
 </div>
 
 
 
 <% if false then %>
+  <% if @back_url then %>
+<a data-role="button" href="<%= @back_url %>" data-icon="back" data-ajax="false">
+  <% else %>
+    <a data-role="button" data-rel="back" href="#" data-icon="back" data-ajax="false">
+  <% end %>
+      <%= @back_label %>
+    </a>
+
+
+
+
 <div>
-  <div id="nav_bar_top">
+  <div data-theme="b" data-role="header">
     <ul>
       <li>
         <div class="header_third header_third_right">
@@ -44,9 +69,7 @@
     </ul>
   </div>
 </div>
-
 <% end %>
-
 
 <!-- this was the button navigation system -->
 <% if false then %>
