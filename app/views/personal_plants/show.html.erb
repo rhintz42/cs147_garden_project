@@ -27,9 +27,9 @@
   <h2>Click on a square to water your plant</h2>
 
   <div id="plant_watering">
+    
     <%= calendar do |date| %>
       <%= date.day %>
-    
       <% if @personal_plant_waterings_by_date[date] then %>
         <div class="watered">
           <p> Watered </p>

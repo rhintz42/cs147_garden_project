@@ -1,9 +1,10 @@
 module PersonalPlantsHelper
   def calendar(date = Date.today, &block)
-    Calendar.new(self, date, block).table
+    #debugger
+    Calendar.new(self, date, @personal_plant[:id], block).table
   end
 
-  class Calendar < Struct.new(:view, :date, :callback)
+  class Calendar < Struct.new(:view, :date, :pp, :callback)
     HEADER = %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday]
     START_DAY = :sunday
 
@@ -30,9 +31,11 @@ module PersonalPlantsHelper
     end
 
     def day_cell(day)
+      #debugger
       #content_tag :td, view.capture(day, &callback), class: day_classes(day)
       #debugger
-      '<td class="'+day_classes(day).to_s+'"><a class="fill-div" href="/personal_plant_waterings/new?pp=1&wt='+day.to_s+'" data-rel="popup" data-position-to="window" data-inline="true">'+view.capture(day, &callback)+'</a></td>'
+      '<td class="'+day_classes(day).to_s+'">
+        <a class="fill-div" href="/personal_plant_waterings/new?pp='+pp.to_s+'&wt='+day.to_s+'" data-rel="popup" data-position-to="window" data-inline="true">'+view.capture(day, &callback)+'</a></td>'
     end
 
     def day_classes(day)
