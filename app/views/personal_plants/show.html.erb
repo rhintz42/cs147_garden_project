@@ -1,5 +1,5 @@
 <% @page_title = @personal_plant.name_personalized %>
-<div data-role="page" id="plant_info_one">
+<div data-role="page" id="plant_info_one" data-url="<%= request.path %>">
   <%= render '/layouts/header' %>
 
   <p id="notice"><%= notice %></p>
