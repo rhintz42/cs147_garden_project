@@ -1,5 +1,8 @@
 GardenCookbook::Application.routes.draw do
 
+  match '/users/register2' => "users#new2"
+  match '/users/new2' => "users#new2"
+  
   resources :garden_waterings
 
   resources :gardens
@@ -41,6 +44,8 @@ GardenCookbook::Application.routes.draw do
   match "/weather" => "weather#index"
   match 'users/login', :controller => 'users', :action => 'login_post', :via => "post"
   match '/personal_plants/s/:id' => "personal_plants#show2"
+  match '/users/register2' => "users#new2"
+  match '/users/new2' => "users#new2"
   #match "/personal_plant_waterings" => redirect("/gardens")
   #match "/personal_plant_waterings" => "gardens#index"
   #match "personal_plant_waterings#index" => "gardens#index", :via => "get"
