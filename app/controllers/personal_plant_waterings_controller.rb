@@ -72,13 +72,13 @@ class PersonalPlantWateringsController < ApplicationController
     
     if /\d{4}-\d{1,2}-\d{1,2}/.match(params[:watering_time]) then
       @personal_plant_watering[:watering_time] = Time.strptime(params[:watering_time], "%Y-%m-%d").to_f
-      if params[:mode6].length > 0 then
+      if params[:mode6] and params[:mode6].length > 0 then
         @personal_plant_watering[:watering_time] = Time.strptime(params[:watering_time]+"/"+params[:mode6], "%Y-%m-%d/%H:%M").to_f
       end
     else
       @personal_plant_watering[:watering_time] = Time.strptime(params[:watering_time], "%m/%d/%Y").to_f
     end
-    @personal_plant_watering[:watering_amount] = params[:watering_amount]
+    #@personal_plant_watering[:watering_amount] = params[:watering_amount]
 
     respond_to do |format|
       if @personal_plant_watering.save

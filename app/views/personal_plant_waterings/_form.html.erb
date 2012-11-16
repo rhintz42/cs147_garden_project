@@ -20,25 +20,11 @@
       <input name="watering_time" id="watering_time" type="text" data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' />
     <% end %>
   </div>
-  
-  <div data-role="fieldcontain">
-    <label for="mode6">What time did you water your plant?</label>
-    <input name="mode6" id="mode6" type="text" data-role="datebox" data-options='{"mode":"timebox", "useNewStyle":true}' />
-  </div>
-
-
-  <div data-role="fieldcontain">
-    <fieldset data-role="controlgroup">
-      <label for="watering_amount">
-        Watering Percentage
-      </label>
-      <input name="watering_amount" value="100" min="0" max="100" data-highlight="true" type="range">
-    </fieldset>
-  </div>
 
   
   <div class="field">
     <%= f.hidden_field :personal_plant_id, { :value => @personal_plant[:id] } %>
+    <%= f.hidden_field :watering_amount, {:value => "100"} %>
   </div>
   <div class="actions">
     <%= f.submit %>
@@ -67,6 +53,23 @@
 
 
 <% if false then %>
+SHOULD ADD SOME OF THESE FIELDS, BUT INDICATE THAT THEY ARE OPTIONAL, THEN THEY'LL BE ABLE TO EDIT THE INFO LATER
+
+<div data-role="fieldcontain">
+    <fieldset data-role="controlgroup">
+      <label for="watering_amount">
+        Watering Percentage
+      </label>
+      <input name="watering_amount" value="100" min="0" max="100" data-highlight="true" type="range">
+    </fieldset>
+  </div>
+
+  
+  <div data-role="fieldcontain">
+    <label for="mode6">What time did you water your plant?</label>
+    <input name="mode6" id="mode6" type="text" data-role="datebox" data-options='{"mode":"timebox", "useNewStyle":true}' />
+  </div>
+
   <div class="field">
     <%= f.label :watering_time %><br />
     <%= f.text_field :watering_time, :id => "watering_time" %>

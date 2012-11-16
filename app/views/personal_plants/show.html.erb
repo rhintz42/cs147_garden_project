@@ -104,31 +104,34 @@
 
   <div class="names">
     <div class="plant_name">
-      <b>Plant Name:</b>
-      <%= @personal_plant.plant.name_common %>
-    </div>
-    <div class="plant_name">
-      <b>Botanical Name:</b>
-      <%= @personal_plant.plant.name_botanical %>
-    </div>
-    <div class="plant_name">
-      <b>Description:</b>
-      <%= @personal_plant.plant.description %>
-    </div>
-  </div>
-
-  <div class="names">
-    <div class="plant_name">
-      <b>Personalized Name:</b>
+      <% if @personal_plant[:name_personalized] %>
+      <b>Personal Plant Name:</b>
       <%= @personal_plant[:name_personalized] %>
-    </div>
-    <div class="plant_name">
-      <b>Botanical Name:</b>
+
+      <br /><br />
+      <% end %>
+
+      <% if @personal_plant.plant.name_common %>  
+      <b>Common Plant Name:</b>
+      <%= @personal_plant.plant.name_common %>
+
+      <br /><br />
+
+      <% end %>
+
+      <% if @personal_plant.plant.name_botanical %>
+      <b>Botanical Plant Name:</b>
       <%= @personal_plant.plant.name_botanical %>
-    </div>
-    <div class="plant_name">
-      <b>Description:</b>
+
+      <br /><br />
+      <% end %>
+
+      <% if @personal_plant.plant.description %>
+      <b>Description of plant:</b>
       <%= @personal_plant.plant.description %>
+
+      <br /><br />
+      <% end %>
     </div>
   </div>
 
@@ -159,30 +162,36 @@
     </ul>
   </div>
 
-  <div id="plant-caring-info-wrapper">
-    <div id="plant-basic-info">
-      <b>Plant type:</b>
+  <div class="names">
+    <div class="plant_name">
+      <% if @personal_plant.plant.plant_type %>
+      <b>Type of Plant:</b>
       <%= @personal_plant.plant.plant_type %>
+      <% end %>
       
-      <br />
-      
-      <b>Is houseplant:</b>
-      <%= @personal_plant.plant.is_houseplant %>
-    </div>
+      <br /><br />
+    <% if @personal_plant.plant.is_houseplant %>  
+      <b>Is this plant a house plant:</b>
+      <% if @personal_plant.plant.is_houseplant then %>
+        Yes
+      <% else %>
+        No
+      <% end %>
+    <% end %>
 
-    <div id="plant-water-info">
-      <b>Water weekly:</b>
-      <%= @personal_plant.plant.watering_weekly_amount %>
-      
-      <br />
-      
-      <b>Water frequency:</b>
-      <%= @personal_plant.plant.watering_frequency_old %>
-    </div>
 
-    <div id="plant-sun-info">
-      <b>Sun exposure:</b>
-      <%= @personal_plant.plant.sun_exposure %> 
+      <% if @personal_plant.plant.watering_weekly_amount %>
+      <b>How frequently to water your plant:</b>
+      <%= @personal_plant.plant.watering_weekly_amount %> times per week
+      <% end %>
+      
+      <br /><br />
+      
+
+      <% if @personal_plant.plant.sun_exposure %>
+      <b>Percentage of Sun exposure your plant needs:</b>
+      <%= @personal_plant.plant.sun_exposure %>% Sun
+      <% end %>
     </div>
   </div>
 
@@ -190,6 +199,25 @@
 </div>
 
 <%= render '/layouts/footer' %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if false then %>
+  <% if @personal_plant.plant.watering_frequency_old %>
+  <b>Water frequency:</b>
+  <%= @personal_plant.plant.watering_frequency_old %>
+  <% end %>
+<% end %>
 
 
 

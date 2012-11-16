@@ -19,18 +19,30 @@
     </ul>
   </div>
 
-  <div id="names">
+  <div class="names">
     <div class="plant_name">
-      <b>Plant Name:</b>
+
+      <% if @plant.name_common %>  
+      <b>Common Plant Name:</b>
       <%= @plant.name_common %>
-    </div>
-    <div class="plant_name">
-      <b>Botanical Name:</b>
+
+      <br /><br />
+
+      <% end %>
+
+      <% if @plant.name_botanical %>
+      <b>Botanical Plant Name:</b>
       <%= @plant.name_botanical %>
-    </div>
-    <div class="plant_name">
-      <b>Description:</b>
+
+      <br /><br />
+      <% end %>
+
+      <% if @plant.description %>
+      <b>Description of plant:</b>
       <%= @plant.description %>
+
+      <br /><br />
+      <% end %>
     </div>
   </div>
 
@@ -58,33 +70,47 @@
       </li>
     </ul>
   </div>
-  <div id="plant-caring-info-wrapper">
-    <div id="plant-basic-info">
-      <b>Plant type:</b>
-      <%= @plant.plant_type %>
-      
-      <br />
-      
-      <b>Is houseplant:</b>
-      <%= @plant.is_houseplant %>
-    </div>
 
-    <div id="plant-water-info">
-      <b>Water weekly:</b>
-      <%= @plant.watering_weekly_amount %>
+
+<div class="names">
+    <div class="plant_name">
+      <% if @plant.plant_type %>
+      <b>Type of Plant:</b>
+      <%= @plant.plant_type %>
+      <% end %>
       
-      <br />
+      <br /><br />
+    <% if @plant.is_houseplant %>  
+      <b>Is this plant a house plant:</b>
+      <% if @plant.is_houseplant then %>
+        Yes
+      <% else %>
+        No
+      <% end %>
+    <% end %>
+
+
+      <% if @plant.watering_weekly_amount %>
+      <b>How frequently to water your plant:</b>
+      <%= @plant.watering_weekly_amount %> times per week
+      <% end %>
       
+      <br /><br />
+      
+      <% if false then %>
+      <% if @plant.watering_frequency_old %>
       <b>Water frequency:</b>
       <%= @plant.watering_frequency_old %>
-    </div>
+      <% end %>
+      <% end %>
 
-    <div id="plant-sun-info">
-      <b>Sun exposure:</b>
-      <%= @plant.sun_exposure %> 
+      <% if @plant.sun_exposure %>
+      <b>Percentage of Sun exposure your plant needs:</b>
+      <%= @plant.sun_exposure %>% Sun
+      <% end %>
     </div>
   </div>
-
+  
   <%= render '/layouts/footer' %>
   
 </div>
