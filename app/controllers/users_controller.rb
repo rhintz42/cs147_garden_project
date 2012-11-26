@@ -107,6 +107,18 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.json
   def new
+
+    @user = User.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @user }
+    end
+  end
+
+  # GET /users/new
+  # GET /users/new.json
+  def new2
     @user = User.new
 
     respond_to do |format|
