@@ -1,7 +1,71 @@
-<%= render 'layouts/header' %>
 
-<h1>Editing personal_plant</h1>
 
-<%= render 'form' %>
+<div data-role="page" id="one">
 
-<%= render 'layouts/header' %>
+  <%= render 'layouts/header' %>
+
+  <h1>Editing personal_plant</h1>
+
+  <%= form_for @personal_plant do |p| %>
+    <% if @personal_plant.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@plant.errors.count, "error") %> prohibited this plant from being saved:</h2>
+
+        <ul>
+        <% @personal_plant.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
+    <div class="field">
+      <%= p.label :name_personalized %><br />
+      <%= p.text_field :name_personalized %>
+    </div>
+
+    <%= p.fields_for :plant do |f| %>
+	    <div class="field">
+	      <%= f.label :name_common %><br />
+	      <%= f.text_field :name_common %>
+	    </div>
+	    <div class="field">
+	      <%= f.label :name_botanical %><br />
+	      <%= f.text_field :name_botanical %>
+	    </div>
+	    <div class="field">
+	      <%= f.label :plant_type %><br />
+	      <%= f.text_field :plant_type %>
+	    </div>
+	    <div class="field">
+	      <%= f.label :is_houseplant %><br />
+	      <%= f.text_field :is_houseplant %>
+	    </div>
+
+	    <div class="field">
+	      <%= f.label :watering_weekly_amount %><br />
+	      <%= f.text_field :watering_weekly_amount %>
+	    </div>
+
+	    <div class="field">
+	      <%= f.label :sun_exposure %><br />
+	      <%= f.text_field :sun_exposure %>
+	    </div>
+	  <% end %>
+    
+    <div class="field">
+      <%= p.hidden_field :garden_id, { :value => @garden_id } %>
+      <%= p.hidden_field :plant_id, { :value => @plant_id } %>
+      <%= p.hidden_field :user_id, { :value => session[:user][:id] } %>
+    </div>
+  
+    <div class="actions">
+      <%= p.submit %>
+    </div>
+
+	<% end %>
+
+<%= render 'layouts/footer' %>
+
+</div>

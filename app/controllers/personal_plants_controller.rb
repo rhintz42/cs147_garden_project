@@ -24,12 +24,17 @@ class PersonalPlantsController < ApplicationController
       return
     end
 
+    #debugger
+
+    
 
     @personal_plant_watering = PersonalPlantWatering.new
 
     @personal_plant = PersonalPlant.find(params[:id])
-    @personal_plant_waterings = PersonalPlantWatering.where(:personal_plant_id => @personal_plant[:id])
+    @personal_plant_waterings = PersonalPlantWatering.where(:personal_plant_id => @personal_plant[:id]).order('watering_time ASC')
     
+    #debugger
+
     @back_url = "/gardens/"+@personal_plant.garden[:id].to_s
     @back_label = "Garden"
 
@@ -47,7 +52,12 @@ class PersonalPlantsController < ApplicationController
         @personal_plant_waterings_by_date[date] = [@personal_plant]
       end
     end
-
+    
+    @water_frequency = (3)*60*60*24 #Need to change to the actual watering frequency
+    
+    if @personal_plant_waterings.size > 0 then
+      @next_watering = Time.at(@personal_plant_waterings[@personal_plant_waterings.size-1][:watering_time] + @water_frequency).to_date
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -57,6 +67,8 @@ class PersonalPlantsController < ApplicationController
   
   # GET /personal_plants/s/1
   # GET /personal_plants/s/1.json
+
+  ######TAKE OUT
   def show2
     if not check_logged_in then
       return
@@ -140,9 +152,14 @@ class PersonalPlantsController < ApplicationController
   def edit
     if not check_logged_in then
       return
-    end   
+    end
     
     @personal_plant = PersonalPlant.find(params[:id])
+    
+    @garden_id = @personal_plant[:garden_id]
+    @plant_id = @personal_plant[:plant_id]
+
+    @plants = Plant.where(:id => @personal_plant[:plant_id])
   end
 
   # POST /personal_plants
@@ -151,7 +168,7 @@ class PersonalPlantsController < ApplicationController
     if not check_logged_in then
       return
     end
-    
+
     @personal_plant = PersonalPlant.new(params[:personal_plant])
     
     respond_to do |format|
@@ -171,7 +188,10 @@ class PersonalPlantsController < ApplicationController
     if not check_logged_in then
       return
     end
+
     @personal_plant = PersonalPlant.find(params[:id])
+
+    session[:reload] = true
     
     respond_to do |format|
       if @personal_plant.update_attributes(params[:personal_plant])

@@ -1,5 +1,66 @@
-<%= render 'layouts/header' %>
+<div data-role="page" id="one">
 
-<%= render 'form' %>
+  <%= render 'layouts/header' %>
 
-<%= render 'layouts/footer' %>
+  <% if not @plant_id then %> <!-- this is hit if no plant has been chosen -->
+
+  <div>
+    Please choose which type of plant you are adding to your garden
+  </div>
+
+
+  <div class="field">
+    <fieldset data-role="controlgroup" data-type="vertical">
+      <ul data-role="listview" data-filter="true" data-filter-placeholder="Search for a plant" data-inset="true">
+
+        <% for plant in @plants do %>
+          <li data-filtertext="<%= plant[:name_common] %> <%= plant[:name_botanical] %> <%= plant[:plant_type] %>">
+            <a href="?garden_id=<%= @garden_id %>&plant_id=<%= plant[:id] %>">
+              <%= plant[:name_common] %>
+            </a>
+          </li>
+        <% end %>
+
+      </ul>
+    </fieldset>
+  </div>
+  <div class="field">
+    <a href="/plants/new?garden_id=<%= @garden_id %>">Create New Plant</a>
+  </div>
+
+  <% else %> <!-- this is hit if a plant has already been chosen and the user is ready to input the rest of the data -->
+
+    <%= form_for @personal_plant do |p| %>
+      <% if @plant.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@plant.errors.count, "error") %> prohibited this plant from being saved:</h2>
+
+          <ul>
+          <% @plant.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+
+      <div class="field">
+        <%= p.label :name_personalized %><br />
+        <%= p.text_field :name_personalized %>
+      </div>
+      
+      <div class="field">
+        <%= p.hidden_field :garden_id, { :value => @garden_id } %>
+        <%= p.hidden_field :plant_id, { :value => @plant_id } %>
+        <%= p.hidden_field :user_id, { :value => session[:user][:id] } %>
+      </div>
+    
+      <div class="actions">
+        <%= p.submit %>
+      </div>
+
+  <% end %>
+
+  <% end %>
+  <%= render 'layouts/footer' %>
+</div>
