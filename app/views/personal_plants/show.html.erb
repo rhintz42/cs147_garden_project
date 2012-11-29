@@ -1,4 +1,4 @@
-<script src="//cdn.optimizely.com/js/141325595.js"></script>
+
 <% @page_title = @personal_plant.name_personalized %>
 <div data-role="page" id="plant_info_one" data-url="<%= request.path %>">
   
@@ -14,7 +14,7 @@
         </a>
       </li>
       <li>
-      <a href="/personal_plants/<%= @personal_plant[:id] %>#plant_info_two" data-ajax="false" data-theme="" data-icon="">
+      <a href="/personal_plants/<%= @personal_plant[:id] %>#plant_info_two" data-theme="" data-icon="" data-ajax="false" >
           Info
         </a>
       </li>
@@ -36,51 +36,31 @@
           <p> Watered </p>
         </div>
       <% end %>
+      <% if @next_watering == date then %>
+        <div class="water-next">
+          <p> WaterNext </p>
+        </div>
+      <% end %>
     <% end %>
   </div>
   
-  
-
-  <div data-role="popup" id="popupWater" data-theme="a" class="ui-corner-all">
-      <%= form_for(@personal_plant_watering) do |f| %>
-  <% if @personal_plant_watering.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@personal_plant_watering.errors.count, "error") %> prohibited this personal_plant_watering from being saved:</h2>
-
-      <ul>
-      <% @personal_plant_watering.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div data-role="fieldcontain">
-    <label for="mode1">Date you Watered your plant</label>
-    <input name="watering_time" id="watering_time" type="text" data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' />
-  </div>
-
-  <div data-role="fieldcontain">
-    <fieldset data-role="controlgroup">
-      <label for="watering_amount">
-        Watering Percentage
-      </label>
-      <input name="watering_amount" value="100" min="0" max="100" data-highlight="true" type="range">
-    </fieldset>
-  </div>
-
-  
   <div class="field">
-    <%= f.hidden_field :personal_plant_id, { :value => @personal_plant[:id] } %>
+    <div class="left">Key: </div>
+    <div class="left"><p>Watered</p> </div>
+    <div class="watered-key"></div>
+    <div class="left"><p>Next Watering</p> </div>
+    <div class="water-next-key"></div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-    </div>
         
-  <%= render '/layouts/footer' %>
+<%= render '/layouts/footer' %>
+
 </div>
+
+
+
+
+
+
 
 <div data-role="page" id="plant_info_two">
   <%= render '/layouts/header' %>
@@ -134,13 +114,23 @@
 
       <br /><br />
       <% end %>
+
+      <p>Is any of this info incorrect or incomplete?</p>
+      <div data-role="content">
+        <a data-role="button" href="<%= edit_personal_plant_path %>">
+          Edit Info Here
+        </a>
+      </div>
+
     </div>
   </div>
 
 
   
-  <%= render '/layouts/footer' %>
+<%= render '/layouts/footer' %>
+
 </div>
+
 
 <div data-role="page" id="plant_info_three">
   <%= render '/layouts/header' %>

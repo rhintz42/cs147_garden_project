@@ -32,7 +32,7 @@ module PersonalPlantsHelper
 
     def day_cell(day)
       '<td class="'+day_classes(day).to_s+'">
-        <a class="fill-div" href="/personal_plant_waterings?pp='+pp.to_s+'&wt='+day.to_s+'" data-rel="popup" data-position-to="window" data-inline="true">'+/\d{1,2}/.match(view.capture(day, &callback)).to_s+'</a></td>'
+        <a class="fill-div" href="/personal_plant_waterings?pp='+pp.to_s+'&amp;wt='+day.to_s+'" data-rel="popup" data-position-to="window" data-inline="true">'+/\d{1,2}/.match(view.capture(day, &callback)).to_s+'</a></td>'
     end
 
     def day_classes(day)
@@ -40,6 +40,7 @@ module PersonalPlantsHelper
       classes << "today" if day == Date.today
       classes << "notmonth" if day.month != date.month
       classes << "watered" if view.capture(day, &callback)['watered']
+      classes << "water-next" if view.capture(day, &callback)['water-next']
       classes.empty? ? nil : classes.join(" ")
     end
 

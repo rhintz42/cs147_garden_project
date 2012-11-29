@@ -1,6 +1,7 @@
 class Plant < ActiveRecord::Base
  
   attr_accessible :authorized,
+                  :created_from_garden_id,
                   :description,
                   :hardiness_zone_min,
                   :hardiness_zone_max,
@@ -9,6 +10,7 @@ class Plant < ActiveRecord::Base
                   :leeway_watering_weekly_amount,
                   :name_botanical,
                   :name_common,
+                  :personal_plants_attributes,
                   :plant_type,
                   :rating_ease_care,
                   :rating_ease_pruning,
@@ -18,9 +20,7 @@ class Plant < ActiveRecord::Base
                   :user_created_by,
                   :watering_frequency_old,
                   :watering_frequency_new,
-                  :watering_weekly_amount,
-                  :personal_plants_attributes,
-                  :created_from_garden_id
+                  :watering_weekly_amount
                   
 
   def created_from_garden_id

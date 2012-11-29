@@ -146,6 +146,29 @@ a.mover 							{ background: #900; padding: 6px 12px; position: absolute;
   text-align: center;
 }
 
+.left {
+  float: left;
+  min-width: 20px;
+  min-height: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.watered-key {
+  float: left;
+  min-width: 20px;
+  min-height: 20px;
+  background-color: blue;
+  margin-left: -5px;
+}
+
+.water-next-key {
+  float: left;
+  min-width: 20px;
+  min-height: 20px;
+  background-color: green;
+  margin-right: -5px;
+}
 
 
 /*

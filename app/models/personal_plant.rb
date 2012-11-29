@@ -18,9 +18,10 @@ class PersonalPlant < ActiveRecord::Base
                   :watering_frequency,
                   :watering_last,
                   :watering_next,
-                  :personal_plant_waterings_attributes
+                  :personal_plant_waterings_attributes,
+                  :plant_attributes
 
   has_many :personal_plant_comments, :dependent => :destroy
   has_many :personal_plant_waterings, :dependent => :destroy
-  accepts_nested_attributes_for :personal_plant_comments, :personal_plant_waterings
+  accepts_nested_attributes_for :personal_plant_comments, :personal_plant_waterings, :plant
 end
