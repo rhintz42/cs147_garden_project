@@ -9,6 +9,7 @@ class GardensController < ApplicationController
       return
     end
     @gardens = Garden.where(:user_id => session[:user][:id])
+    @user = User.where(:id => session[:user][:id])
     
     respond_to do |format|
       format.html # index.html.erb

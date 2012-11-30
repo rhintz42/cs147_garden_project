@@ -15,11 +15,43 @@
 
 body {
   	background: url(wateringcan.png);
+  	height:100%;
 }
 
 body.ui-mobile-viewport.ui-overlay-c {
 	background: url(wateringcan.png);
 }
+
+.dropdown_nav{
+	float:right;
+}
+
+.overlay {
+	background: url(blacktrans.png);
+	max-width: 75%;
+	padding: 2em;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:15em;
+	z-index:1000;
+	color:#fff;
+}
+
+.collapsing {
+	max-width: 90%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.garden-background {
+	background: url(gardentilt.png);
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+
 
 .ui-page.ui-body-c.ui-page-footer-fixed.ui-page-active {
     background: transparent;

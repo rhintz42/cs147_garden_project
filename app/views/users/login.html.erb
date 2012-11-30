@@ -1,8 +1,10 @@
 <script src="//cdn.optimizely.com/js/141325595.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<div class="garden-background">
 <div id="login_info">
   <p id="notice"><%= notice %></p>
 
+  <div class="overlay">
   <%= form_for @user, :url => {:action => "login"} do |f| %>
     <% if @user.errors.any? %>
       <div id="error_explanation">
@@ -16,21 +18,19 @@
       </div>
     <% end %>
     <div class="field">
-      <%= f.label :username %><br />
-      <%= f.text_field :username %>
+      <%= f.text_field :username, :placeholder=>"Username"%>
     </div>
     <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password %>
+      <%= f.password_field :password, :placeholder=>"Password" %>
     </div>
     <div class="actions">
-      <%= f.submit "Login" %>
+      <%= f.submit "Log In" %>
     </div>
   <% end %>
-
-  <div>
+  	<br/>
     <p>
-      Don't have an account? <%= link_to 'Register Here', new_user_path %>
+      Don't have an account? <%= link_to 'Sign Up Now', new_user_path %>
     </p>
   </div>
+</div>
 </div>

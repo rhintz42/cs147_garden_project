@@ -87,23 +87,16 @@
   <div class="names">
     <div class="plant_name">
       <% if @personal_plant[:name_personalized] %>
-      <b>Personal Plant Name:</b>
-      <%= @personal_plant[:name_personalized] %>
+      <b><%= @personal_plant[:name_personalized] %></b>
 
-      <br /><br />
+      <br />
       <% end %>
 
       <% if @personal_plant.plant.name_common %>  
-      <b>Common Plant Name:</b>
-      <%= @personal_plant.plant.name_common %>
-
-      <br /><br />
-
-      <% end %>
-
-      <% if @personal_plant.plant.name_botanical %>
-      <b>Botanical Plant Name:</b>
-      <%= @personal_plant.plant.name_botanical %>
+      <%= @personal_plant.plant.name_common %> 
+	  <% end %>
+	  <% if @personal_plant.plant.name_botanical %>
+      <i>(<%= @personal_plant.plant.name_botanical %>)</i>
 
       <br /><br />
       <% end %>

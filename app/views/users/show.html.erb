@@ -9,13 +9,10 @@
 	</div>
   <div class="basic_info">
     <p>
-      First Name: <%= @user.name_first %>
+  		<%= @user.name_first + " " + @user.name_last %>
     </p>
     <p>
-      Last Name: <%= @user.name_last %>
-    </p>
-    <p>
-      Email: <%= @user.email %>
+      <%= @user.email %>
     </p>
   </div>
 

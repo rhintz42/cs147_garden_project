@@ -4,11 +4,44 @@
 <% @page_title = "Your Gardens" %>
 <%= render "/layouts/header" %>
 <div data-role="content">
+
+<% if false %>
+
+<div data-role="collapsible" class="collapsing" data-inset="false">
+	<h3>Gardens</h3>
+	<ul data-role="listview">
+		<% for garden in @gardens do %>
+          
+          <li data-theme="c">
+            <a href="/gardens/<%= garden[:id] %>" data-ajax="false" data-transition="slide">
+              <%= garden[:name] %>
+            </a>
+          </li> 
+
+        <% end %>
+        <% if @gardens.size > 0 then %>
+        	<li data-theme="c" data-icon="plus">
+        		<a href="/gardens/new" data-ajax="false">
+    				Add a new garden
+  				</a>
+  			</li>
+  		<% else %>
+  			<li data-theme="c" data-icon="plus">
+        		<a href="/gardens/new" data-ajax="false">
+    				Add your first garden
+  				</a>
+  			</li>
+  		<% end %>
+  	</ul>
+</div>
+
+<% end %>
+        		
   <div id="iphone_container">
     <% if @gardens.size > 0 then %>
       <ul data-role="listview" data-divider-theme="b" data-inset="true">
         <li data-role="list-divider" role="heading">
-          Your Gardens
+          Gardens
         </li>
         <% for garden in @gardens do %>
           
@@ -21,11 +54,11 @@
         <% end %>
       </ul>
     <% else %>
-      You don't have any Gardens Yet
+      You don't have any gardens yet
     <% end %>
 
   <a data-role="button" data-theme="e" href="/gardens/new" data-ajax="false">
-    Create New Garden
+    Add a garden
   </a>
   </div>
 </div>
