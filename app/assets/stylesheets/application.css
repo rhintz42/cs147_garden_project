@@ -26,6 +26,14 @@ body.ui-mobile-viewport.ui-overlay-c {
 	float:right;
 }
 
+.content_strip {
+	background: url(white_trans.png);
+	max-width:90%;
+	margin-left:auto;
+	margin-right:auto;
+	height:100%;
+}
+
 .overlay {
 	background: url(blacktrans.png);
 	max-width: 75%;
@@ -37,10 +45,20 @@ body.ui-mobile-viewport.ui-overlay-c {
 	color:#fff;
 }
 
+.name_box {
+	background-color: #ffffff;
+	max-width: 90%;
+	margin-left:auto;
+	margin-right:auto;
+	padding:1em;
+}
+
+
 .collapsing {
 	max-width: 90%;
 	margin-left:auto;
 	margin-right:auto;
+	padding-bottom:1em;
 }
 
 .garden-background {
@@ -50,6 +68,12 @@ body.ui-mobile-viewport.ui-overlay-c {
 	left:0;
 	width:100%;
 	height:100%;
+}
+
+#logout_button {
+	width:8em;
+	padding:1em;
+	float:right;
 }
 
 
