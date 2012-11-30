@@ -15,13 +15,12 @@
   <% end %>
 
 	<h1><%= @page_title %></h1>
-	
-  <a class="ui-btn-right" href="/users/<%= session[:user][:id] %>" data-role="button" data-icon="home" data-ajax="false">
-    Account
+ 
+  <a href="/users/<%= session[:user][:id] %>" id="home" class="ui-btn-right" data-role="button" data-icon="home" data-ajax="false">
+  	Account
   </a>
-
+  
 </div>
-
 
 
 <% if false then %>
