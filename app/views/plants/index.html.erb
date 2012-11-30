@@ -3,65 +3,20 @@
 <script src="//cdn.optimizely.com/js/141325595.js"></script>
 
 <div data-role="page" id="plants_choice_one">
-  
-  
+   
   <%= render '/layouts/header' %>
   
+
   <div data-role="navbar" data-iconpos="left">
     <ul>
       <li>
         <a href="#plants_choice_one" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
-          Generic
+          Personal
         </a>
       </li>
       <li>
         <a href="#plants_choice_two" data-theme="" data-icon="">
-          Personal
-        </a>
-      </li>
-    </ul>
-  </div>
-
-  <div data-role="content">
-    <div class="field">
-      <fieldset data-role="controlgroup" data-type="vertical">
-        <ul data-role="listview" data-filter="true" data-filter-placeholder="Search for a plant" data-inset="true">
-          <% for plant in @plants do %>
-            <% if plant then %>
-            <li data-filtertext="<%= plant[:name_common] %> <%= plant[:name_botanical] %> <%= plant[:plant_type] %>">
-              <a href="/plants/<%= plant[:id] %>" data-ajax="false" >
-                <%= plant[:name_common] %>
-              </a>
-            </li>
-            <% end %>
-          <% end %>
-        </ul>
-      </fieldset>
-    </div>
-  </div>
-
-  
-  <%= render '/layouts/footer' %>
-  
-</div>
-
-<!--</div>-->
-
-<div data-role="page" id="plants_choice_two">
-  
-  <%= render '/layouts/header' %>
-  
-
-  <div data-role="navbar" data-iconpos="left">
-    <ul>
-      <li>
-        <a href="#plants_choice_one" data-theme="" data-icon="">
-          Generic
-        </a>
-      </li>
-      <li>
-        <a href="#plants_choice_two" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
-          Personal
+          Universal
         </a>
       </li>
     </ul>
@@ -90,5 +45,50 @@
   </div>
 
   <%= render '/layouts/footer' %>
+ 
+</div>
+
+<!--</div>-->
+
+<div data-role="page" id="plants_choice_two">
+   
   
+  <%= render '/layouts/header' %>
+  
+  <div data-role="navbar" data-iconpos="left">
+    <ul>
+      <li>
+        <a href="#plants_choice_one" data-theme="" data-icon="">
+          Personal
+        </a>
+      </li>
+      <li>
+        <a href="#plants_choice_two" data-theme="" data-icon="" class="ui-btn-active ui-state-persist">
+          Universal
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div data-role="content">
+    <div class="field">
+      <fieldset data-role="controlgroup" data-type="vertical">
+        <ul data-role="listview" data-filter="true" data-filter-placeholder="Search for a plant" data-inset="true">
+          <% for plant in @plants do %>
+            <% if plant then %>
+            <li data-filtertext="<%= plant[:name_common] %> <%= plant[:name_botanical] %> <%= plant[:plant_type] %>">
+              <a href="/plants/<%= plant[:id] %>" data-ajax="false" >
+                <%= plant[:name_common] %>
+              </a>
+            </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </fieldset>
+    </div>
+  </div>
+
+  
+  <%= render '/layouts/footer' %>
+ 
 </div>
