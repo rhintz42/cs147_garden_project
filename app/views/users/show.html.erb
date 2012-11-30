@@ -1,13 +1,8 @@
 <div data-role="page" id="home_one">
-
+	<% @page_title = "Home" %>
 	<%= render '/layouts/header' %>
-
-	<div class="user-home-name">
-		<p>
-  		<b>Account Information</b>
-		</p>
-	</div>
-  <div class="basic_info">
+<div class="content_strip">	
+  <div class="name_box">
     <p>
   		<%= @user.name_first + " " + @user.name_last %>
     </p>
@@ -15,21 +10,68 @@
       <%= @user.email %>
     </p>
   </div>
+  
+  <div data-role="collapsible" class="collapsing" data-inset="true" data-iconpos="right" data-collapsed="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u">
+	<h3>Gardens</h3>
+	<ul data-role="listview" data-inset="true">
+		<% for garden in @gardens do %>
+          
+          <li data-theme="c">
+            <a href="/gardens/<%= garden[:id] %>" data-ajax="false" data-transition="slide">
+              <%= garden[:name] %>
+            </a>
+          </li> 
 
-  <div>
+        <% end %>
+        <% if @gardens.size > 0 then %>
+        	<li data-theme="c" data-icon="plus">
+        		<a href="/gardens/new" data-ajax="false">
+    				Add a new garden
+  				</a>
+  			</li>
+  		<% else %>
+  			<li data-theme="c" data-icon="plus">
+        		<a href="/gardens/new" data-ajax="false">
+    				Add your first garden
+  				</a>
+  			</li>
+  		<% end %>
+  	</ul>
+  </div>
+  
+  <div data-role="collapsible" class="collapsing" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-inset="true">
+	<h3>Plants</h3>
+	<ul data-role="listview" data-inset="true">
+		<% for plant in @plants do %>
+          
+          <li data-theme="c">
+            <a href="/personal_plants/<%= plant[:id] %>" data-ajax="false" data-transition="slide">
+              <%= plant[:name_personalized] %>
+            </a>
+          </li> 
+
+        <% end %>
+        
+          <li data-theme="c" data-icon="search">
+          	<a href="/plants" data-ajax="false">
+     		 Search for plants
+    		</a>
+    	  </li>
+  	</ul>
+  </div>
+
+  <div id="logout_button">
   	<a href="/users/logout" data-role="button" data-ajax="false">
-    logout
+    Log out
   </a>
   </div>
-  <%= render '/layouts/footer' %>
+  
 </div>
+  <%= render '/layouts/footer' %>
 
 
 
-
-
-
-
+</div>
 
 
 
