@@ -1,4 +1,69 @@
+<%= render '/layouts/header' %>
+<div data-role="content">
+	
+	
+		<div data-role="collapsible" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-collapsed="false" data-inset="true">
+  			<h3>Plant information</h3>
+  			<div>
+  				<span class="shrinkwrap">
+  				<% if @personal_plant[:name_personalized] %>
+      				<b><%= @personal_plant[:name_personalized] %></b>
+      				<br />
+      			<% end %>
 
+      			<% if @personal_plant.plant.name_common %>  
+      				<%= @personal_plant.plant.name_common %> 
+	 			 <% end %>
+	  			<% if @personal_plant.plant.name_botanical %>
+      				<i>(<%= @personal_plant.plant.name_botanical %>)</i>
+      				<br /><br />
+      			<% end %>
+
+      			<% if @personal_plant.plant.description %>
+      				<b>Description:</b>
+      				<%= @personal_plant.plant.description %>
+
+      				<br /><br />
+      			<% end %>
+      			</span>
+      			<a data-role="button" class="bottom_button" href="<%= edit_personal_plant_path %>">
+          			Edit info
+        		</a>
+  			</div>
+  		</div>
+	
+	
+		<div data-role="collapsible" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u">
+			<h3>Watering calendar</h3>
+			<div id="plant_watering">
+    			<%= calendar do |date| %>
+      			<%= date.day %>
+      			<% if @personal_plant_waterings_by_date[date] then %>
+        			<div class="watered">
+          				<p> Watered </p>
+        			</div>
+      			<% end %>
+      			<% if @next_watering == date then %>
+        			<div class="water-next">
+          				<p> WaterNext </p>
+       			 	</div>
+     			 <% end %>
+    			<% end %>
+  			</div>
+  			<span class="shrinkwrap">
+  			<div class="field">
+    		<div class="left"><p>Watered</p> </div>
+    		<div class="watered-key"></div>
+    		<div class="left"><p>Next Watering</p> </div>
+    		<div class="water-next-key"></div>
+  			</div>
+  			</span>
+  		</div>
+  		
+</div>
+
+
+<%if false%>
 <% @page_title = @personal_plant.name_personalized %>
 <div data-role="page" id="plant_info_one" data-url="<%= request.path %>">
   
@@ -225,3 +290,4 @@
 
   </table>
   <% end %>
+  <%end%>

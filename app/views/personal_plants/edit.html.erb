@@ -1,10 +1,6 @@
+<%= render 'layouts/header' %>
 
-
-<div data-role="page" id="one">
-
-  <%= render 'layouts/header' %>
-
-  <h1>Editing personal_plant</h1>
+<div data-role="content">
 
   <%= form_for @personal_plant do |p| %>
     <% if @personal_plant.errors.any? %>
@@ -21,37 +17,24 @@
 
 
     <div class="field">
-      <%= p.label :name_personalized %><br />
+      <span class="shrinkwrap"><b>Personalized name:</b></span>
       <%= p.text_field :name_personalized %>
     </div>
 
     <%= p.fields_for :plant do |f| %>
 	    <div class="field">
-	      <%= f.label :name_common %><br />
+	      <span class="shrinkwrap"><b>Common name:</b></span>
 	      <%= f.text_field :name_common %>
 	    </div>
 	    <div class="field">
-	      <%= f.label :name_botanical %><br />
+	      <span class="shrinkwrap"><b>Botanical name:</b></span>
 	      <%= f.text_field :name_botanical %>
 	    </div>
 	    <div class="field">
-	      <%= f.label :plant_type %><br />
+	      <span class="shrinkwrap"><b>Type of plant:</b></span>
 	      <%= f.text_field :plant_type %>
 	    </div>
-	    <div class="field">
-	      <%= f.label :is_houseplant %><br />
-	      <%= f.text_field :is_houseplant %>
-	    </div>
-
-	    <div class="field">
-	      <%= f.label :watering_weekly_amount %><br />
-	      <%= f.text_field :watering_weekly_amount %>
-	    </div>
-
-	    <div class="field">
-	      <%= f.label :sun_exposure %><br />
-	      <%= f.text_field :sun_exposure %>
-	    </div>
+	    
 	  <% end %>
     
     <div class="field">

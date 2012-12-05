@@ -25,16 +25,15 @@
     <link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" /> -->
 
     <!--<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>-->
-
+	
     <script src="http://jquerymobile.com/branches/popup-widget/js/jquery.js"></script>
     <script src="http://jquerymobile.com/branches/popup-widget/js/"></script>
 
     <link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> 
     
     
+    <link rel="stylesheet" type="text/css" href="/assets/themes/blackwhite.min.css" />
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile.structure-1.2.0.min.css" />
-    <link rel="stylesheet" type="text/css" href="/assets/themes/planttheme3.min.css" />
-    
     <!-- <script type="text/javascript" src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script> -->
 
     <!-- Optional Mousewheel support: http://brandonaaron.net/code/mousewheel/docs -->
@@ -49,11 +48,33 @@
 
     
     <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.datebox.min.js"></script>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCrxXb9yLLZowCmwgjL5GIxttE0nbkWrb0&sensor=false&libraries=weather"></script>
+    <script>
+    	function init_map() {
+    		var mapOptions = {
+    			zoom: 6,
+    			center: new google.maps.LatLng(49.26, -123.12),
+    			mapTypeId: google.maps.MapTypeId.ROADMAP
+    		};
+    		
+    		var map = new google.maps.Map(document.getElementById('weather_map'), mapOptions);
+    		
+    		var weatherLayer = new google.maps.weather.WeatherLayer({
+    			temperatureUnits: google.maps.weather.TemperatureUnit.FAHRENHEIT
+    		});
+    		weatherLayer.setMap(map);
+    		
+    		var cloudLayer = new google.maps.weather.CloudLayer();
+    		cloudLayer.setMap(map);
+    	}
+    </script>
 
 
 
   </head>
-  <body>
+  <body onload="init_map()">
+  	<div class="container-background"></div>
     <%= yield %>
   </body>
 </html>

@@ -25,6 +25,10 @@ class GardensController < ApplicationController
     end
     @garden = Garden.find(params[:id])
     @plants_in_garden = PersonalPlant.where(:garden_id => @garden[:id] )
+    
+    loc = @garden.location
+    
+    @weather = Weather.new(loc)
 
     @back_url = gardens_path
     @back_label = "My Gardens"

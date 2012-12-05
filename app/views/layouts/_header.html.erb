@@ -1,31 +1,38 @@
 
 <div data-theme="b" data-role="header">
-
   <% if @back_label == nil then %>
     <% @back_label = "Back" %>
   <% end %>
   <% if @no_back == nil then %>
 	 <% if @back_url != nil then %>
-      <a data-role="button" href="<%= @back_url %>" data-icon="back" data-ajax="false">
+      <a data-role="button" href="<%= @back_url %>" data-icon="back" data-ajax="false" style="margin-top:6px;">
   	    <%= @back_label %>
       </a>
     <% else %>
 
     <% end %>
-  <% end %>
-
-	<h1><%= @page_title %></h1>
- 
-  <a href="/users/<%= session[:user][:id] %>" id="home" class="ui-btn-right" data-role="button" data-icon="home" data-ajax="false">
-  	Account
-  </a>
+  <%end%>
   
+  <h1><div id="header-img"></div></h1>
+  
+  <a data-rel="popup" href="#menupopup" data-icon="grid" class="ui-btn-right" style="margin-top:6px;">
+  	Menu
+   </a>
+  
+</div>
+
+<div id="menupopup" data-role="popup" data-inset="true" data-mini="true">
+	<div data-role="controlgroup" style="margin:0;">
+ 		<a data-role="button" href="/users/<%= session[:user][:id] %>">Home</a>
+		<a data-role="button" href="/gardens?def=true">Gardens</a>
+		<a data-role="button" href="/plants">Plants</a>
+    </div>
 </div>
 
 
 <% if false then %>
   <% if @back_url then %>
-<a data-role="button" href="<%= @back_url %>" data-icon="back" data-ajax="false">
+<a data-role="button" href="<%= @back_url %>" data-icon="back" data-ajax="false" >
   <% else %>
     <a data-role="button" data-rel="back" href="#" data-icon="back" data-ajax="false">
   <% end %>

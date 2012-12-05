@@ -1,3 +1,33 @@
+<%= render '/layouts/header' %>
+<div data-role="content">
+	
+	
+		<div data-role="collapsible" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-collapsed="false" data-inset="true">
+  			<h3>Plant information</h3>
+  			<span class="shrinkwrap">
+  				<b>
+      			<% if @plant.name_common %>  
+      				<%= @plant.name_common %> 
+	 			 <% end %>
+	  			<% if @plant.name_botanical %>
+      				<i>(<%= @plant.name_botanical %>)</i>
+      				<br /><br />
+      			<% end %>
+      			</b>
+
+      			<% if @plant.description %>
+      				<b>Description:</b>
+      				<%= @plant.description %>
+
+      				<br /><br />
+      			<% end %>
+  			</span>
+  		</div>
+  		
+  		
+</div>
+
+<%if false%>
 <% @page_title = @plant.name_common %>
 
 <div data-role="page" id="plant_info_one">
@@ -114,4 +144,5 @@
   <%= render '/layouts/footer' %>
   
 </div>
+<%end%>
 
