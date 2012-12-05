@@ -4,8 +4,7 @@ class CreatePersonalPlantComments < ActiveRecord::Migration
       t.text :body
       t.string :commenter
       t.integer :days_had_plant
-      t.integer :num_thumbs_down
-      t.integer :num_thumbs_up
+      t.integer :rating
       t.float :rating_ease_care
       t.float :rating_ease_pruning
       t.float :rating_ease_watering

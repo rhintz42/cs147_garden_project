@@ -25,6 +25,10 @@ body.ui-mobile-viewport.ui-overlay-c {
 	z-index:1000;
 }
 
+#advice_area {
+	height:300px;
+}
+
 .login-logo {
 	background: url(flowerbud-large.png);
 	width:265px;

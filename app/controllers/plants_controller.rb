@@ -23,6 +23,8 @@ class PlantsController < ApplicationController
     @back_url = plants_path
     @back_label = "Plants"
     
+    @plant_comments = PlantComment.where(:plant_id => params[:id])
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @plant }
@@ -103,6 +105,7 @@ class PlantsController < ApplicationController
       end
     end
   end
+  
 
   # PUT /plants/1
   # PUT /plants/1.json

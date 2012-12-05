@@ -1,0 +1,11 @@
+<%= render 'layouts/header' %>
+
+<%= form_for(@plant_comment, :url => {:controller => :plant_comments, :action => :post_comment, :plant => @plant}) do |f| %>
+	  <div class="field">
+        <%= f.text_area :body, :placeholder => "Describe how to care for this plant", :id => "advice_area" %>
+      </div>
+    
+      <div class="actions">
+        <%= f.submit "Submit care advice" %>
+      </div>
+<% end %>

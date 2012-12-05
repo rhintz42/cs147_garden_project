@@ -3,9 +3,7 @@ class CreatePlantComments < ActiveRecord::Migration
     create_table :plant_comments do |t|
       t.text :body
       t.string :commenter
-      t.integer :rate_ease_care
-      t.integer :rate_ease_pruning
-      t.integer :rate_ease_watering
+      t.integer :rating
 
       
       t.references :plant
