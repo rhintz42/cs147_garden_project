@@ -1,3 +1,51 @@
+<%= render '/layouts/header' %>
+<div data-role="content">
+	
+	
+		<div data-role="collapsible" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-collapsed="false" data-inset="true">
+  			<h3>Plant information</h3>
+  			<span class="shrinkwrap">
+  				<b>
+      			<% if @plant.name_common %>  
+      				<%= @plant.name_common %> 
+	 			 <% end %>
+	  			<% if @plant.name_botanical %>
+      				<i>(<%= @plant.name_botanical %>)</i>
+      				<br /><br />
+      			<% end %>
+      			</b>
+
+      			<% if @plant.description %>
+      				<b>Description:</b>
+      				<%= @plant.description %>
+
+      				<br /><br />
+      			<% end %>
+  			</span>
+  		</div>
+  		
+  		<div data-role="collapsible" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-inset="true">
+  			<h3>Plant care advice</h3>
+  			<% if @plant_comments.size > 0 %>
+  			<div data-role="collapsible-set">
+  			<% for comment in @plant_comments do %>
+  			<div data-role="collapsible" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-inset="true">
+  				<h3>Advice from <%= comment.commenter %>:</h3>
+  				<span class="shrinkwrap">
+  				<%= comment.body %>
+  			</span>
+			</div>
+  			<% end %>
+  			</div>
+  			<% else %>
+  			<span class="shrinkwrap"><b>There is no advice for this plant yet</b></span>
+  			<% end %>
+  			<a data-role="button" data-theme="e" href="/plant_comments/comment/<%= @plant.id %>">Submit care advice for this plant</a>
+  		</div> 		
+  		
+</div>
+
+<%if false%>
 <% @page_title = @plant.name_common %>
 
 <div data-role="page" id="plant_info_one">
@@ -114,4 +162,5 @@
   <%= render '/layouts/footer' %>
   
 </div>
+<%end%>
 

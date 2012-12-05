@@ -1,4 +1,4 @@
-<div data-role="page" id="one">
+
 
   <%= render 'layouts/header' %>
 
@@ -8,7 +8,9 @@
     Please choose which type of plant you are adding to your garden
   </div>
 
+<div data-role="content">
 
+  <span class="shrinkwrap"><b>Select the the plant you want to add to your garden</b></span>
   <div class="field">
     <fieldset data-role="controlgroup" data-type="vertical">
       <ul data-role="listview" data-filter="true" data-filter-placeholder="Search for a plant" data-inset="true">
@@ -20,12 +22,11 @@
             </a>
           </li>
         <% end %>
-
+		<li data-theme="e" data-icon="plus">
+			<a href="/plants/new?garden_id=<%= @garden_id %>">Contribute a new plant to our database</a>
+		</li>
       </ul>
     </fieldset>
-  </div>
-  <div class="field">
-    <a href="/plants/new?garden_id=<%= @garden_id %>">Create New Plant</a>
   </div>
 
   <% else %> <!-- this is hit if a plant has already been chosen and the user is ready to input the rest of the data -->

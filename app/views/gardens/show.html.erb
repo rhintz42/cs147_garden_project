@@ -1,8 +1,53 @@
+
+
+<% if notice %>
+<span class="shrinkwrap" id="notice"><%= notice %></span>
+<% end %>
 <% @page_title= @garden.name %>
 <%= render "/layouts/header" %>
+<div data-role="content" onload="init_map()">
+		<div data-role="collapsible" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-collapsed="false">
+			<h3>Your Plants</h3>
+			<ul data-role="listview" data-inset="true">
+				<% for plant in @plants_in_garden do %>
+        		<li data-theme="c">
+          			<a href="/personal_plants/<%= plant[:id] %>" data-ajax="false" data-transition="slide">
+            			<%= plant[:name_personalized] %>
+          			</a>
+        		</li>
+      			<% end %>
+      			<li data-theme="e" data-icon="plus" style="border-bottom:1px solid black;">
+      				<a href="/personal_plants/new?garden_id=<%=@garden[:id] %>">
+      					Add a new plant to this garden
+      				</a>
+      			</li>
+      		</ul>
+      	</div>
+      	
+      	<div data-role="collapsible" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" expand="init_map()">
+      		<h3>Current weather</h3>
+      		<span class="shrinkwrap">
+      			<h3><%= @weather.location %></h3>
+      			<p><%= @weather.description %></p>
+      			<img id="weather-image" src=<%=@weather.imgURL%>>
+				<div id="weather-temp"><b><%=@weather.temp%>&degF</b></div>
+				<table>
+					<tr><td><b>Precipitation: </b><%=@weather.precipMM%> <i>mm</i></td></tr>
+					<tr><td><b>Wind Speed: </b><%=@weather.windSpeed%> <i>mph</i></td></tr>
 
-<p id="notice"><%= notice %></p>
+				</table>
+			</span>
+		</div>
+      	
+      	
+      	
+      	
+    </div>
+</div>
+     
 
+
+<%if false%>
 <div data-role="content">
   <div id="iphone_container">
   <% if @plants_in_garden.size > 0 then %>
@@ -36,7 +81,7 @@
        Add Watering
     </a>
     <% end %>
-  </div>
 </div>
 
 <%= render "/layouts/footer" %>
+<%end%>

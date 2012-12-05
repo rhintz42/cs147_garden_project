@@ -37,6 +37,8 @@ class PersonalPlantsController < ApplicationController
 
     @back_url = "/gardens/"+@personal_plant.garden[:id].to_s
     @back_label = "Garden"
+    
+    @plant_comments = PlantComment.where(:plant_id => @personal_plant.plant.id)
 
     @personal_plant_waterings_by_date = {}
     #@personal_plant_waterings_by_date[Time.now().to_date - 2] = [PersonalPlant.new] 

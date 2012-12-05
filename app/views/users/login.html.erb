@@ -2,10 +2,13 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <div class="garden-background">
 <div id="login_info">
-  <p id="notice"><%= notice %></p>
-
+  
+  <% if notice %>
+  <span class="shrinkwrap" id="notice"><%= notice %></span>
+  <% end %>
   <div class="overlay">
-  <%= form_for @user, :url => {:action => "login"} do |f| %>
+  	<div class="login-logo"></div>
+    <%= form_for @user, :url => {:action => "login"} do |f| %>
     <% if @user.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -27,9 +30,9 @@
       <%= f.submit "Log In" %>
     </div>
   <% end %>
-  	<br/>
+  	<br/><br/>
     <p>
-      Don't have an account? <%= link_to 'Sign Up Now', new_user_path %>
+      Don't have an account yet? <%= link_to 'Sign Up Now', new_user_path %>
     </p>
   </div>
 </div>

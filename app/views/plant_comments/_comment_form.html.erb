@@ -1,0 +1,15 @@
+<%= render 'layouts/header' %>
+
+<%= form_for(@plant_comment) do |f| %>
+	  <div class="field">
+        <%= f.text_area :body, :placeholder=>"Describe how to care for this plant" %>
+      </div>
+      
+      <div class="field">
+        <%= f.hidden_field :rating, { :value => 0} %>
+      </div>
+    
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+<% end %>

@@ -1,6 +1,59 @@
 <% @page_title = "Plants" %>
 
 <script src="//cdn.optimizely.com/js/141325595.js"></script>
+<%= render '/layouts/header' %>
+<div data-role="content">
+
+	<div data-role="collapsible" data-iconpos="right" data-collapsed-icon="search" data-expanded-icon="arrow-u" data-collapsed="false" data-inset="true">
+		<h3>Personal plant database</h3>
+		<div class="field">
+      		<fieldset data-role="controlgroup" data-type="vertical">
+        <!-- used to have id="asdf" -->
+        <ul data-role="listview" data-filter="true" data-filter-placeholder="Search for a plant you own" data-inset="true">
+          <% for plant in @personal_plants do %>
+            <li data-filtertext="<%= plant[:name_personalized] %> <%= plant[:name_botanical] %> <%= plant[:plant_type] %>">
+              <a href="/personal_plants/<%= plant[:id] %>" data-ajax="false" >
+                <div class="plants_selector">
+                  <%= plant[:name_personalized] %> 
+                  <% if plant.plant then %>
+                     -    <%= plant.plant.name_common %>
+                  <% end %>
+                </div>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </fieldset>
+    </div>
+    </div>
+    
+    <div data-role="collapsible" data-iconpos="right" data-collapsed-icon="search" data-expanded-icon="arrow-u" data-collapsed="true" data-inset="true">
+    	<h3>Universal plant database</h3>
+    	<div class="field">
+      <fieldset data-role="controlgroup" data-type="vertical">
+        <ul data-role="listview" data-filter="true" data-filter-placeholder="Search for a plant" data-inset="true">
+          <% for plant in @plants do %>
+            <% if plant then %>
+            <li data-filtertext="<%= plant[:name_common] %> <%= plant[:name_botanical] %> <%= plant[:plant_type] %>">
+              <a href="/plants/<%= plant[:id] %>" data-ajax="false" >
+                <%= plant[:name_common] %>
+              </a>
+            </li>
+            <% end %>
+          <% end %>
+          <li data-theme="e" data-icon="plus">
+			<a href="/plants/new?garden_id=<%= @garden_id %>">Contribute a new plant to our database</a>
+		</li>
+        </ul>
+      </fieldset>
+    </div>
+    </div>
+ 
+</div>
+		
+
+
+<%if false%>
 
 <div data-role="page" id="plants_choice_one">
    
@@ -26,7 +79,7 @@
     <div class="field">
       <fieldset data-role="controlgroup" data-type="vertical">
         <!-- used to have id="asdf" -->
-        <ul data-role="listview" data-filter="true" data-filter-placeholder="Search for a plant you own" data-inset="true">
+        <ul data-role="listview" data-filter="true" data-filter-placeholder="Search for a plant you own">
           <% for plant in @personal_plants do %>
             <li data-filtertext="<%= plant[:name_personalized] %> <%= plant[:name_botanical] %> <%= plant[:plant_type] %>">
               <a href="/personal_plants/<%= plant[:id] %>" data-ajax="false" >
@@ -73,7 +126,7 @@
   <div data-role="content">
     <div class="field">
       <fieldset data-role="controlgroup" data-type="vertical">
-        <ul data-role="listview" data-filter="true" data-filter-placeholder="Search for a plant" data-inset="true">
+        <ul data-role="listview" data-filter="true" data-filter-placeholder="Search for a plant">
           <% for plant in @plants do %>
             <% if plant then %>
             <li data-filtertext="<%= plant[:name_common] %> <%= plant[:name_botanical] %> <%= plant[:plant_type] %>">
@@ -92,3 +145,4 @@
   <%= render '/layouts/footer' %>
  
 </div>
+<%end%>

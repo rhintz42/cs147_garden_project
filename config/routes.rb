@@ -37,6 +37,10 @@ GardenCookbook::Application.routes.draw do
   get "/weather/index"
   get "/weather/other_page"
   
+  match 'plant_comments/comment/:id', :controller => 'plant_comments', :action => 'comment', :via => "get"
+  
+  match 'plant_comments/post_comment/:id', :controller => 'plant_comments', :action => 'post_comment', :via => "post"
+  
   match "/home" => "home#index"
   match "/plants" => "plants#index"
   match "/gardens" => "gardens#index"

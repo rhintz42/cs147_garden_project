@@ -13,52 +13,103 @@
  *= require ui-lightness/jquery-ui-1.8.23.custom.css
 */
 
-body {
-  	background: url(wateringcan.png);
-  	height:100%;
-}
-
 body.ui-mobile-viewport.ui-overlay-c {
-	background: url(wateringcan.png);
 }
 
-.dropdown_nav{
-	float:right;
+.ui-controlgroup, fieldset.ui-controlgroup {
+	margin:0;
 }
 
-.content_strip {
-	background: url(white_trans.png);
-	max-width:90%;
+#plant_watering, .field {
+	position:relative;
+	z-index:1000;
+}
+
+#advice_area {
+	height:300px;
+}
+
+.login-logo {
+	background: url(flowerbud-large.png);
+	width:265px;
+	height:70px;
 	margin-left:auto;
 	margin-right:auto;
+	margin-top:3em;
+	margin-bottom:3em;
+}
+
+#header-img {
+	background: url(flowerbud-small.png);
+	width:95px;
+	height:25px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#weather-image {
+	border:1px solid black;
+	margin:1em;
+}
+
+#weather-temp {
+	margin-top:1em;
+	font-size:200%;
+}
+
+.container-background {
+	background: url(flower.png);
+	min-width:100%;
+	background-attachment:fixed;
+	position:absolute;
+	top:25px;
+	left:0;
 	height:100%;
+	z-index:0;
+}
+
+.bottom_button {
+	width:8em;
+	padding:1em;
+}
+
+#weather_map {
+	max-width:50em;
+	height: 50em;
 }
 
 .overlay {
-	background: url(blacktrans.png);
+	background: url(white_trans.png);
 	max-width: 75%;
 	padding: 2em;
 	margin-left:auto;
 	margin-right:auto;
-	margin-top:15em;
+	margin-top:5em;
 	z-index:1000;
-	color:#fff;
 }
 
-.name_box {
-	background-color: #ffffff;
-	max-width: 90%;
-	margin-left:auto;
-	margin-right:auto;
-	padding:1em;
+.shrinkwrap {
+	display:inline-block;
+	background:#ffffff;
+	border:1px solid black;
+	margin-top:1em;
+	margin-bottom:1em;
+	padding:.25em;
+	position:relative;
+	z-index:1000;
+}
+
+#menupopup {
+	padding:0;
+	margin:0;
+	height:100%;	
 }
 
 
 .collapsing {
-	max-width: 90%;
+	max-width: 100%;
 	margin-left:auto;
 	margin-right:auto;
-	padding-bottom:1em;
 }
 
 .garden-background {
@@ -80,13 +131,12 @@ body.ui-mobile-viewport.ui-overlay-c {
 .ui-page.ui-body-c.ui-page-footer-fixed.ui-page-active {
     background: transparent;
 }
+
+.ui-body-c, .ui-overlay=c,
 .ui-content{
     background: transparent;
 }
 
-.nav-bot {
-  
-}
 
 .header_third {
   width: 33%;

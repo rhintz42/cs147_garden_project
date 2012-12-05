@@ -1,47 +1,12 @@
 
-<div data-role="page" id="tester" data-url="<%= request.path %>">
-<script src="//cdn.optimizely.com/js/141325595.js"></script>
+  <%= render "/layouts/header" %>
 <% @page_title = "Your Gardens" %>
-<%= render "/layouts/header" %>
-<div data-role="content">
-
-<% if false %>
-
-<div data-role="collapsible" class="collapsing" data-inset="false">
-	<h3>Gardens</h3>
-	<ul data-role="listview">
-		<% for garden in @gardens do %>
-          
-          <li data-theme="c">
-            <a href="/gardens/<%= garden[:id] %>" data-ajax="false" data-transition="slide">
-              <%= garden[:name] %>
-            </a>
-          </li> 
-
-        <% end %>
-        <% if @gardens.size > 0 then %>
-        	<li data-theme="c" data-icon="plus">
-        		<a href="/gardens/new" data-ajax="false">
-    				Add a new garden
-  				</a>
-  			</li>
-  		<% else %>
-  			<li data-theme="c" data-icon="plus">
-        		<a href="/gardens/new" data-ajax="false">
-    				Add your first garden
-  				</a>
-  			</li>
-  		<% end %>
-  	</ul>
-</div>
-
-<% end %>  		
-  <div id="iphone_container">
-    <% if @gardens.size > 0 then %>
+<div data-role="content"> 		
       <ul data-role="listview" data-divider-theme="b" data-inset="true">
         <li data-role="list-divider" role="heading">
           Gardens
         </li>
+        <% if @gardens.size > 0 then %>
         <% for garden in @gardens do %>
           
           <li data-theme="c">
@@ -51,18 +16,18 @@
           </li> 
 
         <% end %>
-      </ul>
+          <li data-theme="e" style="border-bottom:1px solid black" data-icon="plus">
+          	<a href="/gardens/new" data-ajax="false">
+    			Add a garden
+  			</a>
+  		  </li>
+      
     <% else %>
-      You don't have any gardens yet
+      <li data-theme="e" style="border-bottom:1px solid black" data-icon="plus">
+          	<a href="/gardens/new" data-ajax="false">
+    			Add your first garden
+  			</a>
+  		  </li>
     <% end %>
-
-  <a data-role="button" data-theme="e" href="/gardens/new" data-ajax="false">
-    Add a garden
-  </a>
-  </div>
-</div>
-
-
-<%= render "/layouts/footer" %>
-
+    </ul>
 </div>

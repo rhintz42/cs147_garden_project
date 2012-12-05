@@ -1,18 +1,17 @@
-<div data-role="page" id="home_one">
 	<% @page_title = "Home" %>
-	<%= render '/layouts/header' %>
-<div class="content_strip">	
-  <div class="name_box">
+<%= render '/layouts/header' %>
+<div data-role="content">
+  <span class="shrinkwrap">
     <p>
-  		<%= @user.name_first + " " + @user.name_last %>
+  		<b><%= @user.name_first + " " + @user.name_last %></b>
     </p>
     <p>
-      <%= @user.email %>
+      <b><%= @user.email %></b>
     </p>
-  </div>
+  </span>
   
-  <div data-role="collapsible" class="collapsing" data-inset="true" data-iconpos="right" data-collapsed="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u">
-	<h3>Gardens</h3>
+  <div data-role="collapsible" class="collapsing" data-iconpos="right" data-collapsed="false" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u">
+	<h3>Your gardens</h3>
 	<ul data-role="listview" data-inset="true">
 		<% for garden in @gardens do %>
           
@@ -24,13 +23,13 @@
 
         <% end %>
         <% if @gardens.size > 0 then %>
-        	<li data-theme="c" data-icon="plus">
+        	<li data-theme="e" data-icon="plus" style="border-bottom:1px solid black;">
         		<a href="/gardens/new" data-ajax="false">
     				Add a new garden
   				</a>
   			</li>
   		<% else %>
-  			<li data-theme="c" data-icon="plus">
+  			<li data-theme="e" data-icon="plus" style="border-bottom:1px solid black;">
         		<a href="/gardens/new" data-ajax="false">
     				Add your first garden
   				</a>
@@ -39,8 +38,8 @@
   	</ul>
   </div>
   
-  <div data-role="collapsible" class="collapsing" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-inset="true">
-	<h3>Plants</h3>
+  <div data-inset="true" data-role="collapsible" class="collapsing" data-iconpos="right" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u">
+	<h3>Your plants</h3>
 	<ul data-role="listview" data-inset="true">
 		<% for plant in @plants do %>
           
@@ -52,7 +51,7 @@
 
         <% end %>
         
-          <li data-theme="c" data-icon="search">
+          <li data-theme="e" data-icon="search" style="border-bottom:1px solid black;">
           	<a href="/plants" data-ajax="false">
      		 Search for plants
     		</a>
@@ -60,20 +59,16 @@
   	</ul>
   </div>
 
+
   <div id="logout_button">
   	<a href="/users/logout" data-role="button" data-ajax="false">
     Log out
   </a>
   </div>
   
-</div>
   <%= render '/layouts/footer' %>
 
-
-
 </div>
-
-
 
 
 

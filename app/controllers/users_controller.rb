@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     @gardens = Garden.where(:user_id => params[:id])
     @plants = PersonalPlant.where(:user_id => params[:id])
+
     
     #debugger
 
