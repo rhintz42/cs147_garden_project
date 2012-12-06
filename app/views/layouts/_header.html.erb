@@ -1,17 +1,9 @@
 
 <div data-theme="b" data-role="header">
-  <% if @back_label == nil then %>
-    <% @back_label = "Back" %>
-  <% end %>
-  <% if @no_back == nil then %>
-	 <% if @back_url != nil then %>
-      <a data-role="button" href="<%= @back_url %>" data-icon="back" data-ajax="false" style="margin-top:6px;">
-  	    <%= @back_label %>
-      </a>
-    <% else %>
 
-    <% end %>
-  <%end%>
+  <a data-role="button" data-rel="back" data-icon="back" style="margin-top:6px;">
+  	Back
+  </a>
   
   <h1><div id="header-img"></div></h1>
   
@@ -107,6 +99,20 @@
       </li>
     </ul>
   </div>
+  
+  <!--- Old code for back button, not working properly, so implementing jQuery Mobile default back buttons --->
+  <% if @back_label == nil then %>
+    <% @back_label = "Back" %>
+  <% end %>
+  <% if @no_back == nil then %>
+	 <% if @back_url != nil then %>
+      <a data-role="button" href="<%= @back_url %>" data-icon="back" data-ajax="false" style="margin-top:6px;">
+  	    <%= @back_label %>
+      </a>
+    <% else %>
+
+    <% end %>
+  <%end%>
 
 
 <% end %>
